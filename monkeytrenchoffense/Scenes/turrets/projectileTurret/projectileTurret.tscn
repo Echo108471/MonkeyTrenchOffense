@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://edmi5jtva5y2"]
 
 [ext_resource type="Script" path="res://Scenes/turrets/projectileTurret/projectileTurret.gd" id="1_7ca8v"]
-[ext_resource type="Texture2D" uid="uid://83kim8fm0f2s" path="res://Assets/turrets/technoturret.png" id="2_2x7ix"]
+[ext_resource type="Texture2D" uid="uid://c8ftn0rmh5t1k" path="res://Assets/turrets/monkey.png" id="2_4h5xs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aicnu"]
 radius = 22.8
@@ -15,7 +15,8 @@ script = ExtResource("1_7ca8v")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 2
 texture_filter = 1
-texture = ExtResource("2_2x7ix")
+rotation = 1.5708
+texture = ExtResource("2_4h5xs")
 
 [node name="CollisionArea" type="Area2D" parent="."]
 collision_layer = 2
@@ -34,6 +35,6 @@ shape = SubResource("CircleShape2D_kae7m")
 autostart = true
 
 [connection signal="input_event" from="CollisionArea" to="." method="_on_collision_area_input_event"]
-[connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_area_entered"]
+[connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_entered"]
 [connection signal="area_exited" from="DetectionArea" to="." method="_on_detection_area_area_exited"]
 [connection signal="timeout" from="AttackCooldown" to="." method="attack"]

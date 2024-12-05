@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://bc51wm18jfnhw"]
+
+[ext_resource type="PackedScene" uid="uid://bufty5f1wpw7x" path="res://Scenes/player/player.tscn" id="1_kuixu"]
+[ext_resource type="Texture2D" uid="uid://c08ieo1nh44dc" path="res://Assets/maps/map2.png" id="2_5njqe"]
+[ext_resource type="Script" path="res://Scenes/camera.gd" id="3_gmu6m"]
+[ext_resource type="PackedScene" uid="uid://edmi5jtva5y2" path="res://Scenes/turrets/projectileTurret/projectileTurret.tscn" id="4_bho38"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5exwf"]
+
+[node name="World" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_5njqe")
+
+[node name="Player" parent="." instance=ExtResource("1_kuixu")]
+unique_name_in_owner = true
+position = Vector2(-952, 37)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(952, -37)
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0
+script = ExtResource("3_gmu6m")
+
+[node name="Borders" type="StaticBody2D" parent="."]
+
+[node name="BottomBorder" type="CollisionShape2D" parent="Borders"]
+position = Vector2(0, 500)
+scale = Vector2(10, 10)
+shape = SubResource("WorldBoundaryShape2D_5exwf")
+
+[node name="TopBorder" type="CollisionShape2D" parent="Borders"]
+position = Vector2(0, -500)
+rotation = 3.14159
+scale = Vector2(10, 10)
+shape = SubResource("WorldBoundaryShape2D_5exwf")
+
+[node name="LeftBorder" type="CollisionShape2D" parent="Borders"]
+position = Vector2(-1000, 0)
+rotation = 1.5708
+scale = Vector2(10, 10)
+shape = SubResource("WorldBoundaryShape2D_5exwf")
+
+[node name="RightBorder" type="CollisionShape2D" parent="Borders"]
+position = Vector2(1000, 0)
+rotation = -1.5708
+scale = Vector2(10, 10)
+shape = SubResource("WorldBoundaryShape2D_5exwf")
+
+[node name="DartMonkey" parent="." instance=ExtResource("4_bho38")]
