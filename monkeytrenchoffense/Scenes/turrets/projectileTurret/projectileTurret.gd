@@ -30,6 +30,8 @@ func attack():
 	var projectile := preload("res://Scenes/turrets/projectileTurret/bullet/bulletBase.tscn").instantiate()
 	projectile.direction = $LaunchPoint.global_position.direction_to(target.global_position)
 	projectile.global_position = $LaunchPoint.global_position
+	projectile.target = target
+	#projectile.seeking = true  #this is utterly terrifying to play against
 	$"..".add_child(projectile)
 
 

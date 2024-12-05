@@ -12,11 +12,15 @@ var speed: float = 400.0
 var damage: float = 10
 var pierce: int = 1
 var time: float = 1.0
+var seeking: bool = false
+var target: Player = null
 
 func _process(delta):
 	#if target:
 		#if not direction: 
 			#direction= (target - position).normalized()
+	if seeking:
+		direction = global_position.direction_to(target.global_position)
 	position += direction * speed * delta
 	rotation = direction.angle()
 	pass
