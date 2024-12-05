@@ -7,6 +7,7 @@ var bulletSize : float = 1.0
 
 func _ready() -> void:
 	swivel = 7 #dart towers should be more agile than average
+	
 
 func attack():
 	print("attacking")
@@ -22,7 +23,23 @@ func attack():
 		#projectile.target = current_target.position
 	#else:
 		#try_get_closest_target()
+	
+	
+	
+	#$LaunchPoint.add_child(preload("res://Scenes/turrets/projectileTurret/bullet/bulletBase.tscn").instantiate())
+	var projectile := preload("res://Scenes/turrets/projectileTurret/bullet/bulletBase.tscn").instantiate()
+	projectile.direction = Vector2(1,0).rotated(global_rotation)
+	projectile.global_position = $LaunchPoint.global_position
+	$"..".add_child(projectile)
 
 
-func _on_detection_area_entered(area: Area2D) -> void:
-	pass # Replace with function body.
+func _on_attack_range_body_entered(_body: Node2D) -> void:
+	print("enter")
+	target = %Player
+	$AttackCooldown.start()
+
+
+func _on_attack_range_body_exited(_body: Node2D) -> void:
+	print("exit")
+	target = null
+	$AttackCooldown.stop()

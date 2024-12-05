@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b35vf52g3e7yc"]
 
-[ext_resource type="Script" path="res://Scenes/turrets/turretBase/turret_class.gd" id="1_g4amg"]
+[ext_resource type="Script" path="res://Scenes/turrets/turretBase/turret_base.gd" id="1_g4amg"]
 [ext_resource type="Texture2D" uid="uid://83kim8fm0f2s" path="res://Assets/turrets/technoturret.png" id="2_alg2e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aicnu"]
@@ -34,6 +34,4 @@ shape = SubResource("CircleShape2D_kae7m")
 autostart = true
 
 [connection signal="input_event" from="CollisionArea" to="." method="_on_collision_area_input_event"]
-[connection signal="area_entered" from="AttackRange" to="." method="_range_entered"]
-[connection signal="area_exited" from="AttackRange" to="." method="_range_exited"]
 [connection signal="timeout" from="AttackCooldown" to="." method="attack"]

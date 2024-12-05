@@ -1,7 +1,7 @@
 class_name Turret
 extends Node2D
 
-@onready var target:Player = %Player #probably lock to the player?
+var target:Player = null #probably lock to the player?
 
 var attack_speed := 1.0:
 	set(value):
@@ -23,16 +23,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	rotate(get_angle_to(target.position) * delta * swivel)
+	if not target == null:
+		#print("viable")
+		rotate(get_angle_to(target.position) * delta * swivel)
+	else:
+		#print("down")
+		pass
 	
 
 func attack() -> void:
 	pass
-
-
-func _range_entered(area: Area2D) -> void:
-	pass # Replace with function body.
-
-
-func _range_exited(area: Area2D) -> void:
-	pass # Replace with function body.

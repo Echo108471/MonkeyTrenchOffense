@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bufty5f1wpw7x"]
+[gd_scene load_steps=5 format=3 uid="uid://bufty5f1wpw7x"]
 
 [ext_resource type="Texture2D" uid="uid://bf82x3vghbd5q" path="res://Assets/balloon/redBloon.png" id="1_2wv44"]
 [ext_resource type="Script" path="res://Scenes/player/player.gd" id="1_bq71g"]
+[ext_resource type="Script" path="res://hurtbox.gd" id="3_4r57u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bpdh0"]
 radius = 33.0
@@ -18,9 +19,12 @@ texture = ExtResource("1_2wv44")
 position = Vector2(-3, -2)
 shape = SubResource("CapsuleShape2D_bpdh0")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("3_4r57u")
 
-[node name="Hurtbox" type="CollisionShape2D" parent="Area2D"]
+[node name="Shape" type="CollisionShape2D" parent="HurtBox"]
 position = Vector2(-3, -2)
 shape = SubResource("CapsuleShape2D_bpdh0")
 debug_color = Color(0, 0, 100, 0.42)
