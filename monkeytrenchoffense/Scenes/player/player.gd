@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 var movement_speed:float = 400
 var hitpoints:int = 1
+@onready var animation = $AnimationPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,6 +14,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	_handle_movement_inputs(delta)
 	move_and_slide()
+	
+func _process(delta):
+	animation.play("floating")
 
 func get_damage(dam:int):
 	hitpoints -= dam
