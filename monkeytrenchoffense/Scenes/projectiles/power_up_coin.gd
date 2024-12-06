@@ -15,7 +15,6 @@ func _ready():
 	boost_timer.connect("timeout",Callable(self, "_on_boost_end"))
 	add_child(boost_timer)
 
-# Called when another body enters the Area2D (e.g., the player picks up the coin)
 func _on_body_entered(body):
 	if body == player:  # Ensure that only the player can pick up the coin
 		give_speed_boost()
@@ -23,11 +22,10 @@ func _on_body_entered(body):
 # Function to give the player a speed boost
 func give_speed_boost():
 	print("Timer Started!")
-	player.movement_speed *= speed_multiplier  # Increase the player's speed
-	boost_timer.start()  # Start the boost timer
-	self.visible = false  # Hides the coin
+	player.movement_speed *= speed_multiplier  
+	boost_timer.start()
+	self.visible = false 
 
-# Function to reset the player's speed after the boost ends
 func _on_boost_end():
 	player.movement_speed /= speed_multiplier  # Reset the player's speed to normal
 	queue_free()

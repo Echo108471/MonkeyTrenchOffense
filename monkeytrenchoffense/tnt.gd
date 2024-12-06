@@ -1,8 +1,8 @@
 extends Area2D
 
-var explosion_timer = 3.0  # Time in seconds before explosion
+var explosion_timer = 3.0  
 var timer_active = false
-var explosion_radius = 200.0  # Explosion radius in pixels
+var explosion_radius = 200.0  
 
 @onready var player : Player = %Player
 
@@ -24,15 +24,12 @@ func start_timer():
 func explode():
 	print("BOOM! The TNT exploded!")
 	
-	# Get the position of the TNT (this object) and the player
 	var tnt_position = global_position
 	var player_position = player.global_position
 	
-	# Calculate the distance between the TNT and the player
 	var distance = tnt_position.distance_to(player_position)
 	
-	# If the player is within the explosion radius, deal damage
 	if distance <= explosion_radius:
-		player.get_damage(1)  # Apply damage to the player
+		player.get_damage(1)
 	
-	queue_free()  # Remove the TNT or the exploding object from the scene
+	queue_free()
