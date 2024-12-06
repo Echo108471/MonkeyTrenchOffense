@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 var movement_speed:float = 400
+var hitpoints:int = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,6 +14,12 @@ func _physics_process(delta: float) -> void:
 	_handle_movement_inputs(delta)
 	move_and_slide()
 
+func get_damage(dam:int):
+	hitpoints -= dam
+	print(hitpoints)
+	if hitpoints <= 0:
+		#put game over behavior here
+		get_tree().quit()
 
 func _handle_movement_inputs(delta:float) -> void:
 	var input_direction = Vector2(
