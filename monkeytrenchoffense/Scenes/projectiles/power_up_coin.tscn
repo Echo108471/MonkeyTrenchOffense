@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4ncxe3o6t831"]
+
+[ext_resource type="Script" path="res://Scenes/projectiles/power_up_coin.gd" id="1_7pk4m"]
+[ext_resource type="SpriteFrames" uid="uid://tfa84xobhtyj" path="res://Assets/bullets/bullet1.tres" id="1_40ipm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dgw8g"]
+radius = 11.0
+
+[node name="power_up_coin" type="Area2D"]
+script = ExtResource("1_7pk4m")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.25, 2.25)
+sprite_frames = ExtResource("1_40ipm")
+autoplay = "default"
+frame_progress = 0.525399
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_dgw8g")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

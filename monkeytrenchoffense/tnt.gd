@@ -2,7 +2,7 @@ extends Area2D
 
 var explosion_timer = 3.0  # Time in seconds before explosion
 var timer_active = false
-var explosion_radius = 100.0  # Explosion radius in pixels
+var explosion_radius = 200.0  # Explosion radius in pixels
 
 @onready var player : Player = %Player
 
