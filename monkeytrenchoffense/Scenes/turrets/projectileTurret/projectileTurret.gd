@@ -17,12 +17,13 @@ func _process(delta: float) -> void:
 	super(delta)
 
 func _draw() -> void:
+	#if a target is within range, display that range
 	if target != null:
 		draw_circle(Vector2.ZERO, attack_range, Color.DIM_GRAY, false, 2.0)
 
 func attack():
 	#$LaunchPoint.add_child(preload("res://Scenes/turrets/projectileTurret/bullet/bulletBase.tscn").instantiate())
-	var projectile := preload("res://Scenes/turrets/projectileTurret/bullet/bulletBase.tscn").instantiate()
+	var projectile := preload("res://Scenes/projectiles/bulletBase.tscn").instantiate()
 	projectile.direction = $LaunchPoint.global_position.direction_to(target.global_position)
 	projectile.global_position = $LaunchPoint.global_position
 	
