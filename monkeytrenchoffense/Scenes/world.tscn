@@ -48,3 +48,4 @@ scale = Vector2(10, 10)
 shape = SubResource("WorldBoundaryShape2D_5exwf")
 
 [node name="DartMonkey" parent="." instance=ExtResource("4_bho38")]
+position = Vector2(-374, -73)

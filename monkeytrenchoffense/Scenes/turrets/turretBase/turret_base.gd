@@ -24,11 +24,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if not target == null:
-		#print("viable")
 		rotate(get_angle_to(target.position) * delta * swivel)
-	else:
-		#print("down")
-		pass
 	
 
 func attack() -> void:

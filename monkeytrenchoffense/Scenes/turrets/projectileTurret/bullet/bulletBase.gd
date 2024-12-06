@@ -1,35 +1,36 @@
 extends Node2D
-#
-#var bullet_type := "":
-	#set(value):
-		#bullet_type = value
-		#$AnimatedSprite2D.sprite_frames = load(Data.bullets[value]["frames"])
-#
-#var target = null
-var direction: Vector2
-#
-var speed: float = 400.0
-var damage: float = 10
-var pierce: int = 1
-var time: float = 1.0
-var seeking: bool = false
-var target: Player = null
+
+
+var direction: Vector2 = Vector2.ZERO
+
+var speed : float = 400.0
+var damage : int = 1
+var pierce : int = 1
+var time : float = 1.0
+var seeking : bool = false
+
+var target : Player = null
+
+
 
 func _process(delta):
-	#if target:
-		#if not direction: 
-			#direction= (target - position).normalized()
-	if seeking:
+	if seeking and target != null:
 		direction = global_position.direction_to(target.global_position)
 	position += direction * speed * delta
 	rotation = direction.angle()
-	pass
+
+#used for setting properties
+func configure(s:float = 400.0, d:int = 1, p:int = 1, t:float = 1.0, sk:bool = false) -> void:
+	speed = s
+	damage = d
+	pierce = p
+	time = t
+	seeking = sk
 
 func _on_area_2d_area_entered(area):
-	#var obj = area.get_parent()
-	#if obj.is_in_group("enemy"):
+	var obj = area.get_parent()
 	pierce -= 1
-	#obj.get_damage(damage)
+	obj.get_damage(damage)
 	if pierce == 0:
 		queue_free()
 
