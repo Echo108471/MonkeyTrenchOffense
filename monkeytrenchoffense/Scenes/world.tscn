@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://bc51wm18jfnhw"]
+[gd_scene load_steps=14 format=3 uid="uid://bc51wm18jfnhw"]
 
 [ext_resource type="PackedScene" uid="uid://bufty5f1wpw7x" path="res://Scenes/player/player.tscn" id="1_kuixu"]
+[ext_resource type="PackedScene" uid="uid://bo8dwygo4att7" path="res://Scenes/maps/map1.tscn" id="1_memt1"]
 [ext_resource type="Texture2D" uid="uid://c08ieo1nh44dc" path="res://Assets/maps/map2.png" id="2_5njqe"]
 [ext_resource type="Script" path="res://Scenes/camera.gd" id="3_gmu6m"]
 [ext_resource type="PackedScene" uid="uid://edmi5jtva5y2" path="res://Scenes/turrets/projectileTurret/projectileTurret.tscn" id="4_bho38"]
@@ -8,6 +9,21 @@
 [ext_resource type="PackedScene" uid="uid://msd06w8xlkxt" path="res://Scenes/projectiles/tnt.tscn" id="5_jwuhp"]
 [ext_resource type="PackedScene" uid="uid://cgh7ibrmxxwho" path="res://Scenes/projectiles/slow_area.tscn" id="6_4oscd"]
 [ext_resource type="PackedScene" uid="uid://c4ncxe3o6t831" path="res://Scenes/projectiles/power_up_coin.tscn" id="7_csl7t"]
+
+[sub_resource type="Animation" id="Animation_6yrm5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_gp1ku"]
 resource_name = "floating"
@@ -27,21 +43,6 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_6yrm5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hhcit"]
 _data = {
 "RESET": SubResource("Animation_6yrm5"),
@@ -52,7 +53,11 @@ _data = {
 
 [node name="World" type="Node2D"]
 
+[node name="map" parent="." instance=ExtResource("1_memt1")]
+position = Vector2(-629, -865)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_5njqe")
 
 [node name="Player" parent="." instance=ExtResource("1_kuixu")]
@@ -76,6 +81,7 @@ position_smoothing_speed = 7.0
 script = ExtResource("3_gmu6m")
 
 [node name="Borders" type="StaticBody2D" parent="."]
+visible = false
 
 [node name="BottomBorder" type="CollisionShape2D" parent="Borders"]
 position = Vector2(0, 500)
