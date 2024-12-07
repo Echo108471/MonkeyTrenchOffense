@@ -1,6 +1,7 @@
 class_name Player
 extends CharacterBody2D
 
+@onready var animation = $AnimationPlayer
 @export var movement_speed:float = 400
 @export var hitpoints:int = 1
 @export var drag_factor:float = 4 # how much velocity decreases without input
@@ -23,6 +24,9 @@ func _physics_process(delta: float) -> void:
 	#print(time_since_dash)
 	_handle_movement_inputs(delta)
 	move_and_slide()
+	
+func _process(delta):
+	animation.play("floating")
 
 func get_damage(dam:int):
 	hitpoints -= dam
