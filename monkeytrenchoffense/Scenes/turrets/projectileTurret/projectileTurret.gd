@@ -8,6 +8,7 @@ var bulletPierce : int = 1
 var bulletTime : float = 1
 var bulletSeeking : bool = false
 var bulletSlow : float = 1.0
+signal fired(type: String)
 
 func _ready() -> void:
 	swivel = 7 #dart towers should be more agile than average
@@ -33,6 +34,8 @@ func attack():
 	projectile.configure(bulletSpeed, bulletDamage, bulletPierce, bulletTime, bulletSeeking, bulletSlow)
 	
 	$"..".add_child(projectile)
+	emit_signal("fired", "dart");
+
 
 
 

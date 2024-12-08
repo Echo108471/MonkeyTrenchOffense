@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bc51wm18jfnhw"]
+[gd_scene load_steps=14 format=3 uid="uid://bc51wm18jfnhw"]
 
 [ext_resource type="PackedScene" uid="uid://bufty5f1wpw7x" path="res://Scenes/player/player.tscn" id="1_kuixu"]
 [ext_resource type="PackedScene" uid="uid://bo8dwygo4att7" path="res://Scenes/maps/map1.tscn" id="1_memt1"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://cgh7ibrmxxwho" path="res://Scenes/projectiles/slow_area.tscn" id="6_4oscd"]
 [ext_resource type="PackedScene" uid="uid://c4ncxe3o6t831" path="res://Scenes/projectiles/power_up_coin.tscn" id="7_csl7t"]
 [ext_resource type="PackedScene" uid="uid://bxw4bpqa7mxw7" path="res://Scenes/turrets/slowTurret/slowTurret.tscn" id="10_1hybe"]
+[ext_resource type="Script" path="res://Scenes/Sounds.gd" id="10_xuskj"]
+[ext_resource type="AudioStream" uid="uid://bkdn7mmaypeux" path="res://Assets/sfx/DartMonkeyShoot.wav" id="11_wligf"]
+[ext_resource type="AudioStream" uid="uid://buv6637rk5rfj" path="res://Assets/sfx/BalloonPop.wav" id="12_5svx4"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5exwf"]
 
@@ -70,3 +73,14 @@ position = Vector2(-652, -266)
 
 [node name="SlowMonkey" parent="." instance=ExtResource("10_1hybe")]
 position = Vector2(-24, -215)
+
+[node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("projectile_turret", "player")]
+script = ExtResource("10_xuskj")
+projectile_turret = NodePath("../DartMonkey")
+player = NodePath("../Player")
+
+[node name="DartFireSound" type="AudioStreamPlayer2D" parent="Node2D"]
+stream = ExtResource("11_wligf")
+
+[node name="BalloonPopSound" type="AudioStreamPlayer2D" parent="Node2D"]
+stream = ExtResource("12_5svx4")

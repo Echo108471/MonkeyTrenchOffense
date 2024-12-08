@@ -9,6 +9,7 @@ extends CharacterBody2D
 @export var dash_duration:float = 0.25
 @export var dash_recovery:float = 1.0 
 
+signal popped(type: String)
 var dash_speed:float = movement_speed * 2.5 # how fast the character dashes
 var time_since_dash:float = 10
 
@@ -35,6 +36,13 @@ func get_damage(dam:int) -> void:
 	#print(hitpoints)
 	if hitpoints <= 0:
 		#put game over behavior here
+		emit_signal("popped", "pop")
+		var timer = Timer.new()
+		add_child(timer)
+		timer.wait_time = 1.0
+		timer.one_shot = true
+		timer.start()
+		await timer.timeout
 		get_tree().quit()
 
 func get_effects(sl:float) -> void:
