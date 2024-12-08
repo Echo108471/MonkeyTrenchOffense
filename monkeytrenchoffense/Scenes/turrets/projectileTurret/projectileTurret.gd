@@ -3,12 +3,16 @@ extends Turret
 
 signal fired(type: String)
 
+var max_cone_angle : float = 90
+
 func _ready() -> void:
 	swivel = 7 #dart towers should be more agile than average
 	attack_range = 300.0
 	
+	bulletCount = 9
+	
 	bulletSize = 2.0
-	bulletDamage = 1
+	bulletDamage = 0
 	
 	bulletTime  = 1
 	bulletSeeking = false
@@ -25,14 +29,22 @@ func attack():
 	if target == null:
 		return
 	
-	#$LaunchPoint.add_child(preload("res://Scenes/turrets/projectileTurret/bullet/bulletBase.tscn").instantiate())
-	var projectile := preload("res://Scenes/projectiles/bulletBase.tscn").instantiate()
-	projectile.direction = $LaunchPoint.global_position.direction_to(target.global_position)
-	projectile.global_position = $LaunchPoint.global_position
+	var true_direction: Vector2 = $LaunchPoint.global_position.direction_to(target.global_position)
+	#radian representation of working cone angle
+	var cone_angle: float = min((bulletCount-1) * deg_to_rad(20.0), deg_to_rad(max_cone_angle))
+	var shoot_direction: Vector2 = true_direction.rotated(-1 * cone_angle/2)
 	
-	projectile.configure(bulletSpeed, bulletSize, bulletDamage, bulletPierce, bulletTime, bulletSeeking, bulletSlow, bulletSlowDuration)
+	for i in bulletCount:
+		var projectile := preload("res://Scenes/projectiles/bulletBase.tscn").instantiate()
+		#projectile.direction = $LaunchPoint.global_position.direction_to(target.global_position)
+		projectile.direction = shoot_direction
+		shoot_direction = shoot_direction.rotated( ( cone_angle / max((bulletCount-1), 1) ) )
+		
+		projectile.global_position = $LaunchPoint.global_position
 	
-	$"..".add_child(projectile)
+		projectile.configure(bulletSpeed, bulletSize, bulletDamage, bulletPierce, bulletTime, bulletSeeking, bulletSlow, bulletSlowDuration)
+	
+		$"..".add_child(projectile)
 	emit_signal("fired", "dart");
 
 

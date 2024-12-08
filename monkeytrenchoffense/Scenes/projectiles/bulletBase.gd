@@ -34,8 +34,8 @@ func configure(s:float = 400.0, sz:float = 1.0, d:int = 1, p:int = 1, t:float = 
 	slow_duration = sld
 
 func _on_area_2d_area_entered(area):
-	var obj = area.get_parent()
 	pierce -= 1
+	var obj = area.get_parent()
 	obj.get_damage(damage)
 	obj.get_effects(slow, slow_duration)
 	if pierce == 0:
