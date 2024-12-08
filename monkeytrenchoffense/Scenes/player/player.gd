@@ -15,6 +15,8 @@ var time_since_dash:float = 10
 var acceleration_speed:float = movement_speed * 6
 var acceleration:Vector2 = Vector2.ZERO
 
+var slowed : float = 1.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -25,15 +27,19 @@ func _physics_process(delta: float) -> void:
 	_handle_movement_inputs(delta)
 	move_and_slide()
 	
-func _process(delta):
+func _process(_delta):
 	animation.play("floating")
 
-func get_damage(dam:int):
+func get_damage(dam:int) -> void:
 	hitpoints -= dam
-	print(hitpoints)
+	#print(hitpoints)
 	if hitpoints <= 0:
 		#put game over behavior here
 		get_tree().quit()
+
+func get_effects(sl:float) -> void:
+	slowed = sl
+	#print("affected")
 
 func _handle_movement_inputs(delta:float) -> void:
 	time_since_dash += delta
@@ -69,6 +75,6 @@ func _handle_movement_inputs(delta:float) -> void:
 	var max_speed = movement_speed * velocity_multi
 	velocity.x = clampf(velocity.x + acceleration.x * delta, -max_speed, max_speed)
 	velocity.y = clampf(velocity.y + acceleration.y * delta, -max_speed, max_speed)
-	print(max_speed)
+	#print(max_speed)
 	velocity.limit_length(max_speed)
 	#velocity *= velocity_multi

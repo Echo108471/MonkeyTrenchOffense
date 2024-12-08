@@ -1,17 +1,17 @@
-class_name ProjectileTurret
+class_name SlowTurret
 extends Turret
 
-var bulletSpeed : float = 400.0
-var bulletSize : float = 1.0
+var bulletSpeed : float = 600.0
+var bulletSize : float = 2.0
 var bulletDamage : int = 0
 var bulletPierce : int = 1
 var bulletTime : float = 1
 var bulletSeeking : bool = false
-var bulletSlow : float = 1.0
+var bulletSlow : float = 0.6
 
 func _ready() -> void:
-	swivel = 7 #dart towers should be more agile than average
-	attack_range = 300.0
+	swivel = 5 #slow towers should average agility
+	attack_range = 400.0 #slightly larger range
 
 func _process(delta: float) -> void:
 	super(delta)
@@ -35,8 +35,7 @@ func attack():
 	$"..".add_child(projectile)
 
 
-
-func _on_attack_range_area_entered_proj(area: Area2D) -> void:
+func _on_attack_range_area_entered_slo(area: Area2D) -> void:
 	if area.get_parent() == %Player:
 		target = %Player
 	else:
@@ -51,7 +50,7 @@ func _on_attack_range_area_entered_proj(area: Area2D) -> void:
 	queue_redraw()
 
 
-func _on_attack_range_area_exited_proj(area: Area2D) -> void:
+func _on_attack_range_area_exited_slo(area: Area2D) -> void:
 	if area.get_parent() == %Player:
 		target = null
 		$AttackCooldown.paused = true
