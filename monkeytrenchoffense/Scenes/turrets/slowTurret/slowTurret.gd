@@ -1,17 +1,16 @@
 class_name SlowTurret
 extends Turret
 
-var bulletSpeed : float = 600.0
-var bulletSize : float = 2.0
-var bulletDamage : int = 0
-var bulletPierce : int = 1
-var bulletTime : float = 1
-var bulletSeeking : bool = false
-var bulletSlow : float = 0.6
 
 func _ready() -> void:
 	swivel = 5 #slow towers should average agility
 	attack_range = 400.0 #slightly larger range
+	
+	bulletSpeed = 600.0
+	bulletSize = 5.0
+	bulletDamage = 0
+	bulletSlow = 0.8
+	bulletSlowDuration = 1.0
 
 func _process(delta: float) -> void:
 	super(delta)
@@ -30,7 +29,8 @@ func attack():
 	projectile.direction = $LaunchPoint.global_position.direction_to(target.global_position)
 	projectile.global_position = $LaunchPoint.global_position
 	
-	projectile.configure(bulletSpeed, bulletDamage, bulletPierce, bulletTime, bulletSeeking, bulletSlow)
+	print(bulletSlowDuration)
+	projectile.configure(bulletSpeed, bulletSize, bulletDamage, bulletPierce, bulletTime, bulletSeeking, bulletSlow, bulletSlowDuration)
 	
 	$"..".add_child(projectile)
 

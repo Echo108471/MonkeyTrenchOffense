@@ -3,6 +3,15 @@ extends Node2D
 
 var target:Player = null #probably lock to the player?
 
+var bulletSpeed : float = 400.0
+var bulletSize : float = 1.0
+var bulletDamage : int = 0
+var bulletPierce : int = 1
+var bulletTime : float = 1
+var bulletSeeking : bool = false
+var bulletSlow : float = 1.0
+var bulletSlowDuration : float = 0.0
+
 var attack_speed := 1.0:
 	set(value):
 		attack_speed = value

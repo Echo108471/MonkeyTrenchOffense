@@ -1,18 +1,17 @@
 class_name ProjectileTurret
 extends Turret
 
-var bulletSpeed : float = 400.0
-var bulletSize : float = 1.0
-var bulletDamage : int = 0
-var bulletPierce : int = 1
-var bulletTime : float = 1
-var bulletSeeking : bool = false
-var bulletSlow : float = 1.0
 signal fired(type: String)
 
 func _ready() -> void:
 	swivel = 7 #dart towers should be more agile than average
 	attack_range = 300.0
+	
+	bulletSize = 2.0
+	bulletDamage = 1
+	
+	bulletTime  = 1
+	bulletSeeking = false
 
 func _process(delta: float) -> void:
 	super(delta)
@@ -31,7 +30,7 @@ func attack():
 	projectile.direction = $LaunchPoint.global_position.direction_to(target.global_position)
 	projectile.global_position = $LaunchPoint.global_position
 	
-	projectile.configure(bulletSpeed, bulletDamage, bulletPierce, bulletTime, bulletSeeking, bulletSlow)
+	projectile.configure(bulletSpeed, bulletSize, bulletDamage, bulletPierce, bulletTime, bulletSeeking, bulletSlow, bulletSlowDuration)
 	
 	$"..".add_child(projectile)
 	emit_signal("fired", "dart");
