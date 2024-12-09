@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bxw4bpqa7mxw7"]
+[gd_scene load_steps=5 format=3 uid="uid://dy576ss87vjl"]
 
-[ext_resource type="Script" path="res://Scenes/turrets/slowTurret/slowTurret.gd" id="1_4ay1g"]
-[ext_resource type="Texture2D" uid="uid://bjc8fm6ge11sh" path="res://icon.svg" id="2_xya5a"]
+[ext_resource type="Script" path="res://Scenes/turrets/projectileTurret/projectileTurret.gd" id="1_ta8qp"]
+[ext_resource type="Texture2D" uid="uid://bjc8fm6ge11sh" path="res://icon.svg" id="2_srlyo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aicnu"]
 radius = 22.8
@@ -10,13 +10,14 @@ radius = 22.8
 radius = 230.11
 
 [node name="Turret" type="Node2D"]
-script = ExtResource("1_4ay1g")
+script = ExtResource("1_ta8qp")
 
 [node name="Monkey" type="Sprite2D" parent="."]
 z_index = 2
 texture_filter = 1
 rotation = -1.5708
-texture = ExtResource("2_xya5a")
+scale = Vector2(2, 2)
+texture = ExtResource("2_srlyo")
 
 [node name="CollisionArea" type="Area2D" parent="."]
 collision_layer = 2
@@ -38,6 +39,6 @@ position = Vector2(35, 31)
 
 [node name="AttackCooldown" type="Timer" parent="."]
 
-[connection signal="area_entered" from="AttackRange" to="." method="_on_attack_range_area_entered_slo"]
-[connection signal="area_exited" from="AttackRange" to="." method="_on_attack_range_area_exited_slo"]
+[connection signal="area_entered" from="AttackRange" to="." method="_on_attack_range_area_entered_proj"]
+[connection signal="area_exited" from="AttackRange" to="." method="_on_attack_range_area_exited_proj"]
 [connection signal="timeout" from="AttackCooldown" to="." method="attack"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bc51wm18jfnhw"]
+[gd_scene load_steps=16 format=3 uid="uid://bc51wm18jfnhw"]
 
 [ext_resource type="PackedScene" uid="uid://bufty5f1wpw7x" path="res://Scenes/player/player.tscn" id="1_kuixu"]
 [ext_resource type="PackedScene" uid="uid://bo8dwygo4att7" path="res://Scenes/maps/map1.tscn" id="1_memt1"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" path="res://Scenes/Sounds.gd" id="10_xuskj"]
 [ext_resource type="AudioStream" uid="uid://bkdn7mmaypeux" path="res://Assets/sfx/DartMonkeyShoot.wav" id="11_wligf"]
 [ext_resource type="AudioStream" uid="uid://buv6637rk5rfj" path="res://Assets/sfx/BalloonPop.wav" id="12_5svx4"]
+[ext_resource type="PackedScene" uid="uid://dy576ss87vjl" path="res://Scenes/turrets/bombTurret/bombTurret.tscn" id="13_wtiq1"]
+[ext_resource type="Script" path="res://Scenes/turrets/bombTurret/bombTurret.gd" id="14_fx4dj"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5exwf"]
 
@@ -26,10 +28,10 @@ texture = ExtResource("2_5njqe")
 
 [node name="Player" parent="." instance=ExtResource("1_kuixu")]
 unique_name_in_owner = true
-position = Vector2(-952, 37)
+position = Vector2(59, 99)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2(952, -37)
+position = Vector2(-711, -37)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 script = ExtResource("3_gmu6m")
@@ -40,27 +42,36 @@ script = ExtResource("3_gmu6m")
 position = Vector2(0, 500)
 scale = Vector2(10, 10)
 shape = SubResource("WorldBoundaryShape2D_5exwf")
+disabled = true
 
 [node name="TopBorder" type="CollisionShape2D" parent="Borders"]
 position = Vector2(0, -500)
 rotation = 3.14159
 scale = Vector2(10, 10)
 shape = SubResource("WorldBoundaryShape2D_5exwf")
+disabled = true
 
 [node name="LeftBorder" type="CollisionShape2D" parent="Borders"]
 position = Vector2(-1000, 0)
 rotation = 1.5708
 scale = Vector2(10, 10)
 shape = SubResource("WorldBoundaryShape2D_5exwf")
+disabled = true
 
 [node name="RightBorder" type="CollisionShape2D" parent="Borders"]
 position = Vector2(1000, 0)
 rotation = -1.5708
 scale = Vector2(10, 10)
 shape = SubResource("WorldBoundaryShape2D_5exwf")
+disabled = true
 
 [node name="DartMonkey" parent="." instance=ExtResource("4_bho38")]
-position = Vector2(-407, -239)
+position = Vector2(1345, -393)
+scale = Vector2(2, 2)
+
+[node name="SlowMonkey" parent="." instance=ExtResource("10_1hybe")]
+position = Vector2(1157, -477)
+scale = Vector2(2, 2)
 
 [node name="TNT" parent="." instance=ExtResource("5_jwuhp")]
 position = Vector2(-786, -148)
@@ -70,9 +81,6 @@ position = Vector2(-752, 226)
 
 [node name="power_up_coin" parent="." instance=ExtResource("7_csl7t")]
 position = Vector2(-652, -266)
-
-[node name="SlowMonkey" parent="." instance=ExtResource("10_1hybe")]
-position = Vector2(-24, -215)
 
 [node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("projectile_turret", "player")]
 script = ExtResource("10_xuskj")
@@ -84,3 +92,15 @@ stream = ExtResource("11_wligf")
 
 [node name="BalloonPopSound" type="AudioStreamPlayer2D" parent="Node2D"]
 stream = ExtResource("12_5svx4")
+
+[node name="DartMonkey2" parent="." instance=ExtResource("4_bho38")]
+position = Vector2(2728, -392)
+scale = Vector2(2, 2)
+
+[node name="SlowMonkey2" parent="." instance=ExtResource("10_1hybe")]
+position = Vector2(2236, -452)
+scale = Vector2(2, 2)
+
+[node name="BombMonkey" parent="." instance=ExtResource("13_wtiq1")]
+position = Vector2(-206, -300)
+script = ExtResource("14_fx4dj")
