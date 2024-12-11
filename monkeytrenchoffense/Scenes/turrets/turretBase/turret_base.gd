@@ -3,7 +3,7 @@ extends Node2D
 
 var target:Player = null #probably lock to the player?
 
-var bulletCount : int = 1.0
+var bulletCount : int = 1
 
 var bulletSpeed : float = 400.0
 var bulletSize : float = 1.0

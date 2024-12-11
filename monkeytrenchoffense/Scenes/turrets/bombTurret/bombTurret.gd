@@ -8,14 +8,16 @@ var max_cone_angle : float = 90
 func _ready() -> void:
 	swivel = 3 #bomb turrent slow
 	attack_range = 600.0
+	attack_speed = 0.5
 	
 	bulletCount = 1
 	
-	bulletSize = 5.0
+	bulletSize = 2.5
 	bulletDamage = 10
 	
 	bulletTime  = 4
 	bulletSeeking = false
+	
 
 func _process(delta: float) -> void:
 	super(delta)

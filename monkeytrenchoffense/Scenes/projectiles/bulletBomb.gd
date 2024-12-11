@@ -52,9 +52,10 @@ func _on_area_2d_area_entered(area):
 	if pierce <= 0:
 		queue_free()
 
-func _on_disappear_timer_timeout():
-	queue_free()
-
+func _on_travel_timer_timeout() -> void:
+	travelling = false
+	$FuseTimer.start()
+	$AnimationPlayer.play("fuse")
 
 func _on_fuse_timer_timeout() -> void:
 	$explosion.visible = true
@@ -62,7 +63,5 @@ func _on_fuse_timer_timeout() -> void:
 	$AnimationPlayer.play("explode")
 	$DisappearTimer.start()
 
-
-func _on_travel_timer_timeout() -> void:
-	travelling = false
-	$FuseTimer.start()
+func _on_disappear_timer_timeout():
+	queue_free()
