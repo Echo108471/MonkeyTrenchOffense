@@ -1,8 +1,6 @@
 class_name ProjectileTurret
 extends Turret
 
-signal fired(type: String)
-
 var max_cone_angle : float = 90
 
 func _ready() -> void:
@@ -45,7 +43,7 @@ func attack():
 		projectile.configure(bulletSpeed, bulletSize, bulletDamage, bulletPierce, bulletTime, bulletSeeking, bulletSlow, bulletSlowDuration)
 	
 		$"..".add_child(projectile)
-	emit_signal("fired", "dart");
+		SignalManager.emit_signal("fired", "dart")
 
 
 

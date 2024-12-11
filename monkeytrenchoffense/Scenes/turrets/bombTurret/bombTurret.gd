@@ -48,7 +48,8 @@ func attack():
 		projectile.configure(bulletSpeed, bulletSize, bulletDamage, bulletPierce, bulletTime, bulletSeeking, bulletSlow, bulletSlowDuration)
 		
 		$"..".add_child(projectile)
-	emit_signal("fired", "dart");
+		SignalManager.emit_signal("fired", "bomb_start")
+
 
 
 

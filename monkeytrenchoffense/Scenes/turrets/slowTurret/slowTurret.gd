@@ -33,6 +33,8 @@ func attack():
 	projectile.configure(bulletSpeed, bulletSize, bulletDamage, bulletPierce, bulletTime, bulletSeeking, bulletSlow, bulletSlowDuration)
 	
 	$"..".add_child(projectile)
+	SignalManager.emit_signal("fired", "dart")
+
 
 
 func _on_attack_range_area_entered_slo(area: Area2D) -> void:

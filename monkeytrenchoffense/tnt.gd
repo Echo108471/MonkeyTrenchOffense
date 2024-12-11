@@ -17,11 +17,13 @@ func start_timer():
 	print("TIMER STARTED")
 	if not timer_active:
 		timer_active = true
+		SignalManager.emit_signal("collected", "tnt_start")
 		await get_tree().create_timer(explosion_timer).timeout
 		explode()
 
 # Handle explosion
 func explode():
+	SignalManager.emit_signal("collected", "tnt_end")
 	print("BOOM! The TNT exploded!")
 	
 	var tnt_position = global_position

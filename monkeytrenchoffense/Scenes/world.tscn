@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bc51wm18jfnhw"]
+[gd_scene load_steps=20 format=3 uid="uid://bc51wm18jfnhw"]
 
 [ext_resource type="PackedScene" uid="uid://bufty5f1wpw7x" path="res://Scenes/player/player.tscn" id="1_kuixu"]
 [ext_resource type="PackedScene" uid="uid://bo8dwygo4att7" path="res://Scenes/maps/map1.tscn" id="1_memt1"]
@@ -12,8 +12,12 @@
 [ext_resource type="Script" path="res://Scenes/Sounds.gd" id="10_xuskj"]
 [ext_resource type="AudioStream" uid="uid://bkdn7mmaypeux" path="res://Assets/sfx/DartMonkeyShoot.wav" id="11_wligf"]
 [ext_resource type="AudioStream" uid="uid://buv6637rk5rfj" path="res://Assets/sfx/BalloonPop.wav" id="12_5svx4"]
+[ext_resource type="AudioStream" uid="uid://cbfugihix3p14" path="res://Assets/sfx/FallingBomb.wav" id="13_3ylvh"]
 [ext_resource type="PackedScene" uid="uid://dy576ss87vjl" path="res://Scenes/turrets/bombTurret/bombTurret.tscn" id="13_wtiq1"]
 [ext_resource type="Script" path="res://Scenes/turrets/bombTurret/bombTurret.gd" id="14_fx4dj"]
+[ext_resource type="AudioStream" uid="uid://b5d0a0vwf636h" path="res://Assets/sfx/BombExplosionSound.wav" id="14_igdkt"]
+[ext_resource type="AudioStream" uid="uid://dtgtqfvdj3ge7" path="res://Assets/sfx/speed.wav" id="15_b0bx7"]
+[ext_resource type="AudioStream" uid="uid://dqp7xhptd1q6y" path="res://Assets/sfx/slow.mp3" id="16_n1jl7"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5exwf"]
 
@@ -82,16 +86,26 @@ position = Vector2(-752, 226)
 [node name="power_up_coin" parent="." instance=ExtResource("7_csl7t")]
 position = Vector2(-652, -266)
 
-[node name="Node2D" type="Node2D" parent="." node_paths=PackedStringArray("projectile_turret", "player")]
+[node name="Sound" type="Node2D" parent="."]
 script = ExtResource("10_xuskj")
-projectile_turret = NodePath("../DartMonkey")
-player = NodePath("../Player")
 
-[node name="DartFireSound" type="AudioStreamPlayer2D" parent="Node2D"]
+[node name="DartFireSound" type="AudioStreamPlayer2D" parent="Sound"]
 stream = ExtResource("11_wligf")
 
-[node name="BalloonPopSound" type="AudioStreamPlayer2D" parent="Node2D"]
+[node name="BalloonPopSound" type="AudioStreamPlayer2D" parent="Sound"]
 stream = ExtResource("12_5svx4")
+
+[node name="BombExplosionStartSound" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("13_3ylvh")
+
+[node name="BombExplosionSound" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("14_igdkt")
+
+[node name="SpeedUpSound" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("15_b0bx7")
+
+[node name="SlowSound" type="AudioStreamPlayer2D" parent="Sound"]
+stream = ExtResource("16_n1jl7")
 
 [node name="DartMonkey2" parent="." instance=ExtResource("4_bho38")]
 position = Vector2(2728, -392)
