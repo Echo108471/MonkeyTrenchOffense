@@ -6,8 +6,8 @@ extends CharacterBody2D
 @export var hitpoints:int = 1
 @export var drag_factor:float = 4 # how much velocity decreases without input
 # (seconds) how long it takes to recover from a dash
-@export var dash_duration:float = 0.25
-@export var dash_recovery:float = 1.0 
+@export var dash_duration:float = 0.5
+@export var dash_recovery:float = 3.0 
 
 signal popped(type: String)
 var dash_speed:float = movement_speed * 2.5 # how fast the character dashes
