@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk6xtsv2hxgas"]
+
+[ext_resource type="Texture2D" uid="uid://s28kqqin70e0" path="res://Assets/backgrounds/game_over_background.png" id="1_r8tt2"]
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="2_upe8v"]
+
+[node name="GameOver" type="CenterContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -13.0
+offset_top = -6.0
+offset_right = 635.0
+offset_bottom = 546.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.65669, 0.549999)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("1_r8tt2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/CenterContainer/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.5
+offset_top = -59.0
+offset_right = 99.5
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.21818)
+script = ExtResource("2_upe8v")
+
+[node name="MenuButtonGameOver" type="Button" parent="CanvasLayer/CenterContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = " Main Menu "
+
+[node name="QuitButtonGameOver" type="Button" parent="CanvasLayer/CenterContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "Quit"
+
+[connection signal="pressed" from="CanvasLayer/CenterContainer/TextureRect/VBoxContainer/MenuButtonGameOver" to="CanvasLayer/CenterContainer/TextureRect/VBoxContainer" method="_on_menu_button_game_over_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/TextureRect/VBoxContainer/QuitButtonGameOver" to="CanvasLayer/CenterContainer/TextureRect/VBoxContainer" method="_on_quit_button_game_over_pressed"]
