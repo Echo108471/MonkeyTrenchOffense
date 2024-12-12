@@ -8,8 +8,7 @@ extends CharacterBody2D
 # (seconds) how long it takes to recover from a dash
 @export var dash_duration:float = 0.3
 @export var dash_recovery:float = 3.0
-@export var dash_duration:float = 0.25
-@export var dash_recovery:float = 1.0 
+
 
 enum Power {
 	RED,
@@ -27,7 +26,7 @@ enum DamageType {
 }
 
 
-signal popped(type: String)
+
 var dash_multi:float =  2.5 # how much faster the character dashes
 var time_since_dash:float = 10
 
@@ -41,13 +40,13 @@ var slow_duration : float = 0.0
 var current_power:Power = Power.RED
 var sub_power:Power = Power.DEAD
 
-var _max_speed: float = 0
-var _vel_tween: Tween = create_tween()
+#var _max_speed: float = 0
+#var _vel_tween: Tween 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#$AnimationPlayer.play("RESET")
-	_vel_tween = create_tween()
+	#_vel_tween = create_tween()
 	apply_power_up(Power.RED)
 	pass # Replace with function body.
 
@@ -77,7 +76,7 @@ func apply_damage(damage:int, damage_type:DamageType = DamageType.SHARP) -> void
 
 func game_over() -> void:
 	#put game over behavior here
-	emit_signal("popped", "pop")
+	SignalManager.emit_signal("popped", "pop")
 	var timer = Timer.new()
 	add_child(timer)
 	timer.wait_time = 0.5
@@ -123,6 +122,7 @@ func _handle_movement_inputs(delta:float) -> void:
 	# if there are inputs, they will override the drag above
 	var input_dir = Vector2(Input.get_vector("move left", "move right", "move up", "move down"))
 	
+	
 	# make it easier to turn around by overriding drag when changing direction
 	if input_dir.x:
 		acceleration.x = input_dir.x * acceleration_speed
@@ -134,6 +134,12 @@ func _handle_movement_inputs(delta:float) -> void:
 		velocity.x = clampf(velocity.x + acceleration.x * delta, -max_speed, max_speed)
 		velocity.y = clampf(velocity.y + acceleration.y * delta, -max_speed, max_speed)
 		velocity.limit_length(max_speed)
+		
+	if current_power == Power.BEAST:
+		if velocity.x >= 0:
+			$Sprite2Dplayer.flip_h = true
+		else:
+			$Sprite2Dplayer.flip_h = false
 	
 
 func apply_power_up(power:Power) -> void:
@@ -162,14 +168,14 @@ func apply_power_up(power:Power) -> void:
 			movement_speed *= 1.1
 			sub_power = Power.RED
 			$Sprite2Dplayer.texture = preload("res://Assets/balloon/green.png")
-			$Sprite2Dplayer.set_modulate(Color(0, 0, 0, 1))
+			#$Sprite2Dplayer.set_modulate(Color(0, 0, 0, 1))
 		
 		Power.GREEN:
 			hitpoints = 1
 			movement_speed *= 1.2
 			sub_power = Power.BLUE
 			$Sprite2Dplayer.texture = preload("res://Assets/balloon/blue.png")
-			$Sprite2Dplayer.set_modulate(Color(1, 1, 1, 1))
+			#$Sprite2Dplayer.set_modulate(Color(0, 1, 0, 1))
 
 		
 		Power.LEAD:
@@ -179,13 +185,13 @@ func apply_power_up(power:Power) -> void:
 			dash_multi = 1.5
 			dash_recovery = 1.5
 			$Sprite2Dplayer.texture = preload("res://Assets/balloon/lead.png")
-			$Sprite2Dplayer.set_modulate(Color(10, 10, 10, 1))
+			#$Sprite2Dplayer.set_modulate(Color(10, 10, 10, 1))
 			
 		Power.BEAST:
 			hitpoints = 3
 			sub_power = Power.GREEN
 			movement_speed *= 1.4
-			dash_recovery = 0.25
+			dash_recovery = 0.05
 			dash_duration *= 1.25
 			$Sprite2Dplayer.texture = preload("res://Assets/balloon/beastBloon.png")
 			

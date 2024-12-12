@@ -3,12 +3,14 @@ extends Node2D
 
 func _ready() -> void:
 	# Connect to global signals from SignalManager
-	SignalManager.connect("fired", _on_turret_fired)
-	SignalManager.connect("popped", _on_pop)
-	SignalManager.connect("collected", _on_collectable)
+	SignalManager.connect("fired", on_turret_fired)
+	SignalManager.connect("popped", on_pop)
+	SignalManager.connect("collected", on_collectable)
 
-func _on_turret_fired(type: String) -> void:
+func on_turret_fired(type: String) -> void:
 	if type == "dart":
+		$DartFireSound.play()
+	if type == "slow":
 		$DartFireSound.play()
 	if type == "bomb_start":
 		$BombExplosionStartSound.play()
@@ -20,7 +22,7 @@ func _on_turret_fired(type: String) -> void:
 		await timer.timeout
 		$BombExplosionSound.play()
 		
-func _on_collectable(type: String) -> void:
+func on_collectable(type: String) -> void:
 	if type == "speed":
 		$SpeedUpSound.play()
 	if type == "tnt_start":
@@ -31,6 +33,6 @@ func _on_collectable(type: String) -> void:
 		$SlowSound.play()
 		
 
-func _on_pop(type: String) -> void:
+func on_pop(type: String) -> void:
 	if type == "pop":
 		$BalloonPopSound.play()

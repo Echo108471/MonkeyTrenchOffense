@@ -1,7 +1,6 @@
 class_name BombTurret
 extends Turret
 
-signal fired(type: String)
 
 var max_cone_angle : float = 90
 

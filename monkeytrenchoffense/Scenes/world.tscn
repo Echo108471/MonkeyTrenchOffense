@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bc51wm18jfnhw"]
+[gd_scene load_steps=26 format=3 uid="uid://bc51wm18jfnhw"]
 
 [ext_resource type="PackedScene" uid="uid://bufty5f1wpw7x" path="res://Scenes/player/player.tscn" id="1_kuixu"]
 [ext_resource type="PackedScene" uid="uid://bo8dwygo4att7" path="res://Scenes/maps/map1.tscn" id="1_memt1"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cgh7ibrmxxwho" path="res://Scenes/projectiles/slow_area.tscn" id="6_4oscd"]
 [ext_resource type="PackedScene" uid="uid://c4ncxe3o6t831" path="res://Scenes/projectiles/power_up_coin.tscn" id="7_csl7t"]
 [ext_resource type="PackedScene" uid="uid://bxw4bpqa7mxw7" path="res://Scenes/turrets/slowTurret/slowTurret.tscn" id="10_1hybe"]
-[ext_resource type="Script" path="res://Scenes/Sounds.gd" id="10_xuskj"]
+[ext_resource type="Script" path="res://Scenes/sounds.gd" id="10_xuskj"]
 [ext_resource type="AudioStream" uid="uid://bkdn7mmaypeux" path="res://Assets/sfx/DartMonkeyShoot.wav" id="11_wligf"]
 [ext_resource type="AudioStream" uid="uid://buv6637rk5rfj" path="res://Assets/sfx/BalloonPop.wav" id="12_5svx4"]
 [ext_resource type="AudioStream" uid="uid://cbfugihix3p14" path="res://Assets/sfx/FallingBomb.wav" id="13_3ylvh"]
@@ -20,11 +20,18 @@
 [ext_resource type="AudioStream" uid="uid://dqp7xhptd1q6y" path="res://Assets/sfx/slow.mp3" id="16_n1jl7"]
 [ext_resource type="Script" path="res://Scenes/second_level_trigger.gd" id="19_3y6gl"]
 [ext_resource type="PackedScene" uid="uid://ck28f8t6kcm4h" path="res://Scenes/maps/map2.tscn" id="19_m5to5"]
+[ext_resource type="Shader" path="res://Scenes/blur_shader.gdshader" id="21_g15t4"]
+[ext_resource type="Script" path="res://Scenes/gui_container.gd" id="21_o88vq"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5exwf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rcth0"]
 size = Vector2(236, 297)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u7w6x"]
+shader = ExtResource("21_g15t4")
+shader_parameter/blur = 1.0
+shader_parameter/brightness = 0.6
 
 [node name="World" type="Node2D"]
 
@@ -41,6 +48,7 @@ texture = ExtResource("2_5njqe")
 [node name="Player" parent="." instance=ExtResource("1_kuixu")]
 unique_name_in_owner = true
 position = Vector2(59, 99)
+wall_min_slide_angle = 0.261799
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-711, -37)
@@ -78,22 +86,55 @@ shape = SubResource("WorldBoundaryShape2D_5exwf")
 disabled = true
 
 [node name="DartMonkey" parent="." instance=ExtResource("4_bho38")]
-position = Vector2(1661, -429)
+position = Vector2(1345, -393)
 scale = Vector2(2, 2)
 
 [node name="SlowMonkey" parent="." instance=ExtResource("10_1hybe")]
-position = Vector2(1146, -450)
+position = Vector2(1157, -477)
 scale = Vector2(2, 2)
 
 [node name="TNT" parent="." instance=ExtResource("5_jwuhp")]
-position = Vector2(-1068, -632)
-scale = Vector2(2, 2)
+position = Vector2(-786, -148)
 
 [node name="SlowArea" parent="." instance=ExtResource("6_4oscd")]
-position = Vector2(1151, 0)
+position = Vector2(-752, 226)
 
 [node name="power_up_coin" parent="." instance=ExtResource("7_csl7t")]
-position = Vector2(1227, -736)
+position = Vector2(-652, -266)
+
+[node name="DartMonkey2" parent="." instance=ExtResource("4_bho38")]
+position = Vector2(2728, -392)
+scale = Vector2(2, 2)
+
+[node name="SlowMonkey2" parent="." instance=ExtResource("10_1hybe")]
+position = Vector2(2236, -452)
+scale = Vector2(2, 2)
+
+[node name="BombMonkey" parent="." instance=ExtResource("13_wtiq1")]
+position = Vector2(-206, -300)
+script = ExtResource("14_fx4dj")
+
+[node name="teleporterArea" type="Area2D" parent="." node_paths=PackedStringArray("player_location")]
+position = Vector2(4226, -594)
+scale = Vector2(0.636761, 1)
+script = ExtResource("19_3y6gl")
+player_location = NodePath("../PlayerLvl2Loc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporterArea"]
+position = Vector2(267, -147.5)
+shape = SubResource("RectangleShape2D_rcth0")
+
+[node name="teleporterArea2" type="Area2D" parent="." node_paths=PackedStringArray("player_location")]
+position = Vector2(2631, 672)
+script = ExtResource("19_3y6gl")
+player_location = NodePath("../PlayerLvl2Loc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporterArea2"]
+position = Vector2(267, -147.5)
+shape = SubResource("RectangleShape2D_rcth0")
+
+[node name="PlayerLvl2Loc" type="Node2D" parent="."]
+position = Vector2(21415, -2565)
 
 [node name="Sound" type="Node2D" parent="."]
 script = ExtResource("10_xuskj")
@@ -116,38 +157,79 @@ stream = ExtResource("15_b0bx7")
 [node name="SlowSound" type="AudioStreamPlayer2D" parent="Sound"]
 stream = ExtResource("16_n1jl7")
 
-[node name="DartMonkey2" parent="." instance=ExtResource("4_bho38")]
-position = Vector2(3012, -439)
-scale = Vector2(2, 2)
+[node name="GUILayer" type="CanvasLayer" parent="."]
+script = ExtResource("21_o88vq")
 
-[node name="SlowMonkey2" parent="." instance=ExtResource("10_1hybe")]
-position = Vector2(2308, -444)
-scale = Vector2(2, 2)
+[node name="PausePanel" type="ColorRect" parent="GUILayer"]
+process_mode = 2
+visible = false
+material = SubResource("ShaderMaterial_u7w6x")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="BombMonkey" parent="." instance=ExtResource("13_wtiq1")]
-position = Vector2(-206, -300)
-script = ExtResource("14_fx4dj")
+[node name="CenterContainer" type="CenterContainer" parent="GUILayer/PausePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="teleporterArea" type="Area2D" parent="." node_paths=PackedStringArray("player_location")]
-position = Vector2(4057, -582)
-script = ExtResource("19_3y6gl")
-player_location = NodePath("../PlayerLvl2Loc")
+[node name="PanelContainer" type="PanelContainer" parent="GUILayer/PausePanel/CenterContainer"]
+custom_minimum_size = Vector2(512, 256)
+layout_mode = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporterArea"]
-position = Vector2(310, -152)
-shape = SubResource("RectangleShape2D_rcth0")
+[node name="MarginContainer" type="MarginContainer" parent="GUILayer/PausePanel/CenterContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
 
-[node name="teleporterArea2" type="Area2D" parent="." node_paths=PackedStringArray("player_location")]
-position = Vector2(2631, 672)
-script = ExtResource("19_3y6gl")
-player_location = NodePath("../PlayerLvl2Loc")
+[node name="VBoxContainer" type="VBoxContainer" parent="GUILayer/PausePanel/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="teleporterArea2"]
-position = Vector2(267, -147.5)
-shape = SubResource("RectangleShape2D_rcth0")
+[node name="PauseTitle" type="Label" parent="GUILayer/PausePanel/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Game Paused"
+horizontal_alignment = 1
 
-[node name="PlayerLvl2Loc" type="Node2D" parent="."]
-position = Vector2(21415, -2565)
+[node name="HSeparator" type="HSeparator" parent="GUILayer/PausePanel/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ResumeButton" type="Button" parent="GUILayer/PausePanel/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Resume"
+
+[node name="QuitButtonGame" type="Button" parent="GUILayer/PausePanel/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Quit"
+
+[node name="PauseContainer" type="MarginContainer" parent="GUILayer"]
+custom_minimum_size = Vector2(50, 50)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -80.0
+offset_bottom = 50.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="PauseButton" type="Button" parent="GUILayer/PauseContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Pause"
 
 [connection signal="body_entered" from="teleporterArea" to="teleporterArea" method="_on_body_entered"]
 [connection signal="body_entered" from="teleporterArea2" to="teleporterArea2" method="_on_body_entered"]
+[connection signal="pressed" from="GUILayer/PausePanel/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="GUILayer" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="GUILayer/PausePanel/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButtonGame" to="GUILayer" method="_on_quit_button_game_pressed"]
+[connection signal="pressed" from="GUILayer/PauseContainer/PauseButton" to="GUILayer" method="_on_pause_button_pressed"]

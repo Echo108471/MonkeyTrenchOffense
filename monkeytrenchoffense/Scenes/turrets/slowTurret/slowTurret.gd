@@ -8,7 +8,7 @@ func _ready() -> void:
 	
 	bulletSpeed = 600.0
 	bulletSize = 5.0
-	bulletDamage = 0
+	bulletDamage = 1
 	bulletSlow = 0.8
 	bulletSlowDuration = 1.0
 
@@ -33,7 +33,7 @@ func attack():
 	projectile.configure(bulletSpeed, bulletSize, bulletDamage, bulletPierce, bulletTime, bulletSeeking, bulletSlow, bulletSlowDuration)
 	
 	$"..".add_child(projectile)
-	SignalManager.emit_signal("fired", "dart")
+	SignalManager.emit_signal("fired", "slow")
 
 
 

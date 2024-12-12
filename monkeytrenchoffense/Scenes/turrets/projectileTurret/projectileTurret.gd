@@ -10,7 +10,7 @@ func _ready() -> void:
 	bulletCount = 9
 	
 	bulletSize = 2.0
-	bulletDamage = 0
+	bulletDamage = 1
 	
 	bulletTime  = 1
 	bulletSeeking = false

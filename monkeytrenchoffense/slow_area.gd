@@ -19,10 +19,10 @@ func _on_body_exited(body):
 		restore_player_speed(body)
 
 # Function to slow down the player
-func slow_player(player):
+func slow_player(body):
 	SignalManager.emit_signal("collected", "slow")
-	player.movement_speed *= slow_factor
+	body.movement_speed *= slow_factor
 
 # Function to restore the player's speed
-func restore_player_speed(player):
-	player.movement_speed /= slow_factor
+func restore_player_speed(body):
+	body.movement_speed /= slow_factor
