@@ -6,6 +6,8 @@ extends CharacterBody2D
 @export var hitpoints:int = 1
 @export var drag_factor:float = 4 # how much velocity decreases without input
 # (seconds) how long it takes to recover from a dash
+@export var dash_duration:float = 0.3
+@export var dash_recovery:float = 3.0
 @export var dash_duration:float = 0.25
 @export var dash_recovery:float = 1.0 
 
@@ -99,6 +101,8 @@ func _handle_movement_inputs(delta:float) -> void:
 			time_since_dash > (dash_recovery + dash_duration):
 		time_since_dash = 0
 		
+		
+	
 	if time_since_dash < dash_duration:
 		#var cur_dash_speed = velocity.length() + movement_speed * dash_multi * (time_since_dash / (dash_duration))
 		#cur_dash_speed = clampf(cur_dash_speed, velocity.length(), movement_speed * dash_multi)
@@ -110,8 +114,8 @@ func _handle_movement_inputs(delta:float) -> void:
 	#
 	var velocity_multi = 1
 	if time_since_dash < dash_duration + dash_recovery:
-		velocity_multi = clampf((time_since_dash - dash_duration) / dash_recovery, 0.4, 1)
-	
+		velocity_multi = clampf((time_since_dash) / dash_recovery, 0.80, 1)
+		
 	# setup drag
 	acceleration.x = -velocity.x * drag_factor
 	acceleration.y = -velocity.y * drag_factor
