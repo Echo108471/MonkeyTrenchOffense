@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://ciyyeckkervro"]
+
+[ext_resource type="Script" path="res://Scenes/projectiles/bulletBase.gd" id="1_28qo8"]
+[ext_resource type="Texture2D" uid="uid://bpv6o61jlne8y" path="res://Assets/bullets/icicle.png" id="2_a7ewu"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a1mg1"]
+radius = 3.5
+height = 20.0
+
+[node name="IcicleBullet" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_28qo8")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_a1mg1")
+
+[node name="DisappearTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_a7ewu")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="timeout" from="DisappearTimer" to="." method="_on_disappear_timer_timeout"]

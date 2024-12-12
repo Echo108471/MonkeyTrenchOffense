@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cgh7ibrmxxwho" path="res://Scenes/projectiles/slow_area.tscn" id="6_4oscd"]
 [ext_resource type="PackedScene" uid="uid://c4ncxe3o6t831" path="res://Scenes/projectiles/power_up_coin.tscn" id="7_csl7t"]
 [ext_resource type="PackedScene" uid="uid://bxw4bpqa7mxw7" path="res://Scenes/turrets/slowTurret/slowTurret.tscn" id="10_1hybe"]
-[ext_resource type="Script" path="res://Scenes/Sounds.gd" id="10_xuskj"]
+[ext_resource type="Script" path="res://Scenes/sounds.gd" id="10_xuskj"]
 [ext_resource type="AudioStream" uid="uid://bkdn7mmaypeux" path="res://Assets/sfx/DartMonkeyShoot.wav" id="11_wligf"]
 [ext_resource type="AudioStream" uid="uid://buv6637rk5rfj" path="res://Assets/sfx/BalloonPop.wav" id="12_5svx4"]
 [ext_resource type="AudioStream" uid="uid://cbfugihix3p14" path="res://Assets/sfx/FallingBomb.wav" id="13_3ylvh"]

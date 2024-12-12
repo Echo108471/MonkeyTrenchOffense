@@ -8,7 +8,7 @@ func _ready() -> void:
 	
 	bulletSpeed = 600.0
 	bulletSize = 5.0
-	bulletDamage = 0
+	bulletDamage = 1
 	bulletSlow = 0.8
 	bulletSlowDuration = 1.0
 
@@ -25,7 +25,7 @@ func attack():
 		return
 	
 	#$LaunchPoint.add_child(preload("res://Scenes/turrets/projectileTurret/bullet/bulletBase.tscn").instantiate())
-	var projectile := preload("res://Scenes/projectiles/bulletBase.tscn").instantiate()
+	var projectile := preload("res://Scenes/projectiles/icicleBullet.tscn").instantiate()
 	projectile.direction = $LaunchPoint.global_position.direction_to(target.global_position)
 	projectile.global_position = $LaunchPoint.global_position
 	
