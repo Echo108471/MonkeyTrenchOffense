@@ -25,7 +25,7 @@ func _process(delta):
 #used for setting properties
 func configure(s:float = 400.0, sz:float = 1.0, d:int = 1, p:int = 1, t:float = 1.0, sk:bool = false, sl:float = 1.0, sld:float = 0.0) -> void:
 	speed = s
-	scale = Vector2(sz,sz)
+	scale = Vector2(sz/10,sz/10)
 	damage = d
 	pierce = p
 	time = t
