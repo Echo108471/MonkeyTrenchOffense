@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_c8wp5"]
 
-[node name="World" type="CenterContainer"]
+[node name="MainMenu" type="CenterContainer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

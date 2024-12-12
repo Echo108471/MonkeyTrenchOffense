@@ -11,8 +11,9 @@ func _ready() -> void:
 	player = %Player
 	camera = $"../Player/Camera2D"
 
-func _on_body_entered(_body:Player) -> void:
+func _on_body_entered(_body:Node2D) -> void:
 	# Position the player for the second level
-	player.position = player_location.position
-	# Remove this trigger node.
-	queue_free()
+	if _body == player:
+		player.position = player_location.position
+		# Remove this trigger node.
+		queue_free()
