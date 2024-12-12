@@ -170,11 +170,6 @@ _data = {
 motion_mode = 1
 wall_min_slide_angle = 0.710349
 script = ExtResource("1_bq71g")
-movement_speed = null
-hitpoints = null
-drag_factor = null
-dash_duration = null
-dash_recovery = null
 
 [node name="CollisionHull" type="CollisionShape2D" parent="."]
 position = Vector2(-3, -2)

@@ -8,8 +8,6 @@ extends CharacterBody2D
 # (seconds) how long it takes to recover from a dash
 @export var dash_duration:float = 0.3
 @export var dash_recovery:float = 3.0
-@export var dash_duration:float = 0.25
-@export var dash_recovery:float = 1.0 
 
 enum Power {
 	RED,
@@ -37,17 +35,14 @@ var acceleration:Vector2 = Vector2.ZERO
 var slow_multi : float = 1.0
 var slow_duration : float = 0.0
 
-# this is the state the player will go to when their current power ends
+# the state the player is currently in
 var current_power:Power = Power.RED
+# this is the state the player will go to when their current power ends
 var sub_power:Power = Power.DEAD
-
-var _max_speed: float = 0
-var _vel_tween: Tween = create_tween()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#$AnimationPlayer.play("RESET")
-	_vel_tween = create_tween()
 	apply_power_up(Power.RED)
 	pass # Replace with function body.
 
@@ -104,9 +99,6 @@ func _handle_movement_inputs(delta:float) -> void:
 		
 	
 	if time_since_dash < dash_duration:
-		#var cur_dash_speed = velocity.length() + movement_speed * dash_multi * (time_since_dash / (dash_duration))
-		#cur_dash_speed = clampf(cur_dash_speed, velocity.length(), movement_speed * dash_multi)
-		#Tween.
 		velocity = velocity.normalized() * Tween.interpolate_value(movement_speed, 
 				movement_speed * dash_multi, 
 				time_since_dash, dash_duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)

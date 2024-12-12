@@ -37,8 +37,8 @@ func configure(s:float = 400.0, sz:float = 1.0, d:int = 1, p:int = 1, t:float = 
 func _on_area_2d_area_entered(area):
 	pierce -= 1
 	var obj = area.get_parent()
-	obj.get_damage(damage)
-	obj.get_effects(slow, slow_duration)
+	obj.apply_damage(damage)
+	obj.set_effects(slow, slow_duration)
 	if pierce == 0:
 		queue_free()
 

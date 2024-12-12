@@ -41,6 +41,11 @@ texture = ExtResource("2_5njqe")
 [node name="Player" parent="." instance=ExtResource("1_kuixu")]
 unique_name_in_owner = true
 position = Vector2(59, 99)
+movement_speed = null
+hitpoints = null
+drag_factor = null
+dash_duration = null
+dash_recovery = null
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-711, -37)
