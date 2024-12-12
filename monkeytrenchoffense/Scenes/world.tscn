@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bc51wm18jfnhw"]
+[gd_scene load_steps=30 format=3 uid="uid://bc51wm18jfnhw"]
 
 [ext_resource type="PackedScene" uid="uid://bufty5f1wpw7x" path="res://Scenes/player/player.tscn" id="1_kuixu"]
 [ext_resource type="PackedScene" uid="uid://bo8dwygo4att7" path="res://Scenes/maps/map1.tscn" id="1_memt1"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://buv6637rk5rfj" path="res://Assets/sfx/BalloonPop.wav" id="12_5svx4"]
 [ext_resource type="AudioStream" uid="uid://cbfugihix3p14" path="res://Assets/sfx/FallingBomb.wav" id="13_3ylvh"]
 [ext_resource type="PackedScene" uid="uid://dy576ss87vjl" path="res://Scenes/turrets/bombTurret/bombTurret.tscn" id="13_wtiq1"]
+[ext_resource type="Texture2D" uid="uid://cbpv8y8yk575a" path="res://Scenes/maps/finish_line.png" id="14_d7c2n"]
 [ext_resource type="Script" path="res://Scenes/turrets/bombTurret/bombTurret.gd" id="14_fx4dj"]
 [ext_resource type="AudioStream" uid="uid://b5d0a0vwf636h" path="res://Assets/sfx/BombExplosionSound.wav" id="14_igdkt"]
 [ext_resource type="AudioStream" uid="uid://dtgtqfvdj3ge7" path="res://Assets/sfx/speed.wav" id="15_b0bx7"]
@@ -22,6 +23,8 @@
 [ext_resource type="PackedScene" uid="uid://ck28f8t6kcm4h" path="res://Scenes/maps/map2.tscn" id="19_m5to5"]
 [ext_resource type="Shader" path="res://Scenes/blur_shader.gdshader" id="21_g15t4"]
 [ext_resource type="Script" path="res://Scripts/gui_container.gd" id="21_o88vq"]
+[ext_resource type="Script" path="res://Scenes/game_won_trigger.gd" id="24_202jv"]
+[ext_resource type="Texture2D" uid="uid://dyi61fp6lsurw" path="res://Scenes/maps/finish_line_final.png" id="25_ytccu"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5exwf"]
 
@@ -32,6 +35,9 @@ size = Vector2(236, 297)
 shader = ExtResource("21_g15t4")
 shader_parameter/blur = 1.0
 shader_parameter/brightness = 0.6
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4spnr"]
+size = Vector2(83, 231)
 
 [node name="World" type="Node2D"]
 
@@ -47,7 +53,8 @@ texture = ExtResource("2_5njqe")
 
 [node name="Player" parent="." instance=ExtResource("1_kuixu")]
 unique_name_in_owner = true
-position = Vector2(59, 99)
+z_index = 2
+position = Vector2(-26, 98)
 wall_min_slide_angle = 0.261799
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -116,23 +123,35 @@ position = Vector2(-206, -300)
 script = ExtResource("14_fx4dj")
 
 [node name="teleporterArea" type="Area2D" parent="." node_paths=PackedStringArray("player_location")]
-position = Vector2(4226, -594)
+position = Vector2(4245, -597)
 scale = Vector2(0.636761, 1)
 script = ExtResource("19_3y6gl")
 player_location = NodePath("../PlayerLvl2Loc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="teleporterArea"]
-position = Vector2(267, -147.5)
+position = Vector2(285.822, -146)
+scale = Vector2(0.63044, 0.76)
 shape = SubResource("RectangleShape2D_rcth0")
 
+[node name="Sprite2D" type="Sprite2D" parent="teleporterArea"]
+position = Vector2(273.258, -146)
+scale = Vector2(1.41348, 1.99753)
+texture = ExtResource("14_d7c2n")
+
 [node name="teleporterArea2" type="Area2D" parent="." node_paths=PackedStringArray("player_location")]
-position = Vector2(2631, 672)
+position = Vector2(2557, 628)
 script = ExtResource("19_3y6gl")
 player_location = NodePath("../PlayerLvl2Loc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="teleporterArea2"]
-position = Vector2(267, -147.5)
+position = Vector2(263, -172)
+scale = Vector2(0.402337, 0.759998)
 shape = SubResource("RectangleShape2D_rcth0")
+
+[node name="Sprite2D" type="Sprite2D" parent="teleporterArea2"]
+position = Vector2(254, -174)
+scale = Vector2(1, 2.04)
+texture = ExtResource("14_d7c2n")
 
 [node name="PlayerLvl2Loc" type="Node2D" parent="."]
 position = Vector2(21415, -2565)
@@ -234,9 +253,24 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Pause"
 
+[node name="GameWonTrigger" type="Area2D" parent="."]
+position = Vector2(26664, 4123)
+script = ExtResource("24_202jv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GameWonTrigger"]
+position = Vector2(2, -1.5)
+scale = Vector2(1.15188, 1)
+shape = SubResource("RectangleShape2D_4spnr")
+
+[node name="Sprite2D" type="Sprite2D" parent="GameWonTrigger"]
+position = Vector2(-10, -10)
+scale = Vector2(0.117462, 0.315524)
+texture = ExtResource("25_ytccu")
+
 [connection signal="body_entered" from="teleporterArea" to="teleporterArea" method="_on_body_entered"]
 [connection signal="body_entered" from="teleporterArea2" to="teleporterArea2" method="_on_body_entered"]
 [connection signal="pressed" from="GUILayer/PausePanel/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="GUILayer" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="GUILayer/PausePanel/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MenuButton" to="GUILayer" method="_on_menu_button_pressed"]
 [connection signal="pressed" from="GUILayer/PausePanel/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButtonGame" to="GUILayer" method="_on_quit_button_game_pressed"]
 [connection signal="pressed" from="GUILayer/PauseContainer/PauseButton" to="GUILayer" method="_on_pause_button_pressed"]
+[connection signal="body_entered" from="GameWonTrigger" to="GameWonTrigger" method="_on_body_entered"]

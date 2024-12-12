@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://8r58dpycxot0"]
+
+[ext_resource type="Texture2D" uid="uid://dyk5r6yifubi8" path="res://Assets/backgrounds/game_won_background.png" id="1_gxy2m"]
+
+[node name="GameWon" type="CenterContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_right = 1800.0
+offset_bottom = 1200.0
+scale = Vector2(0.63768, 0.537784)
+texture = ExtResource("1_gxy2m")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/TextureRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -423.5
+offset_top = -205.0
+offset_right = 423.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="CanvasLayer/TextureRect/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.722601, 0, 0.0196644, 1)
+theme_override_colors/font_outline_color = Color(0.176419, 0.176419, 0.176419, 1)
+theme_override_constants/outline_size = 40
+theme_override_font_sizes/font_size = 150
+text = "GAME WON"

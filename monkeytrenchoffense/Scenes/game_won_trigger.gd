@@ -1,6 +1,6 @@
-class_name SecondLevelTrigger
+class_name GameWonTrigger
 extends Area2D
-#@export var camera_location:Node2D
+
 @export var player_location:Node2D
 
 var player: Player
@@ -13,6 +13,4 @@ func _ready() -> void:
 func _on_body_entered(_body:Node2D) -> void:
 	# Position the player for the second level
 	if _body == player:
-		player.position = player_location.position
-		# Remove this trigger node.
-		queue_free()
+		get_tree().change_scene_to_file("res://Scenes/game_won.tscn")
