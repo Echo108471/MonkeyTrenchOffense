@@ -1,6 +1,5 @@
 extends CanvasLayer
 
-const MENU = preload("res://Scenes/main_menu.tscn")
 
 
 @onready var pause_panel = get_node("PausePanel") 

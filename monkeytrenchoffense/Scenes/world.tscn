@@ -21,7 +21,7 @@
 [ext_resource type="Script" path="res://Scenes/second_level_trigger.gd" id="19_3y6gl"]
 [ext_resource type="PackedScene" uid="uid://ck28f8t6kcm4h" path="res://Scenes/maps/map2.tscn" id="19_m5to5"]
 [ext_resource type="Shader" path="res://Scenes/blur_shader.gdshader" id="21_g15t4"]
-[ext_resource type="Script" path="res://Scenes/gui_container.gd" id="21_o88vq"]
+[ext_resource type="Script" path="res://Scripts/gui_container.gd" id="21_o88vq"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5exwf"]
 

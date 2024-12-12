@@ -107,8 +107,7 @@ func game_over() -> void:
 	timer.one_shot = true
 	timer.start()
 	await timer.timeout
-
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 
 
 

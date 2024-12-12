@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://btgqmthyaho0x"]
+[gd_scene load_steps=5 format=3 uid="uid://btgqmthyaho0x"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_c8wp5"]
+[ext_resource type="Texture2D" uid="uid://b7x8een2ft5dn" path="res://Assets/backgrounds/main_menu_background.png" id="1_ncm3b"]
+[ext_resource type="Shader" path="res://Scenes/blur_shader.gdshader" id="2_tdy0b"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_22ax5"]
+shader = ExtResource("2_tdy0b")
+shader_parameter/blur = 3.0
+shader_parameter/brightness = 0.6
 
 [node name="MainMenu" type="CenterContainer"]
 anchors_preset = 8
@@ -8,31 +15,58 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -287.5
-offset_top = -69.5
-offset_right = 287.5
-offset_bottom = 69.5
+offset_left = -577.0
+offset_top = -327.0
+offset_right = 1223.0
+offset_bottom = 873.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.63938, 0.543858)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
+texture = ExtResource("1_ncm3b")
+
+[node name="ColorRect" type="ColorRect" parent="TextureRect"]
+material = SubResource("ShaderMaterial_22ax5")
+custom_minimum_size = Vector2(1000, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -607.529
+offset_top = -370.161
+offset_right = 592.471
+offset_bottom = 129.839
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.02298, 1.0347)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/ColorRect"]
+layout_mode = 1
+offset_left = 22.2223
+offset_top = 26.5625
+offset_right = 1172.22
+offset_bottom = 337.562
+scale = Vector2(1.00694, 1.30357)
 size_flags_vertical = 4
 script = ExtResource("1_c8wp5")
 
-[node name="Label" type="Label" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="TextureRect/ColorRect/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.853917, 0.853917, 0.853917, 1)
+theme_override_colors/font_color = Color(0.847475, 0.847474, 0.847474, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0.268398, 0.268398, 0.268398, 1)
 theme_override_constants/shadow_offset_x = 5
 theme_override_constants/shadow_offset_y = 5
 theme_override_constants/outline_size = 5
 theme_override_constants/shadow_outline_size = 5
-theme_override_font_sizes/font_size = 75
+theme_override_font_sizes/font_size = 100
 text = "Monkey Trench Offense"
 
-[node name="StartGameButton" type="Button" parent="VBoxContainer"]
+[node name="StartGameButton" type="Button" parent="TextureRect/ColorRect/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(0.851769, 0.851769, 0.851769, 1)
@@ -43,7 +77,7 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 40
 text = "Start Game"
 
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
+[node name="QuitButton" type="Button" parent="TextureRect/ColorRect/VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
 theme_override_colors/font_color = Color(0.85098, 0.85098, 0.85098, 1)
@@ -54,23 +88,23 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 35
 text = "Quit"
 
-[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="TextureRect/ColorRect/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Label2" type="Label" parent="VBoxContainer"]
+[node name="Label2" type="Label" parent="TextureRect/ColorRect/VBoxContainer"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0.84104, 0.84104, 0.84104, 1)
 theme_override_colors/font_shadow_color = Color(0.131379, 0.131379, 0.131379, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = 3
 theme_override_constants/shadow_offset_x = 3
 theme_override_constants/shadow_offset_y = 4
 theme_override_constants/outline_size = 3
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 35
 text = "Made By: War Monkeys"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[connection signal="pressed" from="VBoxContainer/StartGameButton" to="VBoxContainer" method="_on_start_game_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/QuitButton" to="VBoxContainer" method="_on_quit_button_pressed"]
+[connection signal="pressed" from="TextureRect/ColorRect/VBoxContainer/StartGameButton" to="TextureRect/ColorRect/VBoxContainer" method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="TextureRect/ColorRect/VBoxContainer/QuitButton" to="TextureRect/ColorRect/VBoxContainer" method="_on_quit_button_pressed"]
