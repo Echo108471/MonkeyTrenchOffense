@@ -1,10 +1,9 @@
 class_name SecondLevelTrigger
 extends Area2D
-#@export var camera_location:Node2D
+
 @export var player_location:Node2D
 
 var player: Player
-var camera: Camera2D
 
 
 func _ready() -> void:
