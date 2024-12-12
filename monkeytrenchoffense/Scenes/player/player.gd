@@ -9,18 +9,44 @@ extends CharacterBody2D
 @export var dash_duration:float = 0.25
 @export var dash_recovery:float = 1.0 
 
+enum Power {
+	RED,
+	BLUE,
+	GREEN,
+	LEAD,
+	BEAST,
+	BLACK_HOLE,
+	DEAD
+}
+
+enum DamageType {
+	SHARP,
+	EXPLOSIVE
+}
+
+
 signal popped(type: String)
-var dash_speed:float = movement_speed * 2.5 # how fast the character dashes
+var dash_multi:float =  2.5 # how much faster the character dashes
 var time_since_dash:float = 10
 
 var acceleration_speed:float = movement_speed * 6
 var acceleration:Vector2 = Vector2.ZERO
 
-var slowed : float = 1.0
+var slow_multi : float = 1.0
 var slow_duration : float = 0.0
+
+# this is the state the player will go to when their current power ends
+var current_power:Power = Power.RED
+var sub_power:Power = Power.DEAD
+
+var _max_speed: float = 0
+var _vel_tween: Tween = create_tween()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#$AnimationPlayer.play("RESET")
+	_vel_tween = create_tween()
+	apply_power_up(Power.RED)
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -28,33 +54,43 @@ func _physics_process(delta: float) -> void:
 	#print(time_since_dash)
 	_handle_movement_inputs(delta)
 	
+	if Input.is_action_just_pressed("power"):
+		apply_power_up(current_power + 1 if current_power != Power.BLACK_HOLE else Power.RED)
+	
 	if slow_duration > 0:
-		velocity *= slowed
+		velocity *= slow_multi
 		slow_duration -= delta
 	
 	move_and_slide()
 	
-func _process(_delta):
-	animation.play("floating")
 
-func get_damage(dam:int) -> void:
-	hitpoints -= dam
-	#print(hitpoints)
+func apply_damage(damage:int, damage_type:DamageType = DamageType.SHARP) -> void:
+	hitpoints -= damage
+	if (damage_type == DamageType.EXPLOSIVE and current_power == Power.LEAD):
+		hitpoints = 0
+	print(hitpoints)
 	if hitpoints <= 0:
-		#put game over behavior here
-		emit_signal("popped", "pop")
-		var timer = Timer.new()
-		add_child(timer)
-		timer.wait_time = 1.0
-		timer.one_shot = true
-		timer.start()
-		await timer.timeout
-		get_tree().quit()
+		apply_power_up(sub_power)
+		
 
-func get_effects(sl:float, sld:float) -> void:
-	slowed = sl
+func game_over() -> void:
+	#put game over behavior here
+	emit_signal("popped", "pop")
+	var timer = Timer.new()
+	add_child(timer)
+	timer.wait_time = 0.5
+	timer.one_shot = true
+	timer.start()
+	await timer.timeout
+	get_tree().quit()
+
+
+
+func set_effects(sl:float, sld:float) -> void:
+	slow_multi = sl
 	slow_duration = sld
 	#print("affected")
+
 
 func _handle_movement_inputs(delta:float) -> void:
 	time_since_dash += delta
@@ -64,32 +100,95 @@ func _handle_movement_inputs(delta:float) -> void:
 		time_since_dash = 0
 		
 	if time_since_dash < dash_duration:
-		var cur_dash_speed = velocity.length() + dash_speed * (time_since_dash / (dash_duration))
-		cur_dash_speed = clampf(cur_dash_speed, velocity.length(), dash_speed)
-		velocity = velocity.normalized() * cur_dash_speed
+		#var cur_dash_speed = velocity.length() + movement_speed * dash_multi * (time_since_dash / (dash_duration))
+		#cur_dash_speed = clampf(cur_dash_speed, velocity.length(), movement_speed * dash_multi)
+		#Tween.
+		velocity = velocity.normalized() * Tween.interpolate_value(movement_speed, 
+				movement_speed * dash_multi, 
+				time_since_dash, dash_duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
 		return
-	
+	#
 	var velocity_multi = 1
 	if time_since_dash < dash_duration + dash_recovery:
 		velocity_multi = clampf((time_since_dash - dash_duration) / dash_recovery, 0.4, 1)
-		
+	
 	# setup drag
 	acceleration.x = -velocity.x * drag_factor
 	acceleration.y = -velocity.y * drag_factor
 	
 	# if there are inputs, they will override the drag above
-	var input_dir = Vector2(
-		Input.get_action_strength("move right") - Input.get_action_strength("move left"),
-		Input.get_action_strength("move down") - Input.get_action_strength("move up")
-		).limit_length(1.0)
+	var input_dir = Vector2(Input.get_vector("move left", "move right", "move up", "move down"))
 	
+	# make it easier to turn around by overriding drag when changing direction
 	if input_dir.x:
 		acceleration.x = input_dir.x * acceleration_speed
 	if input_dir.y:
 		acceleration.y = input_dir.y * acceleration_speed
+	
 	var max_speed = movement_speed * velocity_multi
-	velocity.x = clampf(velocity.x + acceleration.x * delta, -max_speed, max_speed)
-	velocity.y = clampf(velocity.y + acceleration.y * delta, -max_speed, max_speed)
-	#print(max_speed)
-	velocity.limit_length(max_speed)
-	#velocity *= velocity_multi
+	if (time_since_dash > dash_duration):
+		velocity.x = clampf(velocity.x + acceleration.x * delta, -max_speed, max_speed)
+		velocity.y = clampf(velocity.y + acceleration.y * delta, -max_speed, max_speed)
+		velocity.limit_length(max_speed)
+	
+
+func apply_power_up(power:Power) -> void:
+	current_power = power
+	# restore basic properties
+	# some will be overwritten in match below
+	hitpoints = 1
+	drag_factor = 4 
+	dash_duration = 0.25
+	dash_recovery = 1.0 
+	dash_multi =  2.5 
+	time_since_dash = 10
+	movement_speed = 400
+	sub_power = Power.DEAD
+	$Sprite2Dplayer.texture = preload("res://Assets/balloon/red.png")
+	
+	$AnimationPlayer.play("RESET")
+	animation.queue("floating")
+	
+	match(power):
+		Power.DEAD:
+			game_over()
+		
+		Power.BLUE:
+			hitpoints = 1
+			movement_speed *= 1.1
+			sub_power = Power.RED
+			$Sprite2Dplayer.texture = preload("res://Assets/balloon/green.png")
+			$Sprite2Dplayer.set_modulate(Color(0, 0, 0, 1))
+		
+		Power.GREEN:
+			hitpoints = 1
+			movement_speed *= 1.2
+			sub_power = Power.BLUE
+			$Sprite2Dplayer.texture = preload("res://Assets/balloon/blue.png")
+			$Sprite2Dplayer.set_modulate(Color(1, 1, 1, 1))
+
+		
+		Power.LEAD:
+			hitpoints = 10
+			sub_power = Power.GREEN
+			movement_speed *= 0.75
+			dash_multi = 1.5
+			dash_recovery = 1.5
+			$Sprite2Dplayer.texture = preload("res://Assets/balloon/lead.png")
+			$Sprite2Dplayer.set_modulate(Color(10, 10, 10, 1))
+			
+		Power.BEAST:
+			hitpoints = 3
+			sub_power = Power.GREEN
+			movement_speed *= 1.4
+			dash_recovery = 0.25
+			dash_duration *= 1.25
+			$Sprite2Dplayer.texture = preload("res://Assets/balloon/beastBloon.png")
+			
+		Power.BLACK_HOLE:
+			#print('blackhole')
+			hitpoints = 3
+			sub_power = Power.GREEN
+			$AnimationPlayer.play("black_hole_idle")
+			
+	acceleration_speed = movement_speed * 6

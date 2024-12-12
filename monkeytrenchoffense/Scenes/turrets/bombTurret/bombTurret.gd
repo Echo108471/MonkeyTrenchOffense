@@ -45,7 +45,8 @@ func attack():
 		
 		projectile.global_position = $LaunchPoint.global_position
 	
-		projectile.configure(bulletSpeed, bulletSize, bulletDamage, bulletPierce, bulletTime, bulletSeeking, bulletSlow, bulletSlowDuration)
+		projectile.configure(bulletSpeed, bulletSize, bulletDamage, bulletPierce, bulletTime, 
+				bulletSeeking, bulletSlow, bulletSlowDuration)
 		
 		$"..".add_child(projectile)
 		SignalManager.emit_signal("fired", "bomb_start")

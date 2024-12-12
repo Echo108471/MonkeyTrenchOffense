@@ -78,21 +78,22 @@ shape = SubResource("WorldBoundaryShape2D_5exwf")
 disabled = true
 
 [node name="DartMonkey" parent="." instance=ExtResource("4_bho38")]
-position = Vector2(1345, -393)
+position = Vector2(1661, -429)
 scale = Vector2(2, 2)
 
 [node name="SlowMonkey" parent="." instance=ExtResource("10_1hybe")]
-position = Vector2(1157, -477)
+position = Vector2(1146, -450)
 scale = Vector2(2, 2)
 
 [node name="TNT" parent="." instance=ExtResource("5_jwuhp")]
-position = Vector2(-786, -148)
+position = Vector2(-1068, -632)
+scale = Vector2(2, 2)
 
 [node name="SlowArea" parent="." instance=ExtResource("6_4oscd")]
-position = Vector2(-752, 226)
+position = Vector2(1151, 0)
 
 [node name="power_up_coin" parent="." instance=ExtResource("7_csl7t")]
-position = Vector2(-652, -266)
+position = Vector2(1227, -736)
 
 [node name="Sound" type="Node2D" parent="."]
 script = ExtResource("10_xuskj")
@@ -116,11 +117,11 @@ stream = ExtResource("15_b0bx7")
 stream = ExtResource("16_n1jl7")
 
 [node name="DartMonkey2" parent="." instance=ExtResource("4_bho38")]
-position = Vector2(2728, -392)
+position = Vector2(3012, -439)
 scale = Vector2(2, 2)
 
 [node name="SlowMonkey2" parent="." instance=ExtResource("10_1hybe")]
-position = Vector2(2236, -452)
+position = Vector2(2308, -444)
 scale = Vector2(2, 2)
 
 [node name="BombMonkey" parent="." instance=ExtResource("13_wtiq1")]
@@ -133,7 +134,7 @@ script = ExtResource("19_3y6gl")
 player_location = NodePath("../PlayerLvl2Loc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="teleporterArea"]
-position = Vector2(267, -147.5)
+position = Vector2(310, -152)
 shape = SubResource("RectangleShape2D_rcth0")
 
 [node name="teleporterArea2" type="Area2D" parent="." node_paths=PackedStringArray("player_location")]
