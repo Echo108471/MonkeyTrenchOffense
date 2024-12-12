@@ -52,6 +52,7 @@ wall_min_slide_angle = 0.261799
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-711, -37)
+zoom = Vector2(0.85, 0.85)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 script = ExtResource("3_gmu6m")
@@ -161,7 +162,7 @@ stream = ExtResource("16_n1jl7")
 script = ExtResource("21_o88vq")
 
 [node name="PausePanel" type="ColorRect" parent="GUILayer"]
-process_mode = 2
+process_mode = 3
 visible = false
 material = SubResource("ShaderMaterial_u7w6x")
 anchors_preset = 15
@@ -207,6 +208,11 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Resume"
 
+[node name="MenuButton" type="Button" parent="GUILayer/PausePanel/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "Menu"
+
 [node name="QuitButtonGame" type="Button" parent="GUILayer/PausePanel/CenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
@@ -231,5 +237,6 @@ text = "Pause"
 [connection signal="body_entered" from="teleporterArea" to="teleporterArea" method="_on_body_entered"]
 [connection signal="body_entered" from="teleporterArea2" to="teleporterArea2" method="_on_body_entered"]
 [connection signal="pressed" from="GUILayer/PausePanel/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="GUILayer" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="GUILayer/PausePanel/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MenuButton" to="GUILayer" method="_on_menu_button_pressed"]
 [connection signal="pressed" from="GUILayer/PausePanel/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButtonGame" to="GUILayer" method="_on_quit_button_game_pressed"]
 [connection signal="pressed" from="GUILayer/PauseContainer/PauseButton" to="GUILayer" method="_on_pause_button_pressed"]

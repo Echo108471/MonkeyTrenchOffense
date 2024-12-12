@@ -54,6 +54,10 @@ theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 35
 text = "Quit"
 
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
 [node name="Label2" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)

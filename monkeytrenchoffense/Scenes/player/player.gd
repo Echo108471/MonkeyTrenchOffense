@@ -8,6 +8,8 @@ extends CharacterBody2D
 # (seconds) how long it takes to recover from a dash
 @export var dash_duration:float = 0.3
 @export var dash_recovery:float = 3.0
+@export var lead_hit_anim_duration = 0.3
+@export var death_anim_duration = 0.75
 
 
 enum Power {
@@ -39,9 +41,11 @@ var slow_duration : float = 0.0
 # this is the state the player will go to when their current power ends
 var current_power:Power = Power.RED
 var sub_power:Power = Power.DEAD
+var lead_hit_duration:float = 0.0
 
 #var _max_speed: float = 0
 #var _vel_tween: Tween 
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -64,25 +68,46 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 	
+	if lead_hit_duration > 0 and current_power != Power.LEAD:
+		lead_hit_duration = 0.0
+	
+	if lead_hit_duration > 0:
+		lead_hit_duration += delta
+		
+	if lead_hit_duration > lead_hit_anim_duration:
+		$Sprite2Dplayer.texture = preload("res://Assets/balloon/lead.png")
+		$AnimationPlayer.play("RESET")
+		animation.queue("floating")
+		lead_hit_duration = 0.0
+	
+	
+	
 
 func apply_damage(damage:int, damage_type:DamageType = DamageType.SHARP) -> void:
 	hitpoints -= damage
-	if (damage_type == DamageType.EXPLOSIVE and current_power == Power.LEAD):
+	if damage_type == DamageType.EXPLOSIVE and current_power == Power.LEAD:
 		hitpoints = 0
 	print(hitpoints)
+	if current_power == Power.LEAD and damage_type == DamageType.SHARP && lead_hit_duration == 0:
+		$AnimationPlayer.play("lead_hit")
+		lead_hit_duration = 0.001
+		
 	if hitpoints <= 0:
+		SignalManager.emit_signal("popped", "pop")
 		apply_power_up(sub_power)
+		
 		
 
 func game_over() -> void:
 	#put game over behavior here
-	SignalManager.emit_signal("popped", "pop")
+	$AnimationPlayer.play("death")
 	var timer = Timer.new()
 	add_child(timer)
-	timer.wait_time = 0.5
+	timer.wait_time = death_anim_duration
 	timer.one_shot = true
 	timer.start()
 	await timer.timeout
+
 	get_tree().quit()
 
 
@@ -140,6 +165,8 @@ func _handle_movement_inputs(delta:float) -> void:
 			$Sprite2Dplayer.flip_h = true
 		else:
 			$Sprite2Dplayer.flip_h = false
+	else:
+		$Sprite2Dplayer.flip_h = false
 	
 
 func apply_power_up(power:Power) -> void:
@@ -185,15 +212,18 @@ func apply_power_up(power:Power) -> void:
 			dash_multi = 1.5
 			dash_recovery = 1.5
 			$Sprite2Dplayer.texture = preload("res://Assets/balloon/lead.png")
+			#$AnimationPlayer.play("lead_idle")
 			#$Sprite2Dplayer.set_modulate(Color(10, 10, 10, 1))
-			
+		
 		Power.BEAST:
 			hitpoints = 3
 			sub_power = Power.GREEN
 			movement_speed *= 1.4
 			dash_recovery = 0.05
 			dash_duration *= 1.25
-			$Sprite2Dplayer.texture = preload("res://Assets/balloon/beastBloon.png")
+			#$Sprite2Dplayer.texture = preload("res://Assets/balloon/beast_sprite.png")
+			#$Sprite2Dplayer.texture = ImageTexture.create_from_image(beast_sprite.png)
+			$AnimationPlayer.play("beast_idle")
 			
 		Power.BLACK_HOLE:
 			#print('blackhole')
