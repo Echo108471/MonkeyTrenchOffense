@@ -59,6 +59,8 @@ func _physics_process(delta: float) -> void:
 	#print(time_since_dash)
 	_handle_movement_inputs(delta)
 	
+	$Sprite2Dplayer.flip_h = velocity.x >= 0 and current_power == Power.BEAST
+	
 	if Input.is_action_just_pressed("power"):
 		apply_power_up(current_power + 1 if current_power != Power.BLACK_HOLE else Power.RED)
 	
@@ -159,15 +161,7 @@ func _handle_movement_inputs(delta:float) -> void:
 		velocity.x = clampf(velocity.x + acceleration.x * delta, -max_speed, max_speed)
 		velocity.y = clampf(velocity.y + acceleration.y * delta, -max_speed, max_speed)
 		velocity.limit_length(max_speed)
-		
-	if current_power == Power.BEAST:
-		if velocity.x >= 0:
-			$Sprite2Dplayer.flip_h = true
-		else:
-			$Sprite2Dplayer.flip_h = false
-	else:
-		$Sprite2Dplayer.flip_h = false
-	
+			
 
 func apply_power_up(power:Power) -> void:
 	current_power = power
@@ -195,14 +189,12 @@ func apply_power_up(power:Power) -> void:
 			movement_speed *= 1.1
 			sub_power = Power.RED
 			$Sprite2Dplayer.texture = preload("res://Assets/balloon/green.png")
-			#$Sprite2Dplayer.set_modulate(Color(0, 0, 0, 1))
 		
 		Power.GREEN:
 			hitpoints = 1
 			movement_speed *= 1.2
 			sub_power = Power.BLUE
 			$Sprite2Dplayer.texture = preload("res://Assets/balloon/blue.png")
-			#$Sprite2Dplayer.set_modulate(Color(0, 1, 0, 1))
 
 		
 		Power.LEAD:
@@ -212,7 +204,6 @@ func apply_power_up(power:Power) -> void:
 			dash_multi = 1.5
 			dash_recovery = 1.5
 			$Sprite2Dplayer.texture = preload("res://Assets/balloon/lead.png")
-			#$AnimationPlayer.play("lead_idle")
 			#$Sprite2Dplayer.set_modulate(Color(10, 10, 10, 1))
 		
 		Power.BEAST:

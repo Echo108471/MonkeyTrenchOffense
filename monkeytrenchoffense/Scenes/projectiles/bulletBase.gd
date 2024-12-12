@@ -1,5 +1,5 @@
+class_name BulletBase
 extends Node2D
-
 
 var direction: Vector2 = Vector2.ZERO
 
@@ -13,14 +13,15 @@ var slow : float = 1.0
 var slow_duration : float = 0.0
 
 var target : Player = null
-
+var travelling : bool = true
 
 
 func _process(delta):
 	if seeking and target != null:
 		direction = global_position.direction_to(target.global_position)
-	position += direction * speed * delta
-	rotation = direction.angle()
+	if travelling:
+		position += direction * speed * delta
+		rotation = direction.angle()
 
 #used for setting properties
 func configure(s:float = 400.0, sz:float = 1.0, d:int = 1, p:int = 1, t:float = 1.0, sk:bool = false, sl:float = 1.0, sld:float = 0.0) -> void:

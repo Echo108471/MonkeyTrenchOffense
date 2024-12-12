@@ -44,7 +44,8 @@ func attack():
 	
 		$"..".add_child(projectile)
 		SignalManager.emit_signal("fired", "dart")
-
+	
+	$AnimationPlayer.play("fire")
 
 
 

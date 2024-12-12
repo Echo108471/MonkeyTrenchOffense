@@ -8,7 +8,7 @@ func _ready() -> void:
 	
 	bulletSpeed = 600.0
 	bulletSize = 5.0
-	bulletDamage = 1
+	bulletDamage = 0
 	bulletSlow = 0.8
 	bulletSlowDuration = 1.0
 
@@ -29,12 +29,14 @@ func attack():
 	projectile.direction = $LaunchPoint.global_position.direction_to(target.global_position)
 	projectile.global_position = $LaunchPoint.global_position
 	
-	print(bulletSlowDuration)
+	#print(bulletSlowDuration)
 	projectile.configure(bulletSpeed, bulletSize, bulletDamage, bulletPierce, bulletTime, bulletSeeking, bulletSlow, bulletSlowDuration)
 	
 	$"..".add_child(projectile)
 	SignalManager.emit_signal("fired", "slow")
-
+	
+	$AnimationPlayer.play("fire")
+		#$AnimationPlayer.play("fire")
 
 
 func _on_attack_range_area_entered_slo(area: Area2D) -> void:
