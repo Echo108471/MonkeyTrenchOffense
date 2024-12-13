@@ -9,7 +9,7 @@ In our game you play as a balloon trying to escape evil monkeys that have trappe
 [Web-playable version of your game.](https://itch.io/)  
 [Trailor](https://youtube.com)  
 [Press Kit](https://dopresskit.com/)  
-[Proposal: make your own copy of the linked doc.](https://docs.google.com/document/d/1XfRfDoN-Fm2vW_cJ7vQpI7-b4w9EeZ0zoOBdrwvnYzk/edit?tab=t.0#heading=h.i3tv2mxf7h7z)  
+[Proposal](https://docs.google.com/document/d/1XfRfDoN-Fm2vW_cJ7vQpI7-b4w9EeZ0zoOBdrwvnYzk/edit?tab=t.0#heading=h.i3tv2mxf7h7z)  
 
 ## Gameplay Explanation ##
 
@@ -22,9 +22,9 @@ Your goal is to dodge projectiles and obstacles as you navigate through the leve
   - **Down / S**: Move Down
   - **Left / A**: Move Left
   - **Right / D**: Move Right
-  - **E**: Cycle Through Upgrades (test input)
 - **Spacebar**: Use the spacebar to dash quickly in the direction you're moving. This will help you evade incoming attacks, but use it wisely, as the dash has a cooldown period.
-
+- **E**: Cycle Through Upgrades (test input)
+  
 ## Gameplay Strategy:
 1. **Dodge and Dash**: Your main defense is your ability to move and dash. Keep an eye on the approaching enemies and their projectiles. Time your dash carefully to avoid explosions, arrows, and icicles.
 2. **Enemy Patterns**: Different monkeys throw different types of projectiles, each with its own behavior. Bomb monkeys will throw large TNT that explode after a short delay, dart monkeys will shoot fast arrows in predictable patterns, and ice monkeys will throw icicles that slow you down. Learn their patterns and use your dash strategically to evade them.
