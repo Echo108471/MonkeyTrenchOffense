@@ -79,8 +79,9 @@ My role was to lay the groundwork and code the foundational behaviors and organi
 **Describe the basics of movement and physics in your game. Is it the standard physics model? What did you change or modify? Did you make your movement scripts that do not use the physics system?**
 
 ## Animation and Visuals
+Assets Used:
+- Map Tiles, small animations, decorations: [Tiny Swords](https://pixelfrog-assets.itch.io/tiny-swords) - Creative Commons Zero License
 
-**List your assets, including their sources and licenses.**
 
 **Describe how your work intersects with game feel, graphic design, and world-building. Include your visual style guide if one exists.**
 
