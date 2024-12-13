@@ -13,7 +13,6 @@ In our game you play as a balloon trying to escape evil monkeys that have trappe
 
 ## Gameplay Explanation ##
 
-**In this section, explain how the game should be played. Treat this as a manual within a game. Explaining the button mappings and the most optimal gameplay strategy is encouraged.**
 Your goal is to dodge projectiles and obstacles as you navigate through the levels to reach freedom. The controls are simple:
 
 ## Controls:
