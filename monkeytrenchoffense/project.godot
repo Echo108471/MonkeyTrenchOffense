@@ -13,7 +13,13 @@ config_version=5
 config/name="MonkeyTrenchOffense"
 run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/image="res://Assets/backgrounds/boot_splash.png"
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/mode=3
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
@@ -59,3 +65,4 @@ power={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0.388235, 0.662745, 0.658824, 1)

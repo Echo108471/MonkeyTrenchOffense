@@ -7,7 +7,6 @@ func _ready() -> void:
 	$explosion.visible = false
 	$bombBody.visible = true
 	$Area2D/hitBox.disabled = true
-	$DisappearTimer
 	
 func configure(s:float = 400.0, sz:float = 1.0, d:int = 1, p:int = 1, t:float = 1.0, sk:bool = false, sl:float = 1.0, sld:float = 0.0) -> void:
 	super(s, sz, d, p, t, sk, sl, sld)

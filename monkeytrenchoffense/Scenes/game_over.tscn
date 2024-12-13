@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dk6xtsv2hxgas"]
 
 [ext_resource type="Texture2D" uid="uid://s28kqqin70e0" path="res://Assets/backgrounds/game_over_background.png" id="1_r8tt2"]
-[ext_resource type="Script" path="res://scripts/game_over.gd" id="2_upe8v"]
+[ext_resource type="Script" path="res://Scripts/game_over.gd" id="2_gp88c"]
 [ext_resource type="AudioStream" uid="uid://cxlotl4a8ot7r" path="res://Assets/sfx/GameOver.mp3" id="4_ef226"]
 
 [node name="GameOver" type="CenterContainer"]
@@ -49,12 +49,17 @@ offset_bottom = 59.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1, 1.21818)
-script = ExtResource("2_upe8v")
+script = ExtResource("2_gp88c")
 
 [node name="MenuButtonGameOver" type="Button" parent="CanvasLayer/CenterContainer/TextureRect/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 45
 text = " Main Menu "
+
+[node name="RestartButtonGameOver" type="Button" parent="CanvasLayer/CenterContainer/TextureRect/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "Restart"
 
 [node name="QuitButtonGameOver" type="Button" parent="CanvasLayer/CenterContainer/TextureRect/VBoxContainer"]
 layout_mode = 2
@@ -67,4 +72,5 @@ autoplay = true
 parameters/looping = false
 
 [connection signal="pressed" from="CanvasLayer/CenterContainer/TextureRect/VBoxContainer/MenuButtonGameOver" to="CanvasLayer/CenterContainer/TextureRect/VBoxContainer" method="_on_menu_button_game_over_pressed"]
+[connection signal="pressed" from="CanvasLayer/CenterContainer/TextureRect/VBoxContainer/RestartButtonGameOver" to="CanvasLayer/CenterContainer/TextureRect/VBoxContainer" method="_on_restart_button_game_over_pressed"]
 [connection signal="pressed" from="CanvasLayer/CenterContainer/TextureRect/VBoxContainer/QuitButtonGameOver" to="CanvasLayer/CenterContainer/TextureRect/VBoxContainer" method="_on_quit_button_game_over_pressed"]

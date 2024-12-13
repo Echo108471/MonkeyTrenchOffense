@@ -42,6 +42,7 @@ var slow_duration : float = 0.0
 var current_power:Power = Power.RED
 var sub_power:Power = Power.DEAD
 var lead_hit_duration:float = 0.0
+var death_flag = false
 
 #var _max_speed: float = 0
 #var _vel_tween: Tween 
@@ -101,8 +102,9 @@ func apply_damage(damage:int, damage_type:DamageType = DamageType.SHARP) -> void
 			$LeadBalloonSound.play()
 			lead_hit_duration = 0.001
 		
-	if hitpoints <= 0:
+	if hitpoints <= 0 and death_flag == false:
 		apply_power_up(sub_power)
+		death_flag = true
 		
 		
 
@@ -157,6 +159,8 @@ func _handle_movement_inputs(delta:float) -> void:
 	# if there are inputs, they will override the drag above
 	var input_dir = Vector2(Input.get_vector("move left", "move right", "move up", "move down"))
 	
+	if death_flag:
+		input_dir = Vector2(0, 0)
 	
 	# make it easier to turn around by overriding drag when changing direction
 	if input_dir.x:

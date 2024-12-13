@@ -53,6 +53,7 @@ wall_min_slide_angle = 0.261799
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(-711, -37)
+zoom = Vector2(0.7, 0.7)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 script = ExtResource("3_gmu6m")
