@@ -7,7 +7,7 @@ In our game you play as a balloon trying to escape evil monkeys that have trappe
 ## Project Resources
 
 [Web-playable version of your game.](https://itch.io/)  
-[Trailor](https://youtube.com)  
+[Trailer](https://youtu.be/i8l6JdhSNFc?si=5tn6Pdlufj88c8pC)  
 [Press Kit](https://ryanffrench.github.io/MonkeyTrenchOffense-PressKit/)  
 [Proposal](https://docs.google.com/document/d/1XfRfDoN-Fm2vW_cJ7vQpI7-b4w9EeZ0zoOBdrwvnYzk/edit?tab=t.0#heading=h.i3tv2mxf7h7z)  
 
