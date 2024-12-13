@@ -1,10 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://bufty5f1wpw7x"]
+[gd_scene load_steps=19 format=3 uid="uid://bufty5f1wpw7x"]
 
 [ext_resource type="Script" path="res://Scenes/player/player.gd" id="1_bq71g"]
 [ext_resource type="Texture2D" uid="uid://dxq2rskdx1eue" path="res://Assets/balloon/beast_sprite.png" id="2_ovc3l"]
 [ext_resource type="Texture2D" uid="uid://be6ll0bkj8a8u" path="res://Assets/balloon/black_hole.png" id="3_avhcm"]
 [ext_resource type="Texture2D" uid="uid://b2x78uwkuk881" path="res://Assets/balloon/lead_sprite.png" id="4_6oac6"]
 [ext_resource type="Texture2D" uid="uid://d3lf5xkcwhhrm" path="res://Assets/balloon/bloon_pop_sprite.png" id="5_211ij"]
+[ext_resource type="AudioStream" uid="uid://dltld0pd1t85v" path="res://Assets/sfx/LeadBalloonSound.wav" id="6_vklvc"]
+[ext_resource type="AudioStream" uid="uid://buv6637rk5rfj" path="res://Assets/sfx/BalloonPop.wav" id="7_mduau"]
+[ext_resource type="AudioStream" uid="uid://bywo08ic5pxhh" path="res://Assets/sfx/BalloonHit.wav" id="8_rk1be"]
+[ext_resource type="AudioStream" uid="uid://um3uug020x3b" path="res://Assets/sfx/Dash.wav" id="9_0dbc6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bpdh0"]
 radius = 16.0
@@ -394,3 +398,17 @@ libraries = {
 "": SubResource("AnimationLibrary_hhcit")
 }
 autoplay = "floating"
+
+[node name="LeadBalloonSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_vklvc")
+volume_db = -5.993
+max_polyphony = 100
+
+[node name="BalloonPoppedSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_mduau")
+
+[node name="BalloonHitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_rk1be")
+
+[node name="BalloonDashSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_0dbc6")

@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://msd06w8xlkxt"]
+[gd_scene load_steps=6 format=3 uid="uid://msd06w8xlkxt"]
 
 [ext_resource type="Script" path="res://tnt.gd" id="1_stntl"]
 [ext_resource type="Texture2D" uid="uid://dq06xii6mvngw" path="res://Assets/turrets/dynamite.png" id="2_j50ni"]
+[ext_resource type="AudioStream" uid="uid://b5d0a0vwf636h" path="res://Assets/sfx/BombExplosionSound.wav" id="3_e3si1"]
+[ext_resource type="AudioStream" uid="uid://cbfugihix3p14" path="res://Assets/sfx/FallingBomb.wav" id="4_4rla7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ut685"]
 radius = 18.0069
@@ -14,8 +16,15 @@ script = ExtResource("1_stntl")
 z_index = 1
 texture = ExtResource("2_j50ni")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="hitBox" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1.5)
 shape = SubResource("CircleShape2D_ut685")
+
+[node name="BombExplosionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_e3si1")
+max_polyphony = 3
+
+[node name="BombFuseSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_4rla7")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

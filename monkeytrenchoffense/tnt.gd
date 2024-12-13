@@ -14,16 +14,16 @@ func _on_body_entered(body):
 
 # Start the explosion timer
 func start_timer():
-	print("TIMER STARTED")
+	
 	if not timer_active:
 		timer_active = true
-		SignalManager.emit_signal("collected", "tnt_start")
+		$BombFuseSound.play()
 		await get_tree().create_timer(explosion_timer).timeout
 		explode()
 
-# Handle explosion
+# Handle explosion 
 func explode():
-	SignalManager.emit_signal("collected", "tnt_end")
+	$BombExplosionSound.play()
 	print("BOOM! The TNT exploded!")
 	
 	var tnt_position = global_position

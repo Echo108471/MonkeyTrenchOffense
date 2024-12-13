@@ -18,7 +18,7 @@ func _ready():
 func _on_body_entered(body):
 	if body == player:  # Ensure that only the player can pick up the coin
 		give_speed_boost()
-		SignalManager.emit_signal("collected", "speed")
+		$PlayerCollectCoinSound.play()
 
 # Function to give the player a speed boost
 func give_speed_boost():

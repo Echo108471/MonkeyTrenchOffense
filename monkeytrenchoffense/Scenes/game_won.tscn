@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://8r58dpycxot0"]
+[gd_scene load_steps=3 format=3 uid="uid://8r58dpycxot0"]
 
 [ext_resource type="Texture2D" uid="uid://dyk5r6yifubi8" path="res://Assets/backgrounds/game_won_background.png" id="1_gxy2m"]
+[ext_resource type="AudioStream" uid="uid://ct1qdenamuvlf" path="res://Assets/sfx/GameWin.mp3" id="2_4jsoc"]
 
 [node name="GameWon" type="CenterContainer"]
 offset_right = 40.0
@@ -35,3 +36,8 @@ theme_override_colors/font_outline_color = Color(0.176419, 0.176419, 0.176419, 1
 theme_override_constants/outline_size = 40
 theme_override_font_sizes/font_size = 150
 text = "GAME WON"
+
+[node name="GameWonMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_4jsoc")
+autoplay = true
+parameters/looping = false

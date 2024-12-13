@@ -86,16 +86,22 @@ func _physics_process(delta: float) -> void:
 	
 
 func apply_damage(damage:int, damage_type:DamageType = DamageType.SHARP) -> void:
+	
 	hitpoints -= damage
+	if current_power == Power.LEAD:
+		$LeadBalloonSound.play()
+	elif hitpoints >= 0 and current_power != Power.RED:
+		$BalloonHitSound.play()
+		
 	if damage_type == DamageType.EXPLOSIVE and current_power == Power.LEAD:
 		hitpoints = 0
 	print(hitpoints)
 	if current_power == Power.LEAD and damage_type == DamageType.SHARP && lead_hit_duration == 0:
-		$AnimationPlayer.play("lead_hit")
-		lead_hit_duration = 0.001
+			$AnimationPlayer.play("lead_hit")
+			$LeadBalloonSound.play()
+			lead_hit_duration = 0.001
 		
 	if hitpoints <= 0:
-		SignalManager.emit_signal("popped", "pop")
 		apply_power_up(sub_power)
 		
 		
@@ -103,6 +109,7 @@ func apply_damage(damage:int, damage_type:DamageType = DamageType.SHARP) -> void
 func game_over() -> void:
 	#put game over behavior here
 	$AnimationPlayer.play("death")
+	$BalloonPoppedSound.play()
 	var timer = Timer.new()
 	add_child(timer)
 	timer.wait_time = death_anim_duration
@@ -135,7 +142,9 @@ func _handle_movement_inputs(delta:float) -> void:
 		velocity = velocity.normalized() * Tween.interpolate_value(movement_speed, 
 				movement_speed * dash_multi, 
 				time_since_dash, dash_duration, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+		$BalloonDashSound.play()
 		return
+
 	#
 	var velocity_multi = 1
 	if time_since_dash < dash_duration + dash_recovery:

@@ -1,13 +1,29 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxw4bpqa7mxw7"]
+[gd_scene load_steps=9 format=3 uid="uid://bxw4bpqa7mxw7"]
 
 [ext_resource type="Script" path="res://Scenes/turrets/slowTurret/slowTurret.gd" id="1_4ay1g"]
 [ext_resource type="Texture2D" uid="uid://c485hf8kfjsd5" path="res://Assets/turrets/ice_monke.png" id="2_txw7q"]
+[ext_resource type="AudioStream" uid="uid://dastpv8trx43f" path="res://Assets/sfx/IceMonkeyShoot.wav" id="3_ryjii"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aicnu"]
 radius = 22.8
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kae7m"]
 radius = 230.11
+
+[sub_resource type="Animation" id="Animation_wkh71"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Monkey:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_safe7"]
 resource_name = "fire"
@@ -24,21 +40,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 2, 4, 3, 2, 1, 0]
-}
-
-[sub_resource type="Animation" id="Animation_wkh71"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Monkey:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ot74p"]
@@ -82,6 +83,9 @@ position = Vector2(35, 31)
 libraries = {
 "": SubResource("AnimationLibrary_ot74p")
 }
+
+[node name="IceDartSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ryjii")
 
 [connection signal="area_entered" from="AttackRange" to="." method="_on_attack_range_area_entered_slo"]
 [connection signal="area_exited" from="AttackRange" to="." method="_on_attack_range_area_exited_slo"]

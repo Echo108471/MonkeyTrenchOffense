@@ -1,13 +1,29 @@
-[gd_scene load_steps=8 format=3 uid="uid://edmi5jtva5y2"]
+[gd_scene load_steps=9 format=3 uid="uid://edmi5jtva5y2"]
 
 [ext_resource type="Script" path="res://Scenes/turrets/projectileTurret/projectileTurret.gd" id="1_7ca8v"]
 [ext_resource type="Texture2D" uid="uid://cm8khuoy83hkl" path="res://Assets/turrets/monke_sprite.png" id="2_o6gwl"]
+[ext_resource type="AudioStream" uid="uid://bkdn7mmaypeux" path="res://Assets/sfx/DartMonkeyShoot.wav" id="3_apulc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aicnu"]
 radius = 22.8
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kae7m"]
 radius = 230.11
+
+[sub_resource type="Animation" id="Animation_wkh71"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Monkey:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_safe7"]
 resource_name = "fire"
@@ -24,21 +40,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 2, 4, 3, 2, 1, 0]
-}
-
-[sub_resource type="Animation" id="Animation_wkh71"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Monkey:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ot74p"]
@@ -84,6 +85,9 @@ position = Vector2(35, 31)
 libraries = {
 "": SubResource("AnimationLibrary_ot74p")
 }
+
+[node name="DartFireSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_apulc")
 
 [connection signal="area_entered" from="AttackRange" to="." method="_on_attack_range_area_entered_proj"]
 [connection signal="area_exited" from="AttackRange" to="." method="_on_attack_range_area_exited_proj"]

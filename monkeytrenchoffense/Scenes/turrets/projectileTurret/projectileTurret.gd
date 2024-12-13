@@ -43,7 +43,8 @@ func attack():
 		projectile.configure(bulletSpeed, bulletSize, bulletDamage, bulletPierce, bulletTime, bulletSeeking, bulletSlow, bulletSlowDuration)
 	
 		$"..".add_child(projectile)
-		SignalManager.emit_signal("fired", "dart")
+		$DartFireSound.play()
+
 	
 	$AnimationPlayer.play("fire")
 

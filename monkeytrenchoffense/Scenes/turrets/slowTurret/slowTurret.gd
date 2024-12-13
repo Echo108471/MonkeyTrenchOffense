@@ -33,7 +33,7 @@ func attack():
 	projectile.configure(bulletSpeed, bulletSize, bulletDamage, bulletPierce, bulletTime, bulletSeeking, bulletSlow, bulletSlowDuration)
 	
 	$"..".add_child(projectile)
-	SignalManager.emit_signal("fired", "slow")
+	$IceDartSound.play()
 	
 	$AnimationPlayer.play("fire")
 		#$AnimationPlayer.play("fire")

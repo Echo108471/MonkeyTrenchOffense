@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4ncxe3o6t831"]
+[gd_scene load_steps=5 format=3 uid="uid://c4ncxe3o6t831"]
 
 [ext_resource type="Script" path="res://Scenes/projectiles/power_up_coin.gd" id="1_7pk4m"]
 [ext_resource type="SpriteFrames" uid="uid://tfa84xobhtyj" path="res://Assets/bullets/bullet1.tres" id="1_40ipm"]
+[ext_resource type="AudioStream" uid="uid://dtgtqfvdj3ge7" path="res://Assets/sfx/speed.wav" id="3_dg5s6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dgw8g"]
 radius = 11.0
@@ -17,5 +18,8 @@ frame_progress = 0.525399
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_dgw8g")
+
+[node name="PlayerCollectCoinSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dg5s6")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

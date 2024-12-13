@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bc51wm18jfnhw"]
+[gd_scene load_steps=24 format=3 uid="uid://bc51wm18jfnhw"]
 
 [ext_resource type="PackedScene" uid="uid://bufty5f1wpw7x" path="res://Scenes/player/player.tscn" id="1_kuixu"]
 [ext_resource type="PackedScene" uid="uid://bo8dwygo4att7" path="res://Scenes/maps/map1.tscn" id="1_memt1"]
@@ -9,17 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://cgh7ibrmxxwho" path="res://Scenes/projectiles/slow_area.tscn" id="6_4oscd"]
 [ext_resource type="PackedScene" uid="uid://c4ncxe3o6t831" path="res://Scenes/projectiles/power_up_coin.tscn" id="7_csl7t"]
 [ext_resource type="PackedScene" uid="uid://bxw4bpqa7mxw7" path="res://Scenes/turrets/slowTurret/slowTurret.tscn" id="10_1hybe"]
-[ext_resource type="Script" path="res://Scenes/sounds.gd" id="10_xuskj"]
-[ext_resource type="AudioStream" uid="uid://bkdn7mmaypeux" path="res://Assets/sfx/DartMonkeyShoot.wav" id="11_wligf"]
-[ext_resource type="AudioStream" uid="uid://buv6637rk5rfj" path="res://Assets/sfx/BalloonPop.wav" id="12_5svx4"]
-[ext_resource type="AudioStream" uid="uid://cbfugihix3p14" path="res://Assets/sfx/FallingBomb.wav" id="13_3ylvh"]
 [ext_resource type="PackedScene" uid="uid://dy576ss87vjl" path="res://Scenes/turrets/bombTurret/bombTurret.tscn" id="13_wtiq1"]
 [ext_resource type="Texture2D" uid="uid://cbpv8y8yk575a" path="res://Scenes/maps/finish_line.png" id="14_d7c2n"]
 [ext_resource type="Script" path="res://Scenes/turrets/bombTurret/bombTurret.gd" id="14_fx4dj"]
-[ext_resource type="AudioStream" uid="uid://b5d0a0vwf636h" path="res://Assets/sfx/BombExplosionSound.wav" id="14_igdkt"]
-[ext_resource type="AudioStream" uid="uid://dtgtqfvdj3ge7" path="res://Assets/sfx/speed.wav" id="15_b0bx7"]
-[ext_resource type="AudioStream" uid="uid://dqp7xhptd1q6y" path="res://Assets/sfx/slow.mp3" id="16_n1jl7"]
 [ext_resource type="Script" path="res://Scenes/second_level_trigger.gd" id="19_3y6gl"]
+[ext_resource type="AudioStream" uid="uid://c43k2nbm8ywwb" path="res://Assets/sfx/GameMusic.mp3" id="19_b5klc"]
 [ext_resource type="PackedScene" uid="uid://ck28f8t6kcm4h" path="res://Scenes/maps/map2.tscn" id="19_m5to5"]
 [ext_resource type="Shader" path="res://Scenes/blur_shader.gdshader" id="21_g15t4"]
 [ext_resource type="Script" path="res://Scripts/gui_container.gd" id="21_o88vq"]
@@ -156,27 +150,6 @@ texture = ExtResource("14_d7c2n")
 [node name="PlayerLvl2Loc" type="Node2D" parent="."]
 position = Vector2(21415, -2565)
 
-[node name="Sound" type="Node2D" parent="."]
-script = ExtResource("10_xuskj")
-
-[node name="DartFireSound" type="AudioStreamPlayer2D" parent="Sound"]
-stream = ExtResource("11_wligf")
-
-[node name="BalloonPopSound" type="AudioStreamPlayer2D" parent="Sound"]
-stream = ExtResource("12_5svx4")
-
-[node name="BombExplosionStartSound" type="AudioStreamPlayer2D" parent="Sound"]
-stream = ExtResource("13_3ylvh")
-
-[node name="BombExplosionSound" type="AudioStreamPlayer2D" parent="Sound"]
-stream = ExtResource("14_igdkt")
-
-[node name="SpeedUpSound" type="AudioStreamPlayer2D" parent="Sound"]
-stream = ExtResource("15_b0bx7")
-
-[node name="SlowSound" type="AudioStreamPlayer2D" parent="Sound"]
-stream = ExtResource("16_n1jl7")
-
 [node name="GUILayer" type="CanvasLayer" parent="."]
 script = ExtResource("21_o88vq")
 
@@ -266,6 +239,11 @@ shape = SubResource("RectangleShape2D_4spnr")
 position = Vector2(-10, -10)
 scale = Vector2(0.117462, 0.315524)
 texture = ExtResource("25_ytccu")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("19_b5klc")
+volume_db = -5.0
+autoplay = true
 
 [connection signal="body_entered" from="teleporterArea" to="teleporterArea" method="_on_body_entered"]
 [connection signal="body_entered" from="teleporterArea2" to="teleporterArea2" method="_on_body_entered"]

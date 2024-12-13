@@ -20,7 +20,7 @@ func _on_body_exited(body):
 
 # Function to slow down the player
 func slow_player(body):
-	SignalManager.emit_signal("collected", "slow")
+	$SlowZoneSound.play()
 	body.movement_speed *= slow_factor
 
 # Function to restore the player's speed

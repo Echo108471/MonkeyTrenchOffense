@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://btgqmthyaho0x"]
+[gd_scene load_steps=6 format=3 uid="uid://btgqmthyaho0x"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_c8wp5"]
 [ext_resource type="Texture2D" uid="uid://b7x8een2ft5dn" path="res://Assets/backgrounds/main_menu_background.png" id="1_ncm3b"]
 [ext_resource type="Shader" path="res://Scenes/blur_shader.gdshader" id="2_tdy0b"]
+[ext_resource type="AudioStream" uid="uid://dmfgoc6wg1kr0" path="res://Assets/sfx/TitleScreen.mp3" id="4_ssb1j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_22ax5"]
 shader = ExtResource("2_tdy0b")
@@ -105,6 +106,12 @@ theme_override_font_sizes/font_size = 35
 text = "Made By: War Monkeys"
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[node name="TitleScreenMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_ssb1j")
+volume_db = 7.496
+autoplay = true
+parameters/looping = false
 
 [connection signal="pressed" from="TextureRect/ColorRect/VBoxContainer/StartGameButton" to="TextureRect/ColorRect/VBoxContainer" method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="TextureRect/ColorRect/VBoxContainer/QuitButton" to="TextureRect/ColorRect/VBoxContainer" method="_on_quit_button_pressed"]

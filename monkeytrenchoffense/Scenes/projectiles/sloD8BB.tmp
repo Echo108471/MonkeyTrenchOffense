@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgh7ibrmxxwho"]
+[gd_scene load_steps=4 format=3 uid="uid://cgh7ibrmxxwho"]
 
 [ext_resource type="Script" path="res://slow_area.gd" id="1_ig6te"]
 [ext_resource type="SpriteFrames" uid="uid://djv5uvpfktdlq" path="res://Assets/bullets/bullet2.tres" id="2_dyej3"]
-[ext_resource type="AudioStream" uid="uid://dqp7xhptd1q6y" path="res://Assets/sfx/slow.mp3" id="3_jnss5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e5rd1"]
 radius = 111.072
@@ -22,7 +21,6 @@ autoplay = "default"
 frame_progress = 0.333207
 
 [node name="SlowZoneSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_jnss5")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

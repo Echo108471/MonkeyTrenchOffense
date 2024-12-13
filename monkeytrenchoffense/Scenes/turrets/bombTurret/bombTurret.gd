@@ -48,7 +48,14 @@ func attack():
 				bulletSeeking, bulletSlow, bulletSlowDuration)
 		
 		$"..".add_child(projectile)
-		SignalManager.emit_signal("fired", "bomb_start")
+		$FallingBombSound.play()
+		var timer = Timer.new()
+		add_child(timer)
+		timer.wait_time = 3.3
+		timer.one_shot = true
+		timer.start()
+		await timer.timeout
+		$BombExplosionSound.play()
 	
 	$AnimationPlayer.play("fire")
 

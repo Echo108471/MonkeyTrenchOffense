@@ -145,11 +145,11 @@ _data = {
 "fuse": SubResource("Animation_7fgd1")
 }
 
-[sub_resource type="Gradient" id="Gradient_wmr6u"]
+[sub_resource type="Gradient" id="Gradient_eqr2r"]
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_3g760"]
-gradient = SubResource("Gradient_wmr6u")
+gradient = SubResource("Gradient_eqr2r")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(0.1, 0.1)
