@@ -117,9 +117,9 @@ Assets Used:
   - Balloons:
     - Idle: All balloons have a simple floating animation that bobs up and down.
     - Beast Balloon: It has a shiny particle appearing and disappearing effect to give it a reflective metalice feel
-    - Lead Balloon: It has metal spikes shooting out and disappearing after reaching certain distance
+    - Lead Balloon: It has metal spikes shooting out and disappearing after it gets hit by a sharp projectile
     - Black hole Balloon: Its core is in the middle and there’s a purple aura swirling around
-    - Each balloons have at least 5 frames
+    - Each balloon animation has at least 5 frames
     - Popping effect on death: 15 frames, only shows red balloon since that is the last balloon state after downgrading from taking damage
   - Monkeys:
     - Idle: They are not moving when the player is not inside the detection radius. They only activate once the player steps in
@@ -127,7 +127,7 @@ Assets Used:
   - Projectile:
     - They have no animation, only static visual since it’s already flying straight out
     - Regular dart and icicle
-- All visuals are original, no licenses. I painted them one by one, frame by frame.
+- All visuals are original, no licenses. I painted them one by one, frame by frame. Lead Balloon, Beast Balloon, and Black Hole Balloon designs made by Nathan (Upgrades Planner).
 - Balloons:
 ![redBalloon1](https://github.com/user-attachments/assets/68f6acab-627d-484e-8f53-fb8edc43aff2)
 ![2](https://github.com/user-attachments/assets/5df0fb5e-9ada-4d23-a385-1873ee4c6dc9)
@@ -184,7 +184,7 @@ Implementing the audio system for the game was harder and more time consuming th
 Sound effects are important to our gameplay. If a player cannot hear the projectiles being thrown at them it is much harder to avoid them. With this in mind I designed the sound effects to be distinct from each other so that each tower had its own sound profile. I also picked background music that is more ambient and mellow, so the sound effects are not drowned out. For the soundfont I was inspired by an indie game I like called Golf Story. It has mostly chiptune music, but regular SFX which helps the SFX have contrast with the music.
 
 
-## Gameplay Testing - Richard shi
+## Gameplay Testing - Richard Shi
 
 Due to the tight schedule, our game was not in a state to gather meaningful feedback during the GDAC event. Consequently, I collected feedback from a number of friends, classmates, and roommates during the development process, which contributed to many changes that made their way into the game.
 
@@ -209,7 +209,7 @@ Hitbox size: Initially, the player's hitbox and collision hull were both scaled 
 - After thorough discussion with the team members, we decided to take the classic Bloons TD and put a spin on it. Now the player is the balloon and the towers are monkeys. We also decided to go with non-pixelated, smooth visuals, as Bloons TD does the same.
 - Characters:
   - Balloons: Red, Blue, Green, Beast, Lead, Black Hole
-  - Monkeys: Normal, Ice, TNT
+  - Monkeys: Multishot, Ice, TNT
 - Each monkey type has different tails. Normal monkey has an initial M in its tail, Ice monkey has an initial I in its tail, TNT monkey has TNT in its tail.
   - TNT monkey is holding a TNT on its left hand to give it a more unique look.
   - Normal monkey has the default monkey color, Ice monkey is blue, TNT monkey is red.
