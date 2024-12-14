@@ -36,7 +36,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if not target == null:
 		rotate(get_angle_to(target.position) * delta * swivel)
-	
 
 
 func _on_attack_range_area_entered_proj(area: Area2D) -> void:
@@ -52,9 +51,9 @@ func _on_attack_range_area_entered_proj(area: Area2D) -> void:
 
 
 func _on_attack_range_area_exited_proj(area: Area2D) -> void:
-	if area.get_parent() == %Player:
-		target = null
-		$AttackCooldown.paused = true
+	
+	target = null
+	$AttackCooldown.paused = true
 	
 	queue_redraw()
 
