@@ -6,8 +6,8 @@ In our game you play as a balloon trying to escape evil monkeys that have trappe
 
 ## Project Resources
 
-[Itch IO](https://benyoung32.itch.io/monkey-trench-offense) 
-
+[Itch IO](https://nkotni.itch.io/monkey-trench-offense) or [Itch IO](https://benyoung32.itch.io/monkey-trench-offense)
+(They are two slightly different versions of the game, first link has a very difficult 2nd stage but all intended features complete, second link has more map design elements implemented but not all features).
 [Trailer](https://youtu.be/i8l6JdhSNFc?si=5tn6Pdlufj88c8pC)  
 [Press Kit](https://ryanffrench.github.io/MonkeyTrenchOffense-PressKit/)  
 [Proposal](https://docs.google.com/document/d/1XfRfDoN-Fm2vW_cJ7vQpI7-b4w9EeZ0zoOBdrwvnYzk/edit?tab=t.0#heading=h.i3tv2mxf7h7z)  
