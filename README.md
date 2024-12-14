@@ -6,7 +6,7 @@ In our game you play as a balloon trying to escape evil monkeys that have trappe
 
 ## Project Resources
 
-[Web-playable version of your game.](https://itch.io/)  
+[Itch IO](https://benyoung32.itch.io/monkey-trench-offense) 
 [Trailer](https://youtu.be/i8l6JdhSNFc?si=5tn6Pdlufj88c8pC)  
 [Press Kit](https://ryanffrench.github.io/MonkeyTrenchOffense-PressKit/)  
 [Proposal](https://docs.google.com/document/d/1XfRfDoN-Fm2vW_cJ7vQpI7-b4w9EeZ0zoOBdrwvnYzk/edit?tab=t.0#heading=h.i3tv2mxf7h7z)  
@@ -42,38 +42,35 @@ Good luck, and may you escape the monkeys’ clutches!
 **Add it here if you did work that should be factored into your grade but does not fit easily into the prescribed roles! Please include links to resources and descriptions of game-related material that does not fit into roles here.**
 - Our main roles and subroles that we ended up working on throughout the project development differ somewhat from what this template lays out since we felt for our game there was a different way to split the work fairly with the highest efficiency and structure. 
 Our Main roles and Subroles were as follows:
+
 Eugene Cho - Main Role: Map Design/Level Design, Subrole: Level Feel
+
 Ben Young - Main Role: Movement/Physics, Subrole: Gameplay Feel
+
 Minji Yun - Main Role: Animation/Visuals, Subrole: Narrative Design
+
 Ryan Ffrench - Main Role: Producer, Subrole: Audio/SFX & Presskit/Trailer (Chose two subroles since the main role was a little lighter)
+
 Nathan Kotni - Main Role: Tower/Bloon Upgrades Planning & Powerups Coding, Subrole: Menu/GUI
+
 Richard Shi - Main Role: Entity/Tower Programming, Subrole: Gameplay Testing
+
 *NOTE: Obviously, it would be a little ridiculous to say that each person only contributed to their own role and subrole, there was a lot of collaboration and overlap between roles but it is roughly true that each person contributed more to their listed role than any others. 
 
 
 # External Code, Ideas, and Structure #
 
-- The intellectual guidance we used was more along the lines of the idea for our game coming from a unique twist on an established and well known game, Bloons Tower Defense, which is apparent from our game title intentially being an inverse of it. We definitely did have many unique elements to our game like the format not being a tower defense game at all since you are playing as the Bloon now it is akin to a Bullet Hell style game or even a Dungeon Crawler to an extent, and we also implemented some of our own unique powerups like the Beast Bloon and Black-Hole Bloon, so there was definitely independent thinking put into the game while using BTD as a baseline.
-- We looked at the Godot documentation for guidance in how to implement our vision for the game in code and consulted online forums like Reddit, Stack Exchange, and the Godot Forums for debugging difficult errors that arose (usually through Google searching the error message).
+- We had strong intellectual guidance from Balloons Tower Defense. Making a direct parody helped everyone have a unified vision. It is, however, an entirely different game. The assets, SFX, maps, power-ups, etc. are all new. The gamplay is entirely different, it is not a tower defense game at all since you are playing as the balloon. Our game is more akin to a Bullet Hell style game or a Dungeon Crawler to an extent.
+
+- We looked at the Godot documentation for guidance and consulted various online forums like Reddit, Stack Exchange, and the Godot Forums for debugging difficult errors that arose (usually through Google searching the error message).
 
 
 
 # Main Roles #
 
-Your goal is to relate the work of your role and sub-role in terms of the content of the course. Please look at the role sections below for specific instructions for each role.
-
-Below is a template for you to highlight items of your work. These provide the evidence needed for your work to be evaluated. Try to have at least four such descriptions. They will be assessed on the quality of the underlying system and how they are linked to course content. 
-
-*Short Description* - Long description of your work item that includes how it is relevant to topics discussed in class. [link to evidence in your repository](https://github.com/dr-jam/ECS189L/edit/project-description/ProjectDocumentTemplate.md)
-
-Here is an example:  
-*Procedural Terrain* - The game's background consists of procedurally generated terrain produced with Perlin noise. The game can modify this terrain at run-time via a call to its script methods. The intent is to allow the player to modify the terrain. This system is based on the component design pattern and the procedural content generation portions of the course. [The PCG terrain generation script](https://github.com/dr-jam/CameraControlExercise/blob/513b927e87fc686fe627bf7d4ff6ff841cf34e9f/Obscura/Assets/Scripts/TerrainGenerator.cs#L6).
-
-You should replay any **bold text** with your relevant information. Liberally use the template when necessary and appropriate.
-
 ## Producer - Ryan Ffrench
 
-My group was amazing which made my role as a producer go smoothly. We came up with an idea that is simple to understand, and allowed us to easily come to a consensus on what our game should look and feel like. One of the judges at the game jam even said that it was smart we made a game that was a spin on a preexisting game because so many design decisions had already been made. We were behind going into the first progress report, but this was due to it being Thanksgiving. Understandably people did not get as much work done over this time period as expected. I ensured everyone was on track by checking in with the group in a team group chat. Communication was great. When people had bugs or other issues the entire group did their best to help. The biggest issue we faced as a group was issues with Godot's (nonexistent) Git integration specifically with merge conflicts. We minimized this by using pull requests/different branches initially, and later by pushing only when a significant amount of work had been done and with warning to the rest of the team. I specifically commited my changes late at night with hours of advanced notice. Another notable thing I did was formulate a good quick pitch for our project and come up with a way to present our game in an engaing way that showed off its strengths during the Final Festival. 
+My group was amazing which made my role as a producer go smoothly. We came up with an idea that is simple to understand which allowed us to easily come to a consensus on what our game should look and feel like. One of the judges at the game jam even said that it was smart we made a game that was a spin on a preexisting game because so many design decisions had already been made. We were behind going into the first progress report, but this was due to it being Thanksgiving. Understandably people did not get as much work done as expected. We quickly got back on track and have been working very well together. I ensured everyone was on track by constently checking in with the group asking for brief progress updates. Communication was great. When people had bugs or other issues the entire group did their best to help. The biggest issue we faced as a group was issues with Godot's (nonexistent) Git integration specifically with merge conflicts. We minimized this by using pull requests/different branches initially, and later by pushing only when a significant amount of work had been done and with warning to the rest of the team. I specifically commited my changes late at night with hours of advanced notice. Another notable thing I did was formulate our approach to the Final Festival. We felt that we had the bones of a great game, but that getting the judges to see that was going to be a challenge. I prepared a elevator pitch that enthusiastically and quickly got the idea of our game across, and guided players through the best parts of our game. Overall, because our team worked so well together, this role was easier than anticipated which is why I ended up taking two sub-roles (see below).
 
 
 ## Entity Programming - Richard Shi
@@ -84,14 +81,6 @@ My role was to lay the groundwork and code the foundational behaviors and organi
 *Towers:* I created a [base tower class](https://github.com/Echo108471/MonkeyTrenchOffense/blob/9d3d79b015ef8b90aad342d511616c91e4f7395c/monkeytrenchoffense/Scenes/turrets/turretBase/turret_base.gd#L1) and scene from which the others are derived. The three types of towers ([projectile](https://github.com/Echo108471/MonkeyTrenchOffense/blob/9d3d79b015ef8b90aad342d511616c91e4f7395c/monkeytrenchoffense/Scenes/turrets/projectileTurret/projectileTurret.gd#L1), [slow](https://github.com/Echo108471/MonkeyTrenchOffense/blob/9d3d79b015ef8b90aad342d511616c91e4f7395c/monkeytrenchoffense/Scenes/turrets/slowTurret/slowTurret.gd#L1), and [bomb](https://github.com/Echo108471/MonkeyTrenchOffense/blob/9d3d79b015ef8b90aad342d511616c91e4f7395c/monkeytrenchoffense/Scenes/turrets/bombTurret/bombTurret.gd#L1)) all inherit the core properties of a tower from this parent class (most represented by a list of member variables that can be customized as needed by other game systems such as tower upgrades). This part of my role had relatively notable overlap with other team members given that other systems would need to use/alter behavior of the towers through member variables. Additional note: the vector math for making the projectile turret's customizable spreadshot was particularly challenging when I began to consider making it as robust a solution as possible.
 
 *Projectiles:* I first created a [basic bullet](https://github.com/Echo108471/MonkeyTrenchOffense/blob/9d3d79b015ef8b90aad342d511616c91e4f7395c/monkeytrenchoffense/Scenes/projectiles/bulletBase.gd#L1) to serve as reference. It has the basic functionality of aiming, flying, seeking, damaging, etc. and other such basic behaviors for a projectile. The [bomb bullet](https://github.com/Echo108471/MonkeyTrenchOffense/blob/9d3d79b015ef8b90aad342d511616c91e4f7395c/monkeytrenchoffense/Scenes/projectiles/bulletBomb.gd#L1) inherits from it, though adding/altering timers, signals, the hitbox, and fuse/explosion animations in order to make it blow up in addition to just flying forward like a normal projectile. Also, another team member later helped create a separate icicle bullet using the basic bullet as a template, although in hindsight a more elegant implementation would have been to simply initialize and configure it with a different sprite instead of making a whole new class. This part of my role had relatively little overlap with other team members given that most information would be passed through the turret when calling the configure function.
-
-
-## User Interface and Input
-
-**Describe your user interface and how it relates to gameplay. This can be done via the template.**
-**Describe the default input configuration.**
-
-**Add an entry for each platform or input style your project supports.**
 
 
 ## Movement/Physics -- Ben Young
@@ -223,9 +212,9 @@ Finally, for my physics layer, I implemented it by creating a new independent `T
 
 ## Game Logic
 
-**Document the game states and game data you managed and the design patterns you used to complete your task.**
+Because our game is a simple 2D top-down adventurish game, we didn't need much overhead management for the game state. Each entity keeps track of their own state and actions, and has their own sound players as well. Interaction between the player and enemy projectiles is handled completely collision area signals. 
 
-
+To transition between levels, we used an area trigger to teleport the player to the next area. A trigger is placed at the end of game to trigger the victory screen. 
 
 
 # Sub-Roles
@@ -235,24 +224,36 @@ Finally, for my physics layer, I implemented it by creating a new independent `T
 
 **List your assets, including their sources and licenses.**
 Game Music: "[Mystic Forest](https://youtu.be/sSmseFKxw1I?si=59ohjdtooL_0dEvV)" By HeatleyBros - Free for non commercial use
+
 Title Screen Music: "[8 Bit Beginning](https://www.youtube.com/watch?v=ptlYSrZU_ZU&list=LL&index=2)" By HeatleyBros - Free for non comercial use
+
 Game Over Music: "[8 Bit Evil](https://www.youtube.com/watch?v=sVCeqYmRwJ0&list=LL&index=3)" By HeatleyBros - Free for non comercial use
+
 Game Win Music: "[Level Up Theme Song](https://www.youtube.com/watch?v=TiE9Vvmlxew&list=LL&index=4)" By HeatleyBros - Free for non comercial use
+
 Dart Monkey Sound: "[Dart Sound Effects](https://www.youtube.com/watch?v=FqLYIUOYVgw)" By Sound Effects Store - Copyright Free
+
 Lead Balloon Hit: "[Bullet Hits Metal Ricochet Free Sound Effects](https://www.youtube.com/watch?v=1QUcxXGGRPA&list=LL&index=7)" By Isolation Music - Copyright Free
+
 Balloon Hit: "[Balloon rubbing with hands sound effect stereo HQ 96kHz](https://www.youtube.com/watch?v=Z5EKTfx0GdE&list=LL&index=5)" By Picture to Sound  - Copyright Free
+
 Slow Zone: "[Pop Sound Effects](https://www.youtube.com/watch?v=BYPqS0YPxh8) By Creator Assets - Copyright Free
+
 Bomb Explosion: "[8-Bit Explosion Sound Effects](https://www.youtube.com/watch?v=EA4h8l2zZ1g&list=LL&index=1)" By Creator Assets - Copyright Free
+
 Bomb Fuse: "[Hot Sizzling Sound Effect](https://www.youtube.com/watch?v=viVDNzFZ0GE&list=LL&index=2)" By copyright free sound-effect - Copyright Free
+
 Dash: "[Wind Sound FX](https://www.youtube.com/watch?v=KwGYAfh0K3w)" By Sound FX - Copyright Free
+
 Balloon Pop: "[Balloon Pop Sound Effect](https://www.youtube.com/watch?v=W6dIocG78U8) By Sound Effects Download - Copyright Free
+
 Collectible: "[8-Bit Powerup Sound Effects](https://www.youtube.com/watch?v=SoZhpnTuQBo)" By Creator Assets - Copyright Free
 
 **Describe the implementation of your audio system.**
-Implementing the audio system for the game was harder and more time consuming than it should have been. I initially had an audio system using signals and a SoundManager class similar to exercise #3, but baffling errors resulted in me pivoting to a scene based implementation where every scene has relevant audio nodes attatched. I added a large number of sound effects and a few music tracks. I made sure to pay attention to small details like having a different damage sound when the player is the lead balloon. As for creation, I primarly downloaded royalty free SFX and music tracks I liked from Youtube, and modified them in Audacity.
+Implementing the audio system for the game was harder and more time consuming than it should have been. I initially had an audio system using signals and a SoundManager class similar to exercise #3, but baffling errors resulted in me pivoting to a scene based implementation where every scene has the relevant audio nodes attatched. I added a large number of sound effects and a few music tracks. I made sure to pay attention to small details for example, having a different damage sound when the player is the lead balloon. As for creation, I primarly downloaded royalty free SFX and music tracks I liked from Youtube, and modified them (sometimes extensively) in Audacity.
 
 **Document the sound style.** 
-Sound effects are important to our gameplay. If a player cannot hear the projectiles being thrown at them it is much harder to avoid them. With this in mind I designed the sound effects to be distinct from each other so that each tower had its own sound profile. I also picked background music that is more ambient and mellow, so the sound effects are not drowned out. For the soundfont I was inspired by an indie game I like called Golf Story. It has mostly chiptune music, but regular SFX which helps the SFX have contrast with the music.
+Sound effects are important to our gameplay. If a player cannot hear the projectiles being thrown at them it is much harder to avoid them. With this in mind I designed the sound effects to be distinct from each other so that each tower has its own sound profile. I also picked background music that is more ambient and mellow, so the sound effects are not drowned out. For the soundfont I was inspired by an indie game I like called Golf Story. It has mostly chiptune music, but regular SFX which helps the SFX have contrast with the music.
 
 
 ## Gameplay Testing - Richard Shi
@@ -297,16 +298,16 @@ Hitbox size: Initially, the player's hitbox and collision hull were both scaled 
 
 ## Press Kit and Trailer -- Ryan Ffrench
 
-**Include links to your presskit materials and trailer.**
+[Trailer](https://youtu.be/i8l6JdhSNFc?si=5tn6Pdlufj88c8pC) - Resources used linked in video description and in endcard.
+[Press Kit](https://ryanffrench.github.io/MonkeyTrenchOffense-PressKit/)  
 
 **Describe how you showcased your work. How did you choose what to show in the trailer? Why did you choose your screenshots?**
-For the screenshots and the trailer, I chose the parts of the game that are the coolest. Specifically, I made sure to show off the Bomb Monkey and Ice Monkey. I tried to go for an over the top funny editing style, because it fits with our game well.
+Creating the press kit and trailer was straightforward but time-consuming. For the trailer, I knew I wanted an over-the-top, exaggerated style with so many cuts it almost makes you ill. I came up with a script, toned it down to make it less ridiculous, and then ran it through a text-to-speech website. From there, I took the most visually engaging parts of our game: the action sequences where the player has to dodge projectiles and mashed them together with stock footage of people playing video games. I did my best to make the game look fun and engaging. The trailer is meant to be ligthhearted, our game is a parody after all. For the press kit I was confused as to how to implement the resource linked. I don't have a webserver that I can run php on, so I made a basic website (HTML, CSS) and hosted it on GitHub pages. My methodology for what to feature was largely the same as the trailer. I tried to make the screenshots visually interesting by capturing scenes where many projectiles/enemies are on screen. I found some of the examples from prior years greatly helpful for figuring out how I wanted to format everything and what information to include.
 
 
 
 ## Game Feel and Polish
 
-**Document what you added to and how you tweaked your game to improve its game feel.**
 ### Ben Young
 
 *Bomb Tower "launching"* - Using a bezier curve (found in [GDscript documentation](https://docs.godotengine.org/en/stable/tutorials/math/beziers_and_curves.html)), I was able to simulate a parabolic trajectory for the bomb projectile, [adjusting the scale](https://github.com/Echo108471/MonkeyTrenchOffense/blob/ab6c1c7dbcd23f790b4e8def95486a48109ecc82/monkeytrenchoffense/Scenes/projectiles/bulletBomb.gd#L21) of the sprite to simulate depth in our otherwise 2D game. I also adjusted the movement of the projectile so that it targets the player's position, rather than flying in the direction of the player for a set amount of time, which often resulted in the bomb missing the player completely. This change differentiated the bomb tower and made it more threatening to the player.
