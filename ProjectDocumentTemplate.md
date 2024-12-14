@@ -96,6 +96,7 @@ My role was to lay the groundwork and code the foundational behaviors and organi
 
 **Describe the basics of movement and physics in your game. Is it the standard physics model? What did you change or modify? Did you make your movement scripts that do not use the physics system?**
 
+The main idea behind our movement system is floatyness and   
 ## Animation and Visuals
 
 **List your assets, including their sources and licenses.**

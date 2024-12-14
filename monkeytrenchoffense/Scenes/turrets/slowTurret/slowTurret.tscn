@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bxw4bpqa7mxw7"]
 
-[ext_resource type="Script" path="res://Scenes/turrets/slowTurret/slowTurret.gd" id="1_4ay1g"]
+[ext_resource type="Script" path="res://Scenes/turrets/slowTurret/slow_turret.gd" id="1_4ay1g"]
 [ext_resource type="Texture2D" uid="uid://c485hf8kfjsd5" path="res://Assets/turrets/ice_monke.png" id="2_txw7q"]
 [ext_resource type="AudioStream" uid="uid://dastpv8trx43f" path="res://Assets/sfx/IceMonkeyShoot.wav" id="3_ryjii"]
 
@@ -87,6 +87,6 @@ libraries = {
 [node name="IceDartSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_ryjii")
 
-[connection signal="area_entered" from="AttackRange" to="." method="_on_attack_range_area_entered_slo"]
-[connection signal="area_exited" from="AttackRange" to="." method="_on_attack_range_area_exited_slo"]
+[connection signal="area_entered" from="AttackRange" to="." method="_on_attack_range_area_entered_proj"]
+[connection signal="area_exited" from="AttackRange" to="." method="_on_attack_range_area_exited_proj"]
 [connection signal="timeout" from="AttackCooldown" to="." method="attack"]

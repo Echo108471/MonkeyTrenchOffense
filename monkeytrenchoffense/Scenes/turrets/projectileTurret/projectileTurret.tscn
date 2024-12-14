@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://edmi5jtva5y2"]
 
-[ext_resource type="Script" path="res://Scenes/turrets/projectileTurret/projectileTurret.gd" id="1_7ca8v"]
+[ext_resource type="Script" path="res://Scenes/turrets/projectileTurret/projectile_turret.gd" id="1_7ca8v"]
 [ext_resource type="Texture2D" uid="uid://cm8khuoy83hkl" path="res://Assets/turrets/monke_sprite.png" id="2_o6gwl"]
 [ext_resource type="AudioStream" uid="uid://bkdn7mmaypeux" path="res://Assets/sfx/DartMonkeyShoot.wav" id="3_apulc"]
 

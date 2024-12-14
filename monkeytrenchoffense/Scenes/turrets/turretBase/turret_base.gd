@@ -13,6 +13,12 @@ var bulletTime : float = 1
 var bulletSeeking : bool = false
 var bulletSlow : float = 1.0
 var bulletSlowDuration : float = 0.0
+var max_cone_angle : float = 90
+
+
+var sound:AudioStreamPlayer2D
+var projectile_template:PackedScene
+var _shoot_direction:Vector2
 
 var attack_speed := 1.0:
 	set(value):
@@ -38,5 +44,52 @@ func _process(delta: float) -> void:
 		rotate(get_angle_to(target.position) * delta * swivel)
 	
 
-func attack() -> void:
-	pass
+
+func _on_attack_range_area_entered_proj(area: Area2D) -> void:
+	target = area.get_parent()
+	
+	#this handles the attack timing, and prevents indefinite stalling by going in and out of range
+	if $AttackCooldown.paused:
+		$AttackCooldown.paused = false
+	else:
+		$AttackCooldown.start()
+	
+	queue_redraw()
+
+
+func _on_attack_range_area_exited_proj(area: Area2D) -> void:
+	if area.get_parent() == %Player:
+		target = null
+		$AttackCooldown.paused = true
+	
+	queue_redraw()
+
+
+func attack():
+	if target == null:
+		return
+	
+	var true_direction: Vector2 = $LaunchPoint.global_position.direction_to(target.global_position)
+	#radian representation of working cone angle
+	var cone_angle: float = min((bulletCount-1) * deg_to_rad(20.0), deg_to_rad(max_cone_angle))
+	_shoot_direction = true_direction.rotated(-1 * cone_angle/2)
+	
+	_fire_projectile()
+
+	$AnimationPlayer.play("fire")
+
+
+func _fire_projectile() -> void:
+	var cone_angle: float = min((bulletCount-1) * deg_to_rad(20.0), deg_to_rad(max_cone_angle))
+	for i in bulletCount:
+		var projectile = projectile_template.instantiate()
+		#projectile.direction = $LaunchPoint.global_position.direction_to(target.global_position)
+		projectile.direction = _shoot_direction
+		_shoot_direction = _shoot_direction.rotated( ( cone_angle / max((bulletCount-1), 1) ) )
+		
+		projectile.global_position = $LaunchPoint.global_position
+	
+		projectile.configure(bulletSpeed, bulletSize, bulletDamage, bulletPierce, bulletTime, bulletSeeking, bulletSlow, bulletSlowDuration)
+	
+		$"..".add_child(projectile)
+		sound.play()

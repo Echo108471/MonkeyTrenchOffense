@@ -28,7 +28,6 @@ enum DamageType {
 }
 
 
-
 var dash_multi:float =  2.5 # how much faster the character dashes
 var time_since_dash:float = 10
 
@@ -38,8 +37,8 @@ var acceleration:Vector2 = Vector2.ZERO
 var slow_multi : float = 1.0
 var slow_duration : float = 0.0
 
-# this is the state the player will go to when their current power ends
 var current_power:Power = Power.RED
+# this is the state the player will go to when their current power ends
 var sub_power:Power = Power.DEAD
 var lead_hit_duration:float = 0.0
 var death_flag = false
@@ -47,13 +46,8 @@ var death_flag = false
 #var _max_speed: float = 0
 #var _vel_tween: Tween 
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#$AnimationPlayer.play("RESET")
-	#_vel_tween = create_tween()
 	apply_power_up(Power.RED)
-	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
@@ -82,8 +76,6 @@ func _physics_process(delta: float) -> void:
 		$AnimationPlayer.play("RESET")
 		animation.queue("floating")
 		lead_hit_duration = 0.0
-	
-	
 	
 
 func apply_damage(damage:int, damage_type:DamageType = DamageType.SHARP) -> void:
@@ -134,8 +126,6 @@ func _handle_movement_inputs(delta:float) -> void:
 	if Input.is_action_just_pressed("dash") and \
 			time_since_dash > (dash_recovery + dash_duration):
 		time_since_dash = 0
-		
-		
 	
 	if time_since_dash < dash_duration:
 		#var cur_dash_speed = velocity.length() + movement_speed * dash_multi * (time_since_dash / (dash_duration))
@@ -216,7 +206,6 @@ func apply_power_up(power:Power) -> void:
 			dash_multi = 1.5
 			dash_recovery = 1.5
 			$Sprite2Dplayer.texture = preload("res://Assets/balloon/lead.png")
-			#$Sprite2Dplayer.set_modulate(Color(10, 10, 10, 1))
 		
 		Power.BEAST:
 			hitpoints = 3
@@ -224,12 +213,9 @@ func apply_power_up(power:Power) -> void:
 			movement_speed *= 1.4
 			dash_recovery = 0.05
 			dash_duration *= 1.25
-			#$Sprite2Dplayer.texture = preload("res://Assets/balloon/beast_sprite.png")
-			#$Sprite2Dplayer.texture = ImageTexture.create_from_image(beast_sprite.png)
 			$AnimationPlayer.play("beast_idle")
 			
 		Power.BLACK_HOLE:
-			#print('blackhole')
 			hitpoints = 3
 			sub_power = Power.GREEN
 			$AnimationPlayer.play("black_hole_idle")

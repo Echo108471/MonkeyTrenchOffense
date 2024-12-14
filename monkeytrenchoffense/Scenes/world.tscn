@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bxw4bpqa7mxw7" path="res://Scenes/turrets/slowTurret/slowTurret.tscn" id="10_1hybe"]
 [ext_resource type="PackedScene" uid="uid://dy576ss87vjl" path="res://Scenes/turrets/bombTurret/bombTurret.tscn" id="13_wtiq1"]
 [ext_resource type="Texture2D" uid="uid://cbpv8y8yk575a" path="res://Scenes/maps/finish_line.png" id="14_d7c2n"]
-[ext_resource type="Script" path="res://Scenes/turrets/bombTurret/bombTurret.gd" id="14_fx4dj"]
+[ext_resource type="Script" path="res://Scenes/turrets/bombTurret/bomb_turret.gd" id="14_fx4dj"]
 [ext_resource type="Script" path="res://Scenes/second_level_trigger.gd" id="19_3y6gl"]
 [ext_resource type="AudioStream" uid="uid://c43k2nbm8ywwb" path="res://Assets/sfx/GameMusic.mp3" id="19_b5klc"]
 [ext_resource type="PackedScene" uid="uid://ck28f8t6kcm4h" path="res://Scenes/maps/map2.tscn" id="19_m5to5"]
@@ -253,3 +253,5 @@ autoplay = true
 [connection signal="pressed" from="GUILayer/PausePanel/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButtonGame" to="GUILayer" method="_on_quit_button_game_pressed"]
 [connection signal="pressed" from="GUILayer/PauseContainer/PauseButton" to="GUILayer" method="_on_pause_button_pressed"]
 [connection signal="body_entered" from="GameWonTrigger" to="GameWonTrigger" method="_on_body_entered"]
+
+[editable path="map2"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dy576ss87vjl"]
 
-[ext_resource type="Script" path="res://Scenes/turrets/projectileTurret/projectileTurret.gd" id="1_ta8qp"]
+[ext_resource type="Script" path="res://Scenes/turrets/projectileTurret/projectile_turret.gd" id="1_ta8qp"]
 [ext_resource type="Texture2D" uid="uid://bbe54xo27g1at" path="res://Assets/turrets/tnt_monke.png" id="2_38mk4"]
 [ext_resource type="AudioStream" uid="uid://cbfugihix3p14" path="res://Assets/sfx/FallingBomb.wav" id="3_oob6f"]
 [ext_resource type="AudioStream" uid="uid://b5d0a0vwf636h" path="res://Assets/sfx/BombExplosionSound.wav" id="4_erkrf"]
