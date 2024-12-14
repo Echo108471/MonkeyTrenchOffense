@@ -149,6 +149,65 @@ Assets Used:
 ![image](https://github.com/user-attachments/assets/248f06a0-f7dc-4600-b7fc-46f0d1ca1aae)
 
 
+## Map and Level Design (Eugene Cho)
+
+### Initial Design
+When I was first thinking about the level and map design, I first thought about what kind of level I wanted to design. The theme of our game is to escape a bunch of monkey towers as a balloon, with special abilities. Due to this reversal of the genre, while there are many examples of high-quality tower defense games, such as the Bloons TD games as well as the Kingdom Rush games, many of the map layouts and game design choices, while brilliant for the tower defense genre, are not as applicable in our game, which favors player movement and choice. Especially the Kingdom Rush series, I really admired the creators, Ironhide Games, for their level design. However, design choices such as having multiple branching paths with different spawn points of enemies make for a much more engaging tower defense game, but not so much a reverse tower defense.
+
+Here are some examples of BTD and Kingdom Rush maps below:
+
+![](./example_images/kingdom_rush.png)
+![](./example_images/btd6.png)
+
+Due to this, I began searching through other genres for maps, focusing on games and genres that emphasized movement and map design focused on a single entity. I found inspiration for maps in another one of Ironhide's games, a mobile-focused RTS called *Iron Marines*. *Iron Marines* is unique for an RTS—it’s a single-player campaign-only game, and due to its identity as a mobile-focused game, the design of the levels leans more towards strategic location and map design rather than actions per minute (APM).
+
+Some of my first map designs looked like this:
+![](./example_images/map1_1.png)
+![](./example_images/map1_2.png)
+
+While these were interesting initial designs, the team felt they diverged too far from the original idea of a trench escape game and leaned too much towards a dungeon-crawler-like design. So, including one design that a teammate came up with, I created two levels: one as a simple introductory level to guide the player through the mechanics of the game, and another more complex map intended for players to explore on consecutive attempts.
+
+Initial Designs:
+![](./example_images/initial_design_map2_1.png)
+![](./example_images/initial_design_map2_2.png)
+
+Final Maps:
+![](./example_images/main_map1.png)
+![](./example_images/main_map2.png)
+![](./example_images/main_map2_physics.png)
+
+**Map 1:** The first map was intended to be a beginner-level map with only two split paths, each with varying difficulty. The goal is to provide a simple, easy-to-understand objective for the player: get from the start to the end without dying. The entire map is created using a single asset package, called *Tiny Swords*, which is linked somewhere on this page. Additionally, I designed the towns to act as checkpoints, allowing the player to heal or buy upgrades as part of a progression system. Decoration-wise, the map is organized into a forested area near the top to serve as scenery. Initially, I considered creating another path at the top of the map, but the layout didn’t work well, so I opted for simplicity. Decorations like directional signs help guide the player along the correct path, while an "X" sign discourages players from going the wrong way. These small details tie into the goal of guiding the player subtly.
+
+**Map 2:** The second map is much larger and more complex. With more experience after designing the first map, I was able to organize the layout and save time. The design emphasizes a maze-like structure, offering players multiple paths with varying difficulty. I also aimed to create the impression of different biomes on the map. Whether I succeeded or not is debatable. The biomes include:
+- **Desert biome:** The starting area, with sparse plants and a barren plain.
+- **Cliff biome:** A region representing cliffs by the ocean.
+- **Mountain biome:** A higher elevation area meant to simulate snow (though the asset pack lacked snow-themed tiles).
+- **Valley biome:** The bottom of the map, featuring lakes, wildlife, and a town at the very end.
+
+For this map, I implemented a dedicated physics layer to outline the map's boundaries. Previously, I marked outer tiles as physics layers automatically, but this new approach allowed for greater debugging efficiency. While the decorations weren’t as intentional as in the first map, I chose specific features to help players navigate. For example, instead of scattering trees randomly, I placed a memorable mushroom patch in the bottom-right corner to serve as both aesthetic decoration and a mental checkpoint.
+
+---
+
+### Technical Components
+
+These maps were created using a tileset from an asset pack called *Tiny Swords* to construct a tilemap in Godot. The `TileMapLayer` node was used to design the map layers, allowing for the stacking of multiple layers to create depth and structure. For example, by layering specific tiles (like walls, grass, and objects) on different `TileMapLayer` nodes, you can simulate visual depth and proper overlap for structures and environmental features. This technique is essential for creating a polished look in 2D maps, where different parts of the scene need to interact visually, such as stairs and shadows.
+
+![](./ExampleImages/tilemaplayerimage.png)
+
+Notably, the original `TileMap` node in Godot was deprecated about three months ago as part of an update. This update introduced the `TileMapLayer` node, which added new functionality for managing multiple layers within a single tilemap structure. However, this change created challenges for the project: much of the information available online was outdated and inconsistent, as many tutorials and resources still referenced the old `TileMap` workflow. As a result, learning how to properly implement the new system required additional time and experimentation to align with the updated documentation.
+
+Partway through development, I started using a tool called the autotiler. The autotiler simplifies tile placement by automatically connecting and aligning tiles based on predefined rules. For example, when creating terrain like grass, paths, or walls, the autotiler determines which tile variant to use (e.g., corners, edges, or center pieces) without requiring manual selection. This tool significantly reduced the time required to align specific squares. However, my tilemap didn’t work well initially until Ben, a team member, pointed out that the tile size needed to match the entire tile.
+
+![](./example_images/tile_map.mp4)
+
+For animations, Godot allows you to create an animated tilemap. By creating individual tiles for each frame and setting a time period for each, you can add moving scenery to the layers.
+
+![](./example_images/tile_animation.png)
+
+Finally, for my physics layer, I implemented it by creating a new independent `TileMapLayer` solely focused on defining the physics boundaries. Previously, I defined physics boundaries by assigning them to every border tile in the tileset. While functional, this approach becomes tedious for larger maps and layers. Exceptions (e.g., where players can cross certain borders) are also harder to handle. By creating a dedicated boundary layer, I simplified the process for defining the play space and made debugging more efficient.
+
+
+
 
 ## Game Logic
 
@@ -236,3 +295,82 @@ For the screenshots and the trailer, I chose the parts of the game that are the 
 ## Game Feel and Polish
 
 **Document what you added to and how you tweaked your game to improve its game feel.**
+
+
+
+## Level Feel (Eugene Cho)
+
+
+
+To enhance the level feel of the game, I developed several power-ups and obstacles that players can encounter while traversing the map. These elements aim to add dynamic gameplay interactions and create variety in the player experience.
+
+
+
+### 1. **Speed Coin**
+
+The **Speed Coin** is a power-up that temporarily increases the player's movement speed upon collection. It incentivizes exploration and rewards players for venturing into certain areas of the map. The script works by creating a simple one shot timer that multiplies `player.movement_speed` - the maximum movement speed by a certain amount until the timer ends, where the player speed boost is removed and the node then deleted. Notably, while the speed boost is active, the node just turns invisible, and deletes itself at the end of the timer to avoid giving the player an infinite speed boost.
+
+
+
+- **Scripts**:
+
+  - [Speed Coin `.gd` file](https://github.com/Echo108471/MonkeyTrenchOffense/blob/main/monkeytrenchoffense/Scenes/projectiles/power_up_coin.gd)
+
+- **Scene**:
+
+  - [Speed Coin `.tscn` file](https://github.com/Echo108471/MonkeyTrenchOffense/blob/main/monkeytrenchoffense/Scenes/projectiles/power_up_coin.tscn)
+
+
+
+---
+
+
+
+### 2. **Slow Area**
+
+The **Slow Area** is an obstacle that reduces the player's movement speed when they enter its range. This mechanic introduces strategic planning to avoid slowing down in critical moments, adding a layer of challenge to navigation. The slow area works very similarly to the speed boost coin, where instead of speeding, it slows down the player whenever they enter the `Area2D`.
+
+
+
+- **Scripts**:
+
+  - [Slow Area `.gd` file](https://github.com/Echo108471/MonkeyTrenchOffense/blob/main/monkeytrenchoffense/Scenes/projectiles/slow_area.gd)
+
+- **Scene**:
+
+  - [Slow Area `.tscn` file](https://github.com/Echo108471/MonkeyTrenchOffense/blob/main/monkeytrenchoffense/Scenes/projectiles/slow_area.tscn)
+
+
+
+---
+
+
+
+### 3. **TNT**
+
+The **TNT** obstacle is an explosive hazard that can explode and damage the player after a countdown if a player comes near. It adds tension and forces careful movement in areas where TNT is placed. The TNT is a simple one shot timer, that starts when the player enters a certain area around the TNT. After the timer is over, the TNT calculates the distance from the player, and if the distance is within a certain amount, the player receives damage.
+
+
+
+- **Scripts**:
+
+  - [TNT `.gd` file](https://github.com/Echo108471/MonkeyTrenchOffense/blob/main/monkeytrenchoffense/Scenes/projectiles/tnt.gd)
+
+- **Scene**:
+
+  - [TNT `.tscn` file](https://github.com/Echo108471/MonkeyTrenchOffense/blob/main/monkeytrenchoffense/Scenes/projectiles/tnt.tscn)
+
+---
+
+### 4. **Map Teleporter**
+
+I additionally implemented a map teleporter that teleports the player automatically to the next stage when the player enters a certain zone. This works almost exactly like the cutscene starter from the command exercise, where the player is automatically teleported to a certain position.
+
+
+- **Scripts**:
+
+  - [second_level_trigger `.gd` file](https://github.com/Echo108471/MonkeyTrenchOffense/blob/main/monkeytrenchoffense/Scripts/second_level_trigger.gd)
+
+
+
+
