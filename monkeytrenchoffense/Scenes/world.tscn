@@ -40,6 +40,24 @@ position = Vector2(-629, -865)
 [node name="map2" parent="." instance=ExtResource("19_m5to5")]
 position = Vector2(21412, -2655)
 
+[node name="Dart1" parent="map2/Tower" index="1"]
+bulletCount = 1
+bulletSize = 1.0
+bulletDamage = 0
+swivel = 5.0
+
+[node name="Dart2" parent="map2/Tower" index="2"]
+bulletCount = 1
+bulletSize = 1.0
+bulletDamage = 0
+swivel = 5.0
+
+[node name="Dart3" parent="map2/Tower" index="4"]
+bulletCount = 1
+bulletSize = 1.0
+bulletDamage = 0
+swivel = 5.0
+
 [node name="Player" parent="." instance=ExtResource("1_kuixu")]
 unique_name_in_owner = true
 z_index = 2
@@ -83,12 +101,12 @@ shape = SubResource("WorldBoundaryShape2D_5exwf")
 disabled = true
 
 [node name="DartMonkey" parent="." instance=ExtResource("4_bho38")]
-position = Vector2(1661, -429)
-scale = Vector2(2, 2)
+position = Vector2(1625, -450)
+bulletSize = 10.0
+bulletSeeking = true
 
 [node name="SlowMonkey" parent="." instance=ExtResource("10_1hybe")]
 position = Vector2(1146, -450)
-scale = Vector2(2, 2)
 
 [node name="TNT" parent="." instance=ExtResource("5_jwuhp")]
 position = Vector2(-1068, -632)
@@ -103,11 +121,9 @@ scale = Vector2(2, 2)
 
 [node name="DartMonkey2" parent="." instance=ExtResource("4_bho38")]
 position = Vector2(2728, -392)
-scale = Vector2(2, 2)
 
 [node name="SlowMonkey2" parent="." instance=ExtResource("10_1hybe")]
 position = Vector2(2236, -452)
-scale = Vector2(2, 2)
 
 [node name="BombMonkey" parent="." instance=ExtResource("13_wtiq1")]
 position = Vector2(-206, -300)

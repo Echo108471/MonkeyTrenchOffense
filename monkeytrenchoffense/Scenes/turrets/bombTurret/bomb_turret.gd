@@ -3,18 +3,7 @@ extends Turret
 
 
 func _ready() -> void:
-	swivel = 3 #bomb turrent slow
-	attack_range = 600.0
-	attack_speed = 0.5
-	
-	bulletCount = 1
-	
-	bulletSize = 2.5
-	bulletDamage = 10
-	
-	bulletTime  = 4
-	bulletSeeking = false
-	
+	super()
 	projectile_template = preload("res://Scenes/projectiles/bulletBomb.tscn")
 	sound = $FallingBombSound
 	
@@ -22,10 +11,12 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	super(delta)
 
+
 func _draw() -> void:
 	#if a target is within range, display that range
 	if target != null:
 		draw_circle(Vector2.ZERO, attack_range, Color.DIM_GRAY, false, 2.0)
+
 
 func _fire_projectile() -> void:
 	var cone_angle: float = min((bulletCount-1) * deg_to_rad(20.0), deg_to_rad(max_cone_angle))
@@ -39,7 +30,8 @@ func _fire_projectile() -> void:
 	
 		projectile.configure(bulletSpeed, bulletSize, bulletDamage, bulletPierce, bulletTime, bulletSeeking, bulletSlow, bulletSlowDuration)
 	
-		$"..".add_child(projectile)
+		get_tree().current_scene.add_child(projectile)
+		sound.play()
 		var timer = Timer.new()
 		add_child(timer)
 		timer.wait_time = 3.3

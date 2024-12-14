@@ -3,40 +3,34 @@ extends Node2D
 
 var target:Player = null #probably lock to the player?
 
-var bulletCount : int = 1
+@export var bulletCount : int = 1
 
-var bulletSpeed : float = 400.0
-var bulletSize : float = 1.0
-var bulletDamage : int = 0
-var bulletPierce : int = 1
-var bulletTime : float = 1
-var bulletSeeking : bool = false
-var bulletSlow : float = 1.0
-var bulletSlowDuration : float = 0.0
-var max_cone_angle : float = 90
+@export var bulletSpeed : float = 400.0
+@export var bulletSize : float = 1.0
+@export var bulletDamage : int = 0
+@export var bulletPierce : int = 1
+@export var bulletTime : float = 1
+@export var bulletSeeking : bool = false
+@export var bulletSlow : float = 0
+@export var bulletSlowDuration : float = 0.0
+@export var max_cone_angle : float = 90
 
+@export var attack_speed := 1.0
+@export var attack_range := 300.0
+@export var damage := 1.0
+@export var swivel : float = 5
 
 var sound:AudioStreamPlayer2D
 var projectile_template:PackedScene
 var _shoot_direction:Vector2
 
-var attack_speed := 1.0:
-	set(value):
-		attack_speed = value
-		$AttackCooldown.wait_time = 1.0/value
-var attack_range := 1.0:
-	set(value):
-		attack_range = value
-		$AttackRange/CollisionShape2D.shape.radius = value
-var damage := 1.0
-var swivel : float = 5
  #the agility with which the turret rotates
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	$AttackRange/CollisionShape2D.shape.radius = attack_range
+	$AttackCooldown.wait_time = 1.0/attack_speed
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -83,13 +77,14 @@ func _fire_projectile() -> void:
 	var cone_angle: float = min((bulletCount-1) * deg_to_rad(20.0), deg_to_rad(max_cone_angle))
 	for i in bulletCount:
 		var projectile = projectile_template.instantiate()
-		#projectile.direction = $LaunchPoint.global_position.direction_to(target.global_position)
+
 		projectile.direction = _shoot_direction
 		_shoot_direction = _shoot_direction.rotated( ( cone_angle / max((bulletCount-1), 1) ) )
 		
 		projectile.global_position = $LaunchPoint.global_position
 	
-		projectile.configure(bulletSpeed, bulletSize, bulletDamage, bulletPierce, bulletTime, bulletSeeking, bulletSlow, bulletSlowDuration)
+		projectile.configure(bulletSpeed, bulletSize, bulletDamage, bulletPierce, 
+				bulletTime, bulletSeeking, bulletSlow, bulletSlowDuration)
 	
-		$"..".add_child(projectile)
+		get_tree().current_scene.add_child(projectile)
 		sound.play()

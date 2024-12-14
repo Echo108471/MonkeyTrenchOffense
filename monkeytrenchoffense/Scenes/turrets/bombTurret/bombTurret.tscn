@@ -50,7 +50,14 @@ _data = {
 }
 
 [node name="Turret" type="Node2D"]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_ta8qp")
+bulletSize = 2.5
+bulletDamage = 10
+bulletTime = 4.0
+attack_speed = 0.5
+attack_range = 600.0
+swivel = 3.0
 
 [node name="Monkey" type="Sprite2D" parent="."]
 z_index = 2
