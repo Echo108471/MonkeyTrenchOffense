@@ -176,16 +176,15 @@ Final Maps:
 ![](./example_images/main_map2.png)
 ![](./example_images/main_map2_physics.png)
 
-**Map 1:** The first map was intended to be a beginner-level map with only two split paths, each with varying difficulty. The goal is to provide a simple, easy-to-understand objective for the player: get from the start to the end without dying. The entire map is created using a single asset package, called *Tiny Swords*, which is linked somewhere on this page. Additionally, I designed the towns to act as checkpoints, allowing the player to heal or buy upgrades as part of a progression system. Decoration-wise, the map is organized into a forested area near the top to serve as scenery. Initially, I considered creating another path at the top of the map, but the layout didn’t work well, so I opted for simplicity. Decorations like directional signs help guide the player along the correct path, while an "X" sign discourages players from going the wrong way. These small details tie into the goal of guiding the player subtly.
+**Map 1:** The first map was intended to be a beginner level one, with only two split paths, with varying difficulty for each path. The goal is to make a simple, easy to understand goal for the player: get from the start to the end without dying. The entire map is made with a single asset package, called tiny swords, which should be linked somewhat on this page. Additionally, I intended the towns to act as a checkpoint for the player, allowing them to heal or buy upgrades to act as a progression system for the player. Decoration wise, I organized the map into a forested area near the top as a form of decoration and scenery. Initially, the intention was to create another path at the top of the map as well, but the layout just wasn't working out enough, so I decided to go simpler with the layout. Decoration wise, I additionally added two signs into each of the paths to indicate the player in the correct direction, as well as a X sign if the player decides to start going the opposite direction. While these are small details that are likely to go unnoticed, I did still believe they tie into guiding the player in the correct direction.
 
 **Map 2:** The second map is much larger and more complex. With more experience after designing the first map, I was able to organize the layout and save time. The design emphasizes a maze-like structure, offering players multiple paths with varying difficulty. I also aimed to create the impression of different biomes on the map. Whether I succeeded or not is debatable. The biomes include:
 - **Desert biome:** The starting area, with sparse plants and a barren plain.
 - **Cliff biome:** A region representing cliffs by the ocean.
-- **Mountain biome:** A higher elevation area meant to simulate snow (though the asset pack lacked snow-themed tiles).
-- **Valley biome:** The bottom of the map, featuring lakes, wildlife, and a town at the very end.
+- **Mountain biome:** A higher elevation area meant to serve as a high mountaintop
+- **Valley biome:** The bottom of the map, reflecting a valley featuring lakes, wildlife, and a town at the very end.
 
-For this map, I implemented a dedicated physics layer to outline the map's boundaries. Previously, I marked outer tiles as physics layers automatically, but this new approach allowed for greater debugging efficiency. While the decorations weren’t as intentional as in the first map, I chose specific features to help players navigate. For example, instead of scattering trees randomly, I placed a memorable mushroom patch in the bottom-right corner to serve as both aesthetic decoration and a mental checkpoint.
-
+Additionally, on this map I created a dedicated physics layer to draw out the bounds of the entire tilemap. In my previous map, I achieved it by automatically marking outer tiles as physics layers, but I found that having a dedicated tilemaplayer for physics was nice and made it much easier to debug. There is not as much intention behind the decorations, but I did choose certain decorations to be more memorable for the player to remember. Instead of making a bunch of trees scattered around for example, I created a mushroom patch near the bottom right of the map to serve aesthetic and almost as a mental checkpoint.
 ---
 
 ### Technical Components
@@ -196,11 +195,11 @@ These maps were created using a tileset from an asset pack called *Tiny Swords* 
 
 Notably, the original `TileMap` node in Godot was deprecated about three months ago as part of an update. This update introduced the `TileMapLayer` node, which added new functionality for managing multiple layers within a single tilemap structure. However, this change created challenges for the project: much of the information available online was outdated and inconsistent, as many tutorials and resources still referenced the old `TileMap` workflow. As a result, learning how to properly implement the new system required additional time and experimentation to align with the updated documentation.
 
-Partway through development, I started using a tool called the autotiler. The autotiler simplifies tile placement by automatically connecting and aligning tiles based on predefined rules. For example, when creating terrain like grass, paths, or walls, the autotiler determines which tile variant to use (e.g., corners, edges, or center pieces) without requiring manual selection. This tool significantly reduced the time required to align specific squares. However, my tilemap didn’t work well initially until Ben, a team member, pointed out that the tile size needed to match the entire tile.
+Part of the way through development, I started using a tool called the autotiler. The autotiler is a feature in Godot that simplifies the tile placement process by automatically connecting and aligning tiles based on predefined rules. For example, when creating terrain like grass, paths, or walls, the autotiler can determine which tile variant to use (e.g., corners, edges, or center pieces) without requiring manual selection for each placement. This tool is very helpful for drawing tilemaps, and significantly reduced the time required to align specific squares to each other. However, while functional, my tilemap did not work super well until Ben, a member on my team helped me realize that the tile size needs to be the size of the entire tile.
 
 ![](./example_images/tile_map.mp4)
 
-For animations, Godot allows you to create an animated tilemap. By creating individual tiles for each frame and setting a time period for each, you can add moving scenery to the layers.
+For animations, Godot has a way to create an animation tilemap, where by creating individual tiles to every single frame and setting a time period to each frame, you can create an animation with a tileset and add moving scenery into the layer
 
 ![](./example_images/tile_animation.png)
 
