@@ -5,13 +5,13 @@
 [ext_resource type="AudioStream" uid="uid://dtgtqfvdj3ge7" path="res://Assets/sfx/speed.wav" id="3_dg5s6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dgw8g"]
-radius = 11.0
+radius = 12.0
 
 [node name="power_up_coin" type="Area2D"]
 script = ExtResource("1_7pk4m")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(2.25, 2.25)
+scale = Vector2(2.75, 2.75)
 sprite_frames = ExtResource("1_40ipm")
 autoplay = "default"
 frame_progress = 0.525399
