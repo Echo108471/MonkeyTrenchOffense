@@ -42,19 +42,27 @@ Good luck, and may you escape the monkeys’ clutches!
 **Add it here if you did work that should be factored into your grade but does not fit easily into the prescribed roles! Please include links to resources and descriptions of game-related material that does not fit into roles here.**
 - Our main roles and subroles that we ended up working on throughout the project development differ somewhat from what this template lays out since we felt for our game there was a different way to split the work fairly with the highest efficiency and structure. 
 Our Main roles and Subroles were as follows:
+
 Eugene Cho - Main Role: Map Design/Level Design, Subrole: Level Feel
+
 Ben Young - Main Role: Movement/Physics, Subrole: Gameplay Feel
+
 Minji Yun - Main Role: Animation/Visuals, Subrole: Narrative Design
+
 Ryan Ffrench - Main Role: Producer, Subrole: Audio/SFX & Presskit/Trailer (Chose two subroles since the main role was a little lighter)
+
 Nathan Kotni - Main Role: Tower/Bloon Upgrades Planning & Powerups Coding, Subrole: Menu/GUI
+
 Richard Shi - Main Role: Entity/Tower Programming, Subrole: Gameplay Testing
+
 *NOTE: Obviously, it would be a little ridiculous to say that each person only contributed to their own role and subrole, there was a lot of collaboration and overlap between roles but it is roughly true that each person contributed more to their listed role than any others. 
 
 
 # External Code, Ideas, and Structure #
 
-- The intellectual guidance we used was more along the lines of the idea for our game coming from a unique twist on an established and well known game, Bloons Tower Defense, which is apparent from our game title intentially being an inverse of it. We definitely did have many unique elements to our game like the format not being a tower defense game at all since you are playing as the Bloon now it is akin to a Bullet Hell style game or even a Dungeon Crawler to an extent, and we also implemented some of our own unique powerups like the Beast Bloon and Black-Hole Bloon, so there was definitely independent thinking put into the game while using BTD as a baseline.
-- We looked at the Godot documentation for guidance in how to implement our vision for the game in code and consulted online forums like Reddit, Stack Exchange, and the Godot Forums for debugging difficult errors that arose (usually through Google searching the error message).
+- We had strong intellectual guidance from Balloons Tower Defense. Making a direct parody helped everyone have a unified vision. It is, however, an entirely different game. The assets, SFX, maps, power-ups, etc. are all new. The gamplay is entirely different, it is not a tower defense game at all since you are playing as the balloon. Our game is more akin to a Bullet Hell style game or a Dungeon Crawler to an extent.
+
+- We looked at the Godot documentation for guidance and consulted various online forums like Reddit, Stack Exchange, and the Godot Forums for debugging difficult errors that arose (usually through Google searching the error message).
 
 
 
@@ -73,7 +81,7 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 ## Producer - Ryan Ffrench
 
-My group was amazing which made my role as a producer go smoothly. We came up with an idea that is simple to understand, and allowed us to easily come to a consensus on what our game should look and feel like. One of the judges at the game jam even said that it was smart we made a game that was a spin on a preexisting game because so many design decisions had already been made. We were behind going into the first progress report, but this was due to it being Thanksgiving. Understandably people did not get as much work done over this time period as expected. I ensured everyone was on track by checking in with the group in a team group chat. Communication was great. When people had bugs or other issues the entire group did their best to help. The biggest issue we faced as a group was issues with Godot's (nonexistent) Git integration specifically with merge conflicts. We minimized this by using pull requests/different branches initially, and later by pushing only when a significant amount of work had been done and with warning to the rest of the team. I specifically commited my changes late at night with hours of advanced notice. Another notable thing I did was formulate a good quick pitch for our project and come up with a way to present our game in an engaing way that showed off its strengths during the Final Festival. 
+My group was amazing which made my role as a producer go smoothly. We came up with an idea that is simple to understand which allowed us to easily come to a consensus on what our game should look and feel like. One of the judges at the game jam even said that it was smart we made a game that was a spin on a preexisting game because so many design decisions had already been made. We were behind going into the first progress report, but this was due to it being Thanksgiving. Understandably people did not get as much work done as expected. We quickly got back on track and have been working very well together. I ensured everyone was on track by constently checking in with the group asking for brief progress updates. Communication was great. When people had bugs or other issues the entire group did their best to help. The biggest issue we faced as a group was issues with Godot's (nonexistent) Git integration specifically with merge conflicts. We minimized this by using pull requests/different branches initially, and later by pushing only when a significant amount of work had been done and with warning to the rest of the team. I specifically commited my changes late at night with hours of advanced notice. Another notable thing I did was formulate our approach to the Final Festival. We felt that we had the bones of a great game, but that getting the judges to see that was going to be a challenge. I prepared a elevator pitch that enthusiastically and quickly got the idea of our game across, and guided players through the best parts of our game. Overall, because our team worked so well together, this role was easier than anticipated which is why I ended up taking two sub-roles (see below).
 
 
 ## Entity Programming - Richard Shi
@@ -235,24 +243,36 @@ Finally, for my physics layer, I implemented it by creating a new independent `T
 
 **List your assets, including their sources and licenses.**
 Game Music: "[Mystic Forest](https://youtu.be/sSmseFKxw1I?si=59ohjdtooL_0dEvV)" By HeatleyBros - Free for non commercial use
+
 Title Screen Music: "[8 Bit Beginning](https://www.youtube.com/watch?v=ptlYSrZU_ZU&list=LL&index=2)" By HeatleyBros - Free for non comercial use
+
 Game Over Music: "[8 Bit Evil](https://www.youtube.com/watch?v=sVCeqYmRwJ0&list=LL&index=3)" By HeatleyBros - Free for non comercial use
+
 Game Win Music: "[Level Up Theme Song](https://www.youtube.com/watch?v=TiE9Vvmlxew&list=LL&index=4)" By HeatleyBros - Free for non comercial use
+
 Dart Monkey Sound: "[Dart Sound Effects](https://www.youtube.com/watch?v=FqLYIUOYVgw)" By Sound Effects Store - Copyright Free
+
 Lead Balloon Hit: "[Bullet Hits Metal Ricochet Free Sound Effects](https://www.youtube.com/watch?v=1QUcxXGGRPA&list=LL&index=7)" By Isolation Music - Copyright Free
+
 Balloon Hit: "[Balloon rubbing with hands sound effect stereo HQ 96kHz](https://www.youtube.com/watch?v=Z5EKTfx0GdE&list=LL&index=5)" By Picture to Sound  - Copyright Free
+
 Slow Zone: "[Pop Sound Effects](https://www.youtube.com/watch?v=BYPqS0YPxh8) By Creator Assets - Copyright Free
+
 Bomb Explosion: "[8-Bit Explosion Sound Effects](https://www.youtube.com/watch?v=EA4h8l2zZ1g&list=LL&index=1)" By Creator Assets - Copyright Free
+
 Bomb Fuse: "[Hot Sizzling Sound Effect](https://www.youtube.com/watch?v=viVDNzFZ0GE&list=LL&index=2)" By copyright free sound-effect - Copyright Free
+
 Dash: "[Wind Sound FX](https://www.youtube.com/watch?v=KwGYAfh0K3w)" By Sound FX - Copyright Free
+
 Balloon Pop: "[Balloon Pop Sound Effect](https://www.youtube.com/watch?v=W6dIocG78U8) By Sound Effects Download - Copyright Free
+
 Collectible: "[8-Bit Powerup Sound Effects](https://www.youtube.com/watch?v=SoZhpnTuQBo)" By Creator Assets - Copyright Free
 
 **Describe the implementation of your audio system.**
-Implementing the audio system for the game was harder and more time consuming than it should have been. I initially had an audio system using signals and a SoundManager class similar to exercise #3, but baffling errors resulted in me pivoting to a scene based implementation where every scene has relevant audio nodes attatched. I added a large number of sound effects and a few music tracks. I made sure to pay attention to small details like having a different damage sound when the player is the lead balloon. As for creation, I primarly downloaded royalty free SFX and music tracks I liked from Youtube, and modified them in Audacity.
+Implementing the audio system for the game was harder and more time consuming than it should have been. I initially had an audio system using signals and a SoundManager class similar to exercise #3, but baffling errors resulted in me pivoting to a scene based implementation where every scene has the relevant audio nodes attatched. I added a large number of sound effects and a few music tracks. I made sure to pay attention to small details for example, having a different damage sound when the player is the lead balloon. As for creation, I primarly downloaded royalty free SFX and music tracks I liked from Youtube, and modified them (sometimes extensively) in Audacity.
 
 **Document the sound style.** 
-Sound effects are important to our gameplay. If a player cannot hear the projectiles being thrown at them it is much harder to avoid them. With this in mind I designed the sound effects to be distinct from each other so that each tower had its own sound profile. I also picked background music that is more ambient and mellow, so the sound effects are not drowned out. For the soundfont I was inspired by an indie game I like called Golf Story. It has mostly chiptune music, but regular SFX which helps the SFX have contrast with the music.
+Sound effects are important to our gameplay. If a player cannot hear the projectiles being thrown at them it is much harder to avoid them. With this in mind I designed the sound effects to be distinct from each other so that each tower has its own sound profile. I also picked background music that is more ambient and mellow, so the sound effects are not drowned out. For the soundfont I was inspired by an indie game I like called Golf Story. It has mostly chiptune music, but regular SFX which helps the SFX have contrast with the music.
 
 
 ## Gameplay Testing - Richard Shi
@@ -297,10 +317,11 @@ Hitbox size: Initially, the player's hitbox and collision hull were both scaled 
 
 ## Press Kit and Trailer -- Ryan Ffrench
 
-**Include links to your presskit materials and trailer.**
+[Trailer](https://youtu.be/i8l6JdhSNFc?si=5tn6Pdlufj88c8pC) - Resources used linked in video description and in endcard.
+[Press Kit](https://ryanffrench.github.io/MonkeyTrenchOffense-PressKit/)  
 
 **Describe how you showcased your work. How did you choose what to show in the trailer? Why did you choose your screenshots?**
-For the screenshots and the trailer, I chose the parts of the game that are the coolest. Specifically, I made sure to show off the Bomb Monkey and Ice Monkey. I tried to go for an over the top funny editing style, because it fits with our game well.
+Creating the press kit and trailer was straightforward but time-consuming. For the trailer, I knew I wanted an over-the-top, exaggerated style with so many cuts it almost makes you ill. I came up with a script, toned it down to make it less ridiculous, and then ran it through a text-to-speech website. From there, I took the most visually engaging parts of our game: the action sequences where the player has to dodge projectiles and mashed them together with stock footage of people playing video games. I did my best to make the game look fun and engaging. The trailer is meant to be ligthhearted, our game is a parody after all. For the press kit I was confused as to how to implement the resource linked. I don't have a webserver that I can run php on, so I made a basic website (HTML, CSS) and hosted it on GitHub pages. My methodology for what to feature was largely the same as the trailer. I tried to make the screenshots visually interesting by capturing scenes where many projectiles/enemies are on screen. I found some of the examples from prior years greatly helpful for figuring out how I wanted to format everything and what information to include.
 
 
 
