@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://ckif3yq5e4tqq"]
+
+[ext_resource type="Texture2D" uid="uid://dft47d0gbltu1" path="res://Assets/bullets/upgradeCoin.png" id="1_h28pt"]
+[ext_resource type="AudioStream" uid="uid://dtgtqfvdj3ge7" path="res://Assets/sfx/speed.wav" id="2_jkkym"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fou3b"]
+radius = 43.1856
+
+[node name="Node2D" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1, 0.91939)
+shape = SubResource("CircleShape2D_fou3b")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_h28pt")
+
+[node name="CollectingUpgradeSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_jkkym")
+pitch_scale = 3.0

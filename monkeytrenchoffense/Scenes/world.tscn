@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://bc51wm18jfnhw"]
+[gd_scene load_steps=44 format=4 uid="uid://bc51wm18jfnhw"]
 
 [ext_resource type="PackedScene" uid="uid://bufty5f1wpw7x" path="res://Scenes/player/player.tscn" id="1_kuixu"]
 [ext_resource type="PackedScene" uid="uid://bo8dwygo4att7" path="res://Scenes/maps/map1.tscn" id="1_memt1"]
@@ -26,8 +26,17 @@
 [ext_resource type="Script" path="res://Scripts/level_1_label.gd" id="23_woyt1"]
 [ext_resource type="Script" path="res://Scripts/game_won_trigger.gd" id="24_202jv"]
 [ext_resource type="Script" path="res://Scripts/level_2_label.gd" id="24_btah6"]
+[ext_resource type="Texture2D" uid="uid://qbamibn8h8m7" path="res://Assets/gui/underBlackHoleBar.png" id="25_xf5fn"]
 [ext_resource type="Texture2D" uid="uid://dyi61fp6lsurw" path="res://Scenes/maps/finish_line_final.png" id="25_ytccu"]
+[ext_resource type="Texture2D" uid="uid://b37v7hyj0geca" path="res://Assets/gui/progressBlackHoleBar.png" id="26_8q24k"]
 [ext_resource type="Texture2D" uid="uid://byobgth0lqk6r" path="res://Assets/Keys/keys.png" id="26_prnle"]
+[ext_resource type="Script" path="res://Scripts/black_hole_bar.gd" id="27_5au3u"]
+[ext_resource type="Texture2D" uid="uid://bq8omdo0rqqfd" path="res://Assets/balloon/lead.png" id="28_o3nuy"]
+[ext_resource type="Script" path="res://Scripts/input_upgrade.gd" id="28_sx20c"]
+[ext_resource type="Texture2D" uid="uid://dgejvxeoypgds" path="res://Assets/balloon/beastBloon.png" id="29_720t6"]
+[ext_resource type="PackedScene" uid="uid://ckif3yq5e4tqq" path="res://Scenes/projectiles/upgrade_coin.tscn" id="29_aqxgr"]
+[ext_resource type="Texture2D" uid="uid://c0qgfu8vdjv3r" path="res://Assets/balloon/blackHoleBloon.png" id="30_fkmdb"]
+[ext_resource type="Script" path="res://Scenes/projectiles/upgrade_coin.gd" id="33_lrvqp"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5exwf"]
 
@@ -170,6 +179,952 @@ position = Vector2(-629, -865)
 [node name="map2" parent="." instance=ExtResource("19_m5to5")]
 position = Vector2(9504, -1823)
 
+[node name="Bomb1" parent="map2/Tower" index="0"]
+position = Vector2(2559, 2700)
+
+[node name="Bomb2" parent="map2/Tower" index="1" instance=ExtResource("13_wtiq1")]
+position = Vector2(2559, 2434)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb3" parent="map2/Tower" index="2" instance=ExtResource("13_wtiq1")]
+position = Vector2(2551, 2180)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb4" parent="map2/Tower" index="3" instance=ExtResource("13_wtiq1")]
+position = Vector2(2546, 1922)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb5" parent="map2/Tower" index="4" instance=ExtResource("13_wtiq1")]
+position = Vector2(2539, 1746)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb6" parent="map2/Tower" index="5" instance=ExtResource("13_wtiq1")]
+position = Vector2(3765, 444)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb7" parent="map2/Tower" index="6" instance=ExtResource("13_wtiq1")]
+position = Vector2(3546, 1493)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb8" parent="map2/Tower" index="7" instance=ExtResource("13_wtiq1")]
+position = Vector2(3000, 1547)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb9" parent="map2/Tower" index="8" instance=ExtResource("13_wtiq1")]
+position = Vector2(3180, 2059)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb10" parent="map2/Tower" index="9" instance=ExtResource("13_wtiq1")]
+position = Vector2(3177, 2372)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb11" parent="map2/Tower" index="10" instance=ExtResource("13_wtiq1")]
+position = Vector2(3181, 2636)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb12" parent="map2/Tower" index="11" instance=ExtResource("13_wtiq1")]
+position = Vector2(3170, 1805)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb13" parent="map2/Tower" index="12" instance=ExtResource("13_wtiq1")]
+position = Vector2(2763, 1554)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb14" parent="map2/Tower" index="13" instance=ExtResource("13_wtiq1")]
+position = Vector2(3142, 1550)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb15" parent="map2/Tower" index="14" instance=ExtResource("13_wtiq1")]
+position = Vector2(2881, 1529)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb16" parent="map2/Tower" index="15" instance=ExtResource("13_wtiq1")]
+position = Vector2(2665, 1602)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb17" parent="map2/Tower" index="16" instance=ExtResource("13_wtiq1")]
+position = Vector2(3951, 451)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb18" parent="map2/Tower" index="17" instance=ExtResource("13_wtiq1")]
+position = Vector2(4148, 453)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb19" parent="map2/Tower" index="18" instance=ExtResource("13_wtiq1")]
+position = Vector2(4482, 556)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb20" parent="map2/Tower" index="19" instance=ExtResource("13_wtiq1")]
+position = Vector2(4720, 678)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb21" parent="map2/Tower" index="20" instance=ExtResource("13_wtiq1")]
+position = Vector2(4806, 856)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb22" parent="map2/Tower" index="21" instance=ExtResource("13_wtiq1")]
+position = Vector2(4810, 1012)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb23" parent="map2/Tower" index="22" instance=ExtResource("13_wtiq1")]
+position = Vector2(4814, 1179)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb24" parent="map2/Tower" index="23" instance=ExtResource("13_wtiq1")]
+position = Vector2(4383, 1728)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb25" parent="map2/Tower" index="24" instance=ExtResource("13_wtiq1")]
+position = Vector2(4751, 5753)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb26" parent="map2/Tower" index="25" instance=ExtResource("13_wtiq1")]
+position = Vector2(4616, 5202)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb27" parent="map2/Tower" index="26" instance=ExtResource("13_wtiq1")]
+position = Vector2(4177, 5175)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb28" parent="map2/Tower" index="27" instance=ExtResource("13_wtiq1")]
+position = Vector2(3542, 6087)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb29" parent="map2/Tower" index="28" instance=ExtResource("13_wtiq1")]
+position = Vector2(4593, 5940)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb30" parent="map2/Tower" index="29" instance=ExtResource("13_wtiq1")]
+position = Vector2(4480, 6087)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb31" parent="map2/Tower" index="30" instance=ExtResource("13_wtiq1")]
+position = Vector2(3718, 6202)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb32" parent="map2/Tower" index="31" instance=ExtResource("13_wtiq1")]
+position = Vector2(3914, 6246)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb33" parent="map2/Tower" index="32" instance=ExtResource("13_wtiq1")]
+position = Vector2(4292, 6207)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb34" parent="map2/Tower" index="33" instance=ExtResource("13_wtiq1")]
+position = Vector2(3807, 6513)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb35" parent="map2/Tower" index="34" instance=ExtResource("13_wtiq1")]
+position = Vector2(3937, 6756)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb36" parent="map2/Tower" index="35" instance=ExtResource("13_wtiq1")]
+position = Vector2(4385, 6460)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb37" parent="map2/Tower" index="36" instance=ExtResource("13_wtiq1")]
+position = Vector2(4449, 6541)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb38" parent="map2/Tower" index="37" instance=ExtResource("13_wtiq1")]
+position = Vector2(4650, 6600)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb39" parent="map2/Tower" index="38" instance=ExtResource("13_wtiq1")]
+position = Vector2(3986, 6825)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb40" parent="map2/Tower" index="39" instance=ExtResource("13_wtiq1")]
+position = Vector2(4760, 6619)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb41" parent="map2/Tower" index="40" instance=ExtResource("13_wtiq1")]
+position = Vector2(4400, 6158)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb42" parent="map2/Tower" index="41" instance=ExtResource("13_wtiq1")]
+position = Vector2(4554, 6009)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb43" parent="map2/Tower" index="42" instance=ExtResource("13_wtiq1")]
+position = Vector2(4667, 5835)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb44" parent="map2/Tower" index="43" instance=ExtResource("13_wtiq1")]
+position = Vector2(3988, 6244)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb45" parent="map2/Tower" index="44" instance=ExtResource("13_wtiq1")]
+position = Vector2(3819, 6219)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb46" parent="map2/Tower" index="45" instance=ExtResource("13_wtiq1")]
+position = Vector2(3628, 6155)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb47" parent="map2/Tower" index="46" instance=ExtResource("13_wtiq1")]
+position = Vector2(3900, 6079)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb48" parent="map2/Tower" index="47" instance=ExtResource("13_wtiq1")]
+position = Vector2(4351, 5988)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb49" parent="map2/Tower" index="48" instance=ExtResource("13_wtiq1")]
+position = Vector2(4390, 5821)
+script = ExtResource("14_fx4dj")
+
+[node name="Bomb50" parent="map2/Tower" index="49" instance=ExtResource("13_wtiq1")]
+position = Vector2(3905, 5968)
+script = ExtResource("14_fx4dj")
+
+[node name="Slow2" parent="map2/Tower" index="51" instance=ExtResource("10_1hybe")]
+position = Vector2(1391, 2159)
+
+[node name="Slow3" parent="map2/Tower" index="52" instance=ExtResource("10_1hybe")]
+position = Vector2(1037, 2282)
+
+[node name="Slow4" parent="map2/Tower" index="53" instance=ExtResource("10_1hybe")]
+position = Vector2(1393, 1712)
+
+[node name="Slow5" parent="map2/Tower" index="54" instance=ExtResource("10_1hybe")]
+position = Vector2(803, 994)
+
+[node name="Slow6" parent="map2/Tower" index="55" instance=ExtResource("10_1hybe")]
+position = Vector2(1988, 2000)
+
+[node name="Slow7" parent="map2/Tower" index="56" instance=ExtResource("10_1hybe")]
+position = Vector2(3554, 1874)
+
+[node name="Slow8" parent="map2/Tower" index="57" instance=ExtResource("10_1hybe")]
+position = Vector2(3197, 3810)
+
+[node name="Slow9" parent="map2/Tower" index="58" instance=ExtResource("10_1hybe")]
+position = Vector2(2985, 3812)
+
+[node name="Slow10" parent="map2/Tower" index="59" instance=ExtResource("10_1hybe")]
+position = Vector2(2734, 3808)
+
+[node name="Slow11" parent="map2/Tower" index="60" instance=ExtResource("10_1hybe")]
+position = Vector2(2481, 3812)
+
+[node name="Slow12" parent="map2/Tower" index="61" instance=ExtResource("10_1hybe")]
+position = Vector2(2258, 3814)
+
+[node name="Slow13" parent="map2/Tower" index="62" instance=ExtResource("10_1hybe")]
+position = Vector2(2059, 3985)
+
+[node name="Slow14" parent="map2/Tower" index="63" instance=ExtResource("10_1hybe")]
+position = Vector2(2063, 4169)
+
+[node name="Slow15" parent="map2/Tower" index="64" instance=ExtResource("10_1hybe")]
+position = Vector2(2061, 3823)
+
+[node name="Slow16" parent="map2/Tower" index="65" instance=ExtResource("10_1hybe")]
+position = Vector2(3430, 3823)
+
+[node name="Slow17" parent="map2/Tower" index="66" instance=ExtResource("10_1hybe")]
+position = Vector2(3441, 4029)
+
+[node name="Slow18" parent="map2/Tower" index="67" instance=ExtResource("10_1hybe")]
+position = Vector2(3439, 4243)
+
+[node name="Slow19" parent="map2/Tower" index="68" instance=ExtResource("10_1hybe")]
+position = Vector2(3276, 4395)
+
+[node name="Slow20" parent="map2/Tower" index="69" instance=ExtResource("10_1hybe")]
+position = Vector2(2179, 4378)
+
+[node name="Slow21" parent="map2/Tower" index="70" instance=ExtResource("10_1hybe")]
+position = Vector2(2387, 4376)
+
+[node name="Slow22" parent="map2/Tower" index="71" instance=ExtResource("10_1hybe")]
+position = Vector2(2614, 4406)
+
+[node name="Slow23" parent="map2/Tower" index="72" instance=ExtResource("10_1hybe")]
+position = Vector2(2826, 4391)
+
+[node name="Slow24" parent="map2/Tower" index="73" instance=ExtResource("10_1hybe")]
+position = Vector2(3023, 4393)
+
+[node name="Slow25" parent="map2/Tower" index="74" instance=ExtResource("10_1hybe")]
+position = Vector2(3561, 2043)
+
+[node name="Slow26" parent="map2/Tower" index="75" instance=ExtResource("10_1hybe")]
+position = Vector2(3537, 1308)
+
+[node name="Slow27" parent="map2/Tower" index="76" instance=ExtResource("10_1hybe")]
+position = Vector2(3670, 1569)
+
+[node name="Slow28" parent="map2/Tower" index="77" instance=ExtResource("10_1hybe")]
+position = Vector2(3679, 1781)
+
+[node name="Slow29" parent="map2/Tower" index="78" instance=ExtResource("10_1hybe")]
+position = Vector2(3739, 840)
+
+[node name="Slow30" parent="map2/Tower" index="79" instance=ExtResource("10_1hybe")]
+position = Vector2(4097, 861)
+
+[node name="Slow31" parent="map2/Tower" index="80" instance=ExtResource("10_1hybe")]
+position = Vector2(4249, 855)
+
+[node name="Slow32" parent="map2/Tower" index="81" instance=ExtResource("10_1hybe")]
+position = Vector2(4360, 971)
+
+[node name="Slow33" parent="map2/Tower" index="82" instance=ExtResource("10_1hybe")]
+position = Vector2(4377, 1140)
+
+[node name="Slow34" parent="map2/Tower" index="83" instance=ExtResource("10_1hybe")]
+position = Vector2(4381, 1294)
+
+[node name="Slow35" parent="map2/Tower" index="84" instance=ExtResource("10_1hybe")]
+position = Vector2(4400, 1905)
+
+[node name="Slow36" parent="map2/Tower" index="85" instance=ExtResource("10_1hybe")]
+position = Vector2(4747, 1988)
+
+[node name="Slow37" parent="map2/Tower" index="86" instance=ExtResource("10_1hybe")]
+position = Vector2(4748, 1823)
+
+[node name="Slow38" parent="map2/Tower" index="87" instance=ExtResource("10_1hybe")]
+position = Vector2(4759, 2974)
+
+[node name="Slow39" parent="map2/Tower" index="88" instance=ExtResource("10_1hybe")]
+position = Vector2(4417, 3126)
+
+[node name="Slow40" parent="map2/Tower" index="89" instance=ExtResource("10_1hybe")]
+position = Vector2(4406, 2961)
+
+[node name="Slow41" parent="map2/Tower" index="90" instance=ExtResource("10_1hybe")]
+position = Vector2(4755, 3141)
+
+[node name="Slow42" parent="map2/Tower" index="91" instance=ExtResource("10_1hybe")]
+position = Vector2(4414, 3319)
+
+[node name="Slow43" parent="map2/Tower" index="92" instance=ExtResource("10_1hybe")]
+position = Vector2(4738, 3351)
+
+[node name="Slow44" parent="map2/Tower" index="93" instance=ExtResource("10_1hybe")]
+position = Vector2(4423, 3514)
+
+[node name="Slow45" parent="map2/Tower" index="94" instance=ExtResource("10_1hybe")]
+position = Vector2(4744, 3535)
+
+[node name="Slow46" parent="map2/Tower" index="95" instance=ExtResource("10_1hybe")]
+position = Vector2(4532, 3535)
+
+[node name="Slow47" parent="map2/Tower" index="96" instance=ExtResource("10_1hybe")]
+position = Vector2(4517, 3385)
+
+[node name="Slow48" parent="map2/Tower" index="97" instance=ExtResource("10_1hybe")]
+position = Vector2(4661, 3394)
+
+[node name="Slow49" parent="map2/Tower" index="98" instance=ExtResource("10_1hybe")]
+position = Vector2(4663, 3533)
+
+[node name="Slow50" parent="map2/Tower" index="99" instance=ExtResource("10_1hybe")]
+position = Vector2(4402, 3773)
+
+[node name="Slow51" parent="map2/Tower" index="100" instance=ExtResource("10_1hybe")]
+position = Vector2(4766, 3797)
+
+[node name="Slow52" parent="map2/Tower" index="101" instance=ExtResource("10_1hybe")]
+position = Vector2(4419, 3977)
+
+[node name="Slow53" parent="map2/Tower" index="102" instance=ExtResource("10_1hybe")]
+position = Vector2(4809, 3941)
+
+[node name="Slow54" parent="map2/Tower" index="103" instance=ExtResource("10_1hybe")]
+position = Vector2(4428, 4224)
+
+[node name="Slow55" parent="map2/Tower" index="104" instance=ExtResource("10_1hybe")]
+position = Vector2(4640, 4218)
+
+[node name="Slow56" parent="map2/Tower" index="105" instance=ExtResource("10_1hybe")]
+position = Vector2(4820, 4220)
+
+[node name="Slow57" parent="map2/Tower" index="106" instance=ExtResource("10_1hybe")]
+position = Vector2(5002, 3952)
+
+[node name="Slow58" parent="map2/Tower" index="107" instance=ExtResource("10_1hybe")]
+position = Vector2(5178, 3935)
+
+[node name="Slow59" parent="map2/Tower" index="108" instance=ExtResource("10_1hybe")]
+position = Vector2(5266, 4076)
+
+[node name="Slow60" parent="map2/Tower" index="109" instance=ExtResource("10_1hybe")]
+position = Vector2(5279, 4232)
+
+[node name="Slow61" parent="map2/Tower" index="110" instance=ExtResource("10_1hybe")]
+position = Vector2(4661, 6313)
+
+[node name="Slow62" parent="map2/Tower" index="111" instance=ExtResource("10_1hybe")]
+position = Vector2(4619, 6340)
+
+[node name="Slow63" parent="map2/Tower" index="112" instance=ExtResource("10_1hybe")]
+position = Vector2(4604, 6367)
+
+[node name="Slow64" parent="map2/Tower" index="113" instance=ExtResource("10_1hybe")]
+position = Vector2(4565, 6396)
+
+[node name="Slow65" parent="map2/Tower" index="114" instance=ExtResource("10_1hybe")]
+position = Vector2(4528, 6416)
+
+[node name="Slow66" parent="map2/Tower" index="115" instance=ExtResource("10_1hybe")]
+position = Vector2(3484, 6369)
+
+[node name="Slow67" parent="map2/Tower" index="116" instance=ExtResource("10_1hybe")]
+position = Vector2(3528, 6394)
+
+[node name="Slow68" parent="map2/Tower" index="117" instance=ExtResource("10_1hybe")]
+position = Vector2(3557, 6409)
+
+[node name="Slow69" parent="map2/Tower" index="118" instance=ExtResource("10_1hybe")]
+position = Vector2(3608, 6429)
+
+[node name="Slow70" parent="map2/Tower" index="119" instance=ExtResource("10_1hybe")]
+position = Vector2(3647, 6451)
+
+[node name="Slow71" parent="map2/Tower" index="120" instance=ExtResource("10_1hybe")]
+position = Vector2(3992, 6520)
+
+[node name="Slow72" parent="map2/Tower" index="121" instance=ExtResource("10_1hybe")]
+position = Vector2(4281, 6503)
+
+[node name="Slow73" parent="map2/Tower" index="122" instance=ExtResource("10_1hybe")]
+position = Vector2(4335, 6557)
+
+[node name="Slow74" parent="map2/Tower" index="123" instance=ExtResource("10_1hybe")]
+position = Vector2(4034, 6577)
+
+[node name="Slow75" parent="map2/Tower" index="124" instance=ExtResource("10_1hybe")]
+position = Vector2(4056, 6614)
+
+[node name="Slow76" parent="map2/Tower" index="125" instance=ExtResource("10_1hybe")]
+position = Vector2(4365, 6597)
+
+[node name="Slow77" parent="map2/Tower" index="126" instance=ExtResource("10_1hybe")]
+position = Vector2(4083, 6680)
+
+[node name="Slow78" parent="map2/Tower" index="127" instance=ExtResource("10_1hybe")]
+position = Vector2(4399, 6663)
+
+[node name="Slow79" parent="map2/Tower" index="128" instance=ExtResource("10_1hybe")]
+position = Vector2(4110, 6727)
+
+[node name="Slow80" parent="map2/Tower" index="129" instance=ExtResource("10_1hybe")]
+position = Vector2(4436, 6712)
+
+[node name="Slow81" parent="map2/Tower" index="130" instance=ExtResource("10_1hybe")]
+position = Vector2(4130, 6773)
+
+[node name="Slow82" parent="map2/Tower" index="131" instance=ExtResource("10_1hybe")]
+position = Vector2(4174, 6824)
+
+[node name="Slow83" parent="map2/Tower" index="132" instance=ExtResource("10_1hybe")]
+position = Vector2(4238, 6893)
+
+[node name="Slow84" parent="map2/Tower" index="133" instance=ExtResource("10_1hybe")]
+position = Vector2(4245, 6418)
+
+[node name="Slow85" parent="map2/Tower" index="134" instance=ExtResource("10_1hybe")]
+position = Vector2(4321, 6928)
+
+[node name="Slow86" parent="map2/Tower" index="135" instance=ExtResource("10_1hybe")]
+position = Vector2(4292, 6908)
+
+[node name="Slow87" parent="map2/Tower" index="136" instance=ExtResource("10_1hybe")]
+position = Vector2(4495, 6732)
+
+[node name="Slow88" parent="map2/Tower" index="137" instance=ExtResource("10_1hybe")]
+position = Vector2(4556, 6730)
+
+[node name="Slow89" parent="map2/Tower" index="138" instance=ExtResource("10_1hybe")]
+position = Vector2(4387, 6938)
+
+[node name="Slow90" parent="map2/Tower" index="139" instance=ExtResource("10_1hybe")]
+position = Vector2(4434, 6938)
+
+[node name="Slow91" parent="map2/Tower" index="140" instance=ExtResource("10_1hybe")]
+position = Vector2(4478, 6940)
+
+[node name="Slow92" parent="map2/Tower" index="141" instance=ExtResource("10_1hybe")]
+position = Vector2(4635, 6719)
+
+[node name="Slow93" parent="map2/Tower" index="142" instance=ExtResource("10_1hybe")]
+position = Vector2(4601, 6719)
+
+[node name="Slow94" parent="map2/Tower" index="143" instance=ExtResource("10_1hybe")]
+position = Vector2(4354, 6940)
+
+[node name="Slow95" parent="map2/Tower" index="144" instance=ExtResource("10_1hybe")]
+position = Vector2(4535, 6942)
+
+[node name="Slow96" parent="map2/Tower" index="145" instance=ExtResource("10_1hybe")]
+position = Vector2(4555, 6942)
+
+[node name="Slow97" parent="map2/Tower" index="146" instance=ExtResource("10_1hybe")]
+position = Vector2(4202, 6851)
+
+[node name="Slow98" parent="map2/Tower" index="147" instance=ExtResource("10_1hybe")]
+position = Vector2(4621, 6949)
+
+[node name="Slow99" parent="map2/Tower" index="148" instance=ExtResource("10_1hybe")]
+position = Vector2(4589, 6937)
+
+[node name="Slow100" parent="map2/Tower" index="149" instance=ExtResource("10_1hybe")]
+position = Vector2(4655, 6937)
+
+[node name="Turret" parent="map2" index="3"]
+position = Vector2(915, 2159)
+
+[node name="Turret2" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(804, 1729)
+
+[node name="Turret3" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(818, 1461)
+
+[node name="Turret4" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(821, 1219)
+
+[node name="Turret5" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(1396, 1400)
+
+[node name="Turret6" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(1418, 1044)
+
+[node name="Turret7" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(1342, 405)
+
+[node name="Turret8" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2132, 2478)
+
+[node name="Turret9" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(1677, 3577)
+
+[node name="Turret10" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2250, 3519)
+
+[node name="Turret11" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(1686, 3752)
+
+[node name="Turret12" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(1688, 3943)
+
+[node name="Turret13" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(1478, 4085)
+
+[node name="Turret14" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2524, 3526)
+
+[node name="Turret15" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2788, 3539)
+
+[node name="Turret16" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3039, 3537)
+
+[node name="Turret17" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3262, 3539)
+
+[node name="Turret18" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3746, 3614)
+
+[node name="Turret19" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3767, 3818)
+
+[node name="Turret20" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(1641, 4229)
+
+[node name="Turret21" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(1810, 4298)
+
+[node name="Turret22" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3760, 4109)
+
+[node name="Turret23" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3771, 4362)
+
+[node name="Turret24" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(1909, 4591)
+
+[node name="Turret25" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(1688, 4608)
+
+[node name="Turret26" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(1821, 4449)
+
+[node name="Turret27" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2102, 4653)
+
+[node name="Turret28" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2645, 4681)
+
+[node name="Turret29" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2215, 4760)
+
+[node name="Turret30" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2500, 4764)
+
+[node name="Turret31" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2802, 4681)
+
+[node name="Turret32" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2950, 4685)
+
+[node name="Turret33" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3113, 4694)
+
+[node name="Turret34" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3298, 4690)
+
+[node name="Turret35" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3495, 4703)
+
+[node name="Turret36" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3782, 4611)
+
+[node name="Turret37" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2222, 4875)
+
+[node name="Turret38" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2518, 4875)
+
+[node name="Turret39" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2214, 4976)
+
+[node name="Turret40" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2516, 4967)
+
+[node name="Turret41" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2231, 5068)
+
+[node name="Turret42" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2514, 5079)
+
+[node name="Turret43" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2231, 5163)
+
+[node name="Turret44" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2514, 5176)
+
+[node name="Turret45" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2229, 5268)
+
+[node name="Turret46" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2514, 5268)
+
+[node name="Turret47" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2216, 5356)
+
+[node name="Turret48" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2531, 5358)
+
+[node name="Turret49" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2220, 5452)
+
+[node name="Turret50" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2526, 5450)
+
+[node name="Turret51" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2226, 5546)
+
+[node name="Turret52" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2222, 5634)
+
+[node name="Turret53" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2233, 5726)
+
+[node name="Turret54" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2308, 5737)
+
+[node name="Turret55" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2387, 5733)
+
+[node name="Turret56" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2466, 5731)
+
+[node name="Turret57" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2556, 5733)
+
+[node name="Turret58" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2637, 5733)
+
+[node name="Turret59" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2731, 5731)
+
+[node name="Turret60" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2607, 5502)
+
+[node name="Turret61" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2701, 5502)
+
+[node name="Turret62" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2802, 5504)
+
+[node name="Turret63" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2886, 5504)
+
+[node name="Turret64" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2987, 5502)
+
+[node name="Turret65" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3088, 5504)
+
+[node name="Turret66" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2827, 5735)
+
+[node name="Turret67" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2913, 5735)
+
+[node name="Turret68" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3177, 5493)
+
+[node name="Turret69" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2995, 5729)
+
+[node name="Turret70" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3276, 5498)
+
+[node name="Turret71" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3064, 5734)
+
+[node name="Turret72" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3141, 5730)
+
+[node name="Turret73" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3218, 5739)
+
+[node name="Turret74" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3302, 5739)
+
+[node name="Turret75" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3371, 5737)
+
+[node name="Turret76" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3358, 5501)
+
+[node name="Turret77" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3452, 5503)
+
+[node name="Turret78" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3803, 4725)
+
+[node name="Turret79" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3807, 4783)
+
+[node name="Turret80" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3588, 4832)
+
+[node name="Turret81" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3588, 4922)
+
+[node name="Turret82" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3815, 4875)
+
+[node name="Turret83" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3599, 5021)
+
+[node name="Turret84" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3833, 4974)
+
+[node name="Turret85" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3608, 5113)
+
+[node name="Turret86" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3839, 5083)
+
+[node name="Turret87" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3603, 5207)
+
+[node name="Turret88" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3552, 4746)
+
+[node name="Turret89" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3591, 5312)
+
+[node name="Turret90" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3589, 5404)
+
+[node name="Turret91" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3533, 5462)
+
+[node name="Turret92" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3777, 4504)
+
+[node name="Turret93" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3777, 4253)
+
+[node name="Turret94" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3775, 4431)
+
+[node name="Turret95" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3766, 4165)
+
+[node name="Turret96" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3787, 4658)
+
+[node name="Turret97" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3766, 4015)
+
+[node name="Turret98" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3777, 4555)
+
+[node name="Turret99" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3771, 4300)
+
+[node name="Turret100" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3771, 3936)
+
+[node name="Turret101" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3769, 3880)
+
+[node name="Turret102" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3760, 3745)
+
+[node name="Turret103" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3758, 3687)
+
+[node name="Turret104" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3771, 4231)
+
+[node name="Turret105" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3769, 4053)
+
+[node name="Turret106" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3769, 3993)
+
+[node name="Turret107" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3844, 5154)
+
+[node name="Turret108" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3825, 4926)
+
+[node name="Turret109" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3834, 5025)
+
+[node name="Turret110" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3821, 4834)
+
+[node name="Turret111" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3442, 4688)
+
+[node name="Turret112" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3391, 4690)
+
+[node name="Turret113" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3350, 4690)
+
+[node name="Turret114" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3249, 4690)
+
+[node name="Turret115" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3189, 4688)
+
+[node name="Turret116" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3050, 4686)
+
+[node name="Turret117" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3005, 4684)
+
+[node name="Turret118" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2911, 4686)
+
+[node name="Turret119" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2864, 4686)
+
+[node name="Turret120" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2753, 4686)
+
+[node name="Turret121" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2702, 4686)
+
+[node name="Turret122" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2597, 4684)
+
+[node name="Turret123" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(2531, 4708)
+
+[node name="Turret124" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(4651, 6153)
+
+[node name="Turret125" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(4609, 6229)
+
+[node name="Turret126" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(4548, 6273)
+
+[node name="Turret127" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(4494, 6317)
+
+[node name="Turret128" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(4433, 6346)
+
+[node name="Turret129" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(4347, 6356)
+
+[node name="Turret130" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(4408, 6356)
+
+[node name="Turret131" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(4285, 6354)
+
+[node name="Turret132" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3506, 6207)
+
+[node name="Turret133" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3580, 6261)
+
+[node name="Turret134" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3538, 6232)
+
+[node name="Turret135" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3619, 6293)
+
+[node name="Turret136" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3673, 6327)
+
+[node name="Turret137" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3732, 6361)
+
+[node name="Turret138" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3779, 6371)
+
+[node name="Turret139" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3828, 6388)
+
+[node name="Turret140" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3877, 6388)
+
+[node name="Turret141" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3924, 6398)
+
+[node name="Turret142" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3975, 6403)
+
+[node name="Turret143" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(4029, 6403)
+
+[node name="Turret144" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(4237, 6371)
+
+[node name="Turret145" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(4325, 6354)
+
+[node name="Turret146" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(4482, 6339)
+
+[node name="Turret147" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(4582, 6248)
+
+[node name="Turret148" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(3881, 6642)
+
+[node name="Turret149" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(4072, 6901)
+
+[node name="Turret150" parent="map2" instance=ExtResource("4_bho38")]
+position = Vector2(4547, 6627)
+
 [node name="Player" parent="." instance=ExtResource("1_kuixu")]
 unique_name_in_owner = true
 z_index = 2
@@ -221,14 +1176,14 @@ bulletSeeking = true
 position = Vector2(1146, -450)
 
 [node name="TNT" parent="." instance=ExtResource("5_jwuhp")]
-position = Vector2(-1068, -632)
+position = Vector2(-729, -577)
 scale = Vector2(2, 2)
 
 [node name="SlowArea" parent="." instance=ExtResource("6_4oscd")]
 position = Vector2(1151, 0)
 
 [node name="power_up_coin" parent="." instance=ExtResource("7_csl7t")]
-position = Vector2(-652, -266)
+position = Vector2(-1089, -621)
 scale = Vector2(2, 2)
 
 [node name="DartMonkey2" parent="." instance=ExtResource("4_bho38")]
@@ -443,6 +1398,133 @@ theme_override_font_sizes/font_size = 50
 text = "LEVEL 2: Reach the Golden Finish Line"
 script = ExtResource("24_btah6")
 
+[node name="MarginContainer4" type="MarginContainer" parent="GUILayer"]
+offset_right = 40.0
+offset_bottom = 156.0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 180
+
+[node name="BlackHoleBar" type="TextureProgressBar" parent="GUILayer/MarginContainer4"]
+visible = false
+layout_mode = 2
+value = 100.0
+fill_mode = 3
+texture_under = ExtResource("25_xf5fn")
+texture_progress = ExtResource("26_8q24k")
+script = ExtResource("27_5au3u")
+
+[node name="InputUpgrade" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("28_sx20c")
+
+[node name="ChooseUpgradePanel" type="ColorRect" parent="InputUpgrade"]
+process_mode = 3
+material = SubResource("ShaderMaterial_u7w6x")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+
+[node name="CenterContainer" type="CenterContainer" parent="InputUpgrade/ChooseUpgradePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="InputUpgrade/ChooseUpgradePanel/CenterContainer"]
+custom_minimum_size = Vector2(512, 256)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="InputUpgrade/ChooseUpgradePanel/CenterContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="HBoxContainer" type="HBoxContainer" parent="InputUpgrade/ChooseUpgradePanel/CenterContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="LeadBloonContainer" type="VBoxContainer" parent="InputUpgrade/ChooseUpgradePanel/CenterContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="LeadBloonButton" type="TextureButton" parent="InputUpgrade/ChooseUpgradePanel/CenterContainer/PanelContainer/MarginContainer/HBoxContainer/LeadBloonContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("28_o3nuy")
+
+[node name="LeadBloonLabel" type="Label" parent="InputUpgrade/ChooseUpgradePanel/CenterContainer/PanelContainer/MarginContainer/HBoxContainer/LeadBloonContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.903598, 0.903598, 0.903598, 1)
+theme_override_colors/font_shadow_color = Color(0.0885599, 0.0885599, 0.0885599, 1)
+theme_override_colors/font_outline_color = Color(0.0846899, 0.0846899, 0.0846899, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 4
+theme_override_font_sizes/font_size = 35
+text = "Lead Balloon"
+
+[node name="VSeparator" type="VSeparator" parent="InputUpgrade/ChooseUpgradePanel/CenterContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="BeastBloonContainer" type="VBoxContainer" parent="InputUpgrade/ChooseUpgradePanel/CenterContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="BeastBloonButton" type="TextureButton" parent="InputUpgrade/ChooseUpgradePanel/CenterContainer/PanelContainer/MarginContainer/HBoxContainer/BeastBloonContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("29_720t6")
+
+[node name="BeastBloonLabel" type="Label" parent="InputUpgrade/ChooseUpgradePanel/CenterContainer/PanelContainer/MarginContainer/HBoxContainer/BeastBloonContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.91664, 0.91664, 0.91664, 1)
+theme_override_colors/font_shadow_color = Color(0.0728426, 0.0728426, 0.0728426, 1)
+theme_override_colors/font_outline_color = Color(0.0768358, 0.0768358, 0.0768358, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 4
+theme_override_font_sizes/font_size = 35
+text = "Beast Balloon"
+
+[node name="VSeparator2" type="VSeparator" parent="InputUpgrade/ChooseUpgradePanel/CenterContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+
+[node name="BlackHoleBloonContainer" type="VBoxContainer" parent="InputUpgrade/ChooseUpgradePanel/CenterContainer/PanelContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="BlackHoleBloonButton" type="TextureButton" parent="InputUpgrade/ChooseUpgradePanel/CenterContainer/PanelContainer/MarginContainer/HBoxContainer/BlackHoleBloonContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+texture_normal = ExtResource("30_fkmdb")
+
+[node name="BlackHoleBloonLabel" type="Label" parent="InputUpgrade/ChooseUpgradePanel/CenterContainer/PanelContainer/MarginContainer/HBoxContainer/BlackHoleBloonContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.962546, 0.962546, 0.962546, 1)
+theme_override_colors/font_shadow_color = Color(0.122252, 0.122252, 0.122252, 1)
+theme_override_colors/font_outline_color = Color(0.0687983, 0.0687983, 0.0687983, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/shadow_offset_y = 4
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_outline_size = 4
+theme_override_font_sizes/font_size = 35
+text = "Black Hole 
+Balloon"
+
 [node name="GameWonTrigger" type="Area2D" parent="."]
 position = Vector2(14753, 4949)
 script = ExtResource("24_202jv")
@@ -495,6 +1577,46 @@ offset_bottom = 613.5
 text = "(Cheats Only)
 Cycle power"
 
+[node name="UpgradeCoin1" parent="." instance=ExtResource("29_aqxgr")]
+position = Vector2(-1354, -480)
+script = ExtResource("33_lrvqp")
+
+[node name="UpgradeCoin2" parent="." instance=ExtResource("29_aqxgr")]
+position = Vector2(2903, 505)
+script = ExtResource("33_lrvqp")
+
+[node name="UpgradeCoin3" parent="." instance=ExtResource("29_aqxgr")]
+position = Vector2(1103, -826)
+script = ExtResource("33_lrvqp")
+
+[node name="UpgradeCoinLvTwo1" parent="." instance=ExtResource("29_aqxgr")]
+position = Vector2(10629, -1813)
+script = ExtResource("33_lrvqp")
+
+[node name="UpgradeCoinLvTwo2" parent="." instance=ExtResource("29_aqxgr")]
+position = Vector2(12259, 996)
+script = ExtResource("33_lrvqp")
+
+[node name="UpgradeCoinLvTwo3" parent="." instance=ExtResource("29_aqxgr")]
+position = Vector2(9189, 309)
+script = ExtResource("33_lrvqp")
+
+[node name="UpgradeCoinLvTwo4" parent="." instance=ExtResource("29_aqxgr")]
+position = Vector2(9198, 588)
+script = ExtResource("33_lrvqp")
+
+[node name="UpgradeCoinLvTwo5" parent="." instance=ExtResource("29_aqxgr")]
+position = Vector2(10105, 2734)
+script = ExtResource("33_lrvqp")
+
+[node name="UpgradeCoinLvTwo6" parent="." instance=ExtResource("29_aqxgr")]
+position = Vector2(14253, 791)
+script = ExtResource("33_lrvqp")
+
+[node name="UpgradeCoinLvTwo7" parent="." instance=ExtResource("29_aqxgr")]
+position = Vector2(13929, 3399)
+script = ExtResource("33_lrvqp")
+
 [connection signal="body_entered" from="teleporterArea" to="teleporterArea" method="_on_body_entered"]
 [connection signal="level_two_start" from="teleporterArea" to="GUILayer/Level2Label" method="_on_teleporter_area_level_two_start"]
 [connection signal="body_entered" from="teleporterArea2" to="teleporterArea2" method="_on_body_entered"]
@@ -503,6 +1625,19 @@ Cycle power"
 [connection signal="pressed" from="GUILayer/PausePanel/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MenuButton" to="GUILayer" method="_on_menu_button_pressed"]
 [connection signal="pressed" from="GUILayer/PausePanel/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButtonGame" to="GUILayer" method="_on_quit_button_game_pressed"]
 [connection signal="pressed" from="GUILayer/PauseContainer/PauseButton" to="GUILayer" method="_on_pause_button_pressed"]
+[connection signal="pressed" from="InputUpgrade/ChooseUpgradePanel/CenterContainer/PanelContainer/MarginContainer/HBoxContainer/LeadBloonContainer/LeadBloonButton" to="InputUpgrade" method="_on_lead_bloon_button_pressed"]
+[connection signal="pressed" from="InputUpgrade/ChooseUpgradePanel/CenterContainer/PanelContainer/MarginContainer/HBoxContainer/BeastBloonContainer/BeastBloonButton" to="InputUpgrade" method="_on_beast_bloon_button_pressed"]
+[connection signal="pressed" from="InputUpgrade/ChooseUpgradePanel/CenterContainer/PanelContainer/MarginContainer/HBoxContainer/BlackHoleBloonContainer/BlackHoleBloonButton" to="InputUpgrade" method="_on_black_hole_bloon_button_pressed"]
 [connection signal="body_entered" from="GameWonTrigger" to="GameWonTrigger" method="_on_body_entered"]
+[connection signal="body_entered" from="UpgradeCoin1" to="UpgradeCoin1" method="_on_body_entered"]
+[connection signal="body_entered" from="UpgradeCoin2" to="UpgradeCoin2" method="_on_body_entered"]
+[connection signal="body_entered" from="UpgradeCoin3" to="UpgradeCoin3" method="_on_body_entered"]
+[connection signal="body_entered" from="UpgradeCoinLvTwo1" to="UpgradeCoinLvTwo1" method="_on_body_entered"]
+[connection signal="body_entered" from="UpgradeCoinLvTwo2" to="UpgradeCoinLvTwo2" method="_on_body_entered"]
+[connection signal="body_entered" from="UpgradeCoinLvTwo3" to="UpgradeCoinLvTwo3" method="_on_body_entered"]
+[connection signal="body_entered" from="UpgradeCoinLvTwo4" to="UpgradeCoinLvTwo4" method="_on_body_entered"]
+[connection signal="body_entered" from="UpgradeCoinLvTwo5" to="UpgradeCoinLvTwo5" method="_on_body_entered"]
+[connection signal="body_entered" from="UpgradeCoinLvTwo6" to="UpgradeCoinLvTwo6" method="_on_body_entered"]
+[connection signal="body_entered" from="UpgradeCoinLvTwo7" to="UpgradeCoinLvTwo7" method="_on_body_entered"]
 
 [editable path="map2"]

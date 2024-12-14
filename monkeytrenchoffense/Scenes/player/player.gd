@@ -4,8 +4,12 @@ extends CharacterBody2D
 signal healthChanged
 signal layersChanged
 signal dashChanged
+signal blackHoleChanged
 
 @onready var animation = $AnimationPlayer
+@onready var blackHoleBarInst:TextureProgressBar = $"../GUILayer/MarginContainer4/BlackHoleBar"
+@onready var inpUpgradePanel:CanvasLayer = $"../InputUpgrade"
+
 @export var movement_speed:float = 400
 @export var hitpoints:int = 1
 @export var max_hitpoints_curr_layer:int = 1
@@ -14,8 +18,14 @@ signal dashChanged
 # (seconds) how long it takes to recover from a dash
 @export var dash_duration:float = 0.3
 @export var dash_recovery:float = 3.0
+
+@export var absorb_duration:float = 10.0
+@export var absorb_recovery:float = 10.0
+@export var absorb_slowdown_multi:float = 0.65
+@export var absorb_slowdown_extra_time:float = 3.0
+
 @export var lead_hit_anim_duration = 0.3
-@export var death_anim_duration = 0.75
+@export var death_anim_duration = 0.70
 
 
 enum Power {
@@ -37,6 +47,8 @@ enum DamageType {
 var dash_multi:float =  2.5 # how much faster the character dashes
 var time_since_dash:float = 10
 
+var time_since_absorb:float = absorb_recovery + absorb_duration + 0.1
+
 var acceleration_speed:float = movement_speed * 6
 var acceleration:Vector2 = Vector2.ZERO
 
@@ -54,20 +66,29 @@ var death_flag = false
 
 func _ready() -> void:
 	apply_power_up(Power.RED)
+	inpUpgradePanel.upgradeChosen.connect(apply_power_up_from_signal)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	#print(time_since_dash)
 	_handle_movement_inputs(delta)
+	time_since_absorb += delta
+	blackHoleChanged.emit()
 	
 	$Sprite2Dplayer.flip_h = velocity.x >= 0 and current_power == Power.BEAST
 	
-	if Input.is_action_just_pressed("power"):
+	if death_flag == false and Autoload.cheat_mode_checked == true and Input.is_action_just_pressed("power"):
 		apply_power_up(current_power + 1 if current_power != Power.BLACK_HOLE else Power.RED)
+		
+	if death_flag == false and current_power == Power.BLACK_HOLE and Input.is_action_just_pressed("absorb") and time_since_absorb > (absorb_recovery + absorb_duration):
+		time_since_absorb = 0.0
 	
-	if slow_duration > 0:
+	if slow_duration > 0 and time_since_absorb > absorb_duration:
 		velocity *= slow_multi
 		slow_duration -= delta
+		
+	if time_since_absorb <=  absorb_duration + absorb_slowdown_extra_time:
+		velocity *= absorb_slowdown_multi
 	
 	move_and_slide()
 	
@@ -77,7 +98,7 @@ func _physics_process(delta: float) -> void:
 	if lead_hit_duration > 0:
 		lead_hit_duration += delta
 		
-	if lead_hit_duration > lead_hit_anim_duration:
+	if lead_hit_duration > lead_hit_anim_duration and current_power == Power.LEAD:
 		$Sprite2Dplayer.texture = preload("res://Assets/balloon/lead.png")
 		$AnimationPlayer.play("RESET")
 		animation.queue("floating")
@@ -85,8 +106,14 @@ func _physics_process(delta: float) -> void:
 	
 
 func apply_damage(damage:int, damage_type:DamageType = DamageType.SHARP) -> void:
-	
-	hitpoints -= damage
+	if death_flag:
+		return
+	if time_since_absorb >  absorb_duration:
+		hitpoints -= damage
+	else:
+		hitpoints += damage
+		if hitpoints > max_hitpoints_curr_layer:
+			hitpoints = max_hitpoints_curr_layer
 	if hitpoints >= 0 and current_power != Power.RED and current_power != Power.LEAD:
 			$BalloonHitSound.play()
 		
@@ -173,10 +200,20 @@ func _handle_movement_inputs(delta:float) -> void:
 		velocity.limit_length(max_speed)
 			
 
+func apply_power_up_from_signal(powerup_type:String):
+	if powerup_type == "lead":
+		apply_power_up(Power.LEAD)
+	elif powerup_type == "beast":
+		apply_power_up(Power.BEAST)
+	elif powerup_type == "black_hole":
+		apply_power_up(Power.BEAST)
+
 func apply_power_up(power:Power) -> void:
 	current_power = power
 	# restore basic properties
 	# some will be overwritten in match below
+	blackHoleBarInst.visible = false
+	
 	hitpoints = 1
 	max_hitpoints_curr_layer = 1
 	curr_layers = 1
@@ -214,8 +251,8 @@ func apply_power_up(power:Power) -> void:
 
 		
 		Power.LEAD:
-			hitpoints = 20
-			max_hitpoints_curr_layer = 20
+			hitpoints = 150
+			max_hitpoints_curr_layer = 150
 			curr_layers = 4
 			sub_power = Power.GREEN
 			movement_speed *= 0.75
@@ -224,8 +261,8 @@ func apply_power_up(power:Power) -> void:
 			$Sprite2Dplayer.texture = preload("res://Assets/balloon/lead.png")
 		
 		Power.BEAST:
-			hitpoints = 5
-			max_hitpoints_curr_layer = 5
+			hitpoints = 10
+			max_hitpoints_curr_layer = 10
 			curr_layers = 4
 			sub_power = Power.GREEN
 			movement_speed *= 1.4
@@ -234,10 +271,12 @@ func apply_power_up(power:Power) -> void:
 			$AnimationPlayer.play("beast_idle")
 			
 		Power.BLACK_HOLE:
-			hitpoints = 5
-			max_hitpoints_curr_layer = 5
+			time_since_absorb = absorb_recovery + absorb_duration + 0.1
+			hitpoints = 15
+			max_hitpoints_curr_layer = 15
 			curr_layers = 4
 			sub_power = Power.GREEN
+			blackHoleBarInst.visible = true
 			$AnimationPlayer.play("black_hole_idle")
 			
 	acceleration_speed = movement_speed * 6
