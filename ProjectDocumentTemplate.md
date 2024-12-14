@@ -33,8 +33,11 @@ Your goal is to dodge projectiles and obstacles as you navigate through the leve
 5. **Level Progression**: Each level gets progressively more difficult with additional enemies and faster projectiles. Stay alert and adapt your strategy as the challenges increase.
 6. **Collect Special Powerups**: There are powerup coins in each level that grant you the choice between 3 unique powerups: Beast Bloon, Lead Bloon, and Black-Hole Bloon. The Beast Bloon boasts an unbeatable movement speed and no dash cooldown, so you can rush past any towers but it is easily popped by any projectile. The Lead Bloon's thick meal exterior can tank many hits from sharp projectiles so as long as there is no bomb nearby you'll be just fine, but beware that this bloon is weighed down and thus slower. The Black-Hole Bloon grants you a unique absorption ability that will absorb any projectile for 5 seconds and regenerates your lost health for each projectile absorbed up to max health, but it will go on cooldown for 10 seconds after and force you to stop as the bloon 'digests' the projectiles for 3 seconds after the ability is finished. You will need specific abilities to overcome certain level sections, so choose wisely!
    
-
 Good luck, and may you escape the monkeys’ clutches!
+
+
+
+
 
 **Add it here if you did work that should be factored into your grade but does not fit easily into the prescribed roles! Please include links to resources and descriptions of game-related material that does not fit into roles here.**
 - Our main roles and subroles that we ended up working on throughout the project development differ somewhat from what this template lays out since we felt for our game there was a different way to split the work fairly with the highest efficiency and structure. 
@@ -50,11 +53,9 @@ Richard Shi - Main Role: Entity/Tower Programming, Subrole: Gameplay Testing
 
 # External Code, Ideas, and Structure #
 
-If your project contains code that: 1) your team did not write, and 2) does not fit cleanly into a role, please document it in this section. Please include the author of the code, where to find the code, and note which scripts, folders, or other files that comprise the external contribution. Additionally, include the license for the external code that permits you to use it. You do not need to include the license for code provided by the instruction team.
+- The intellectual guidance we used was more along the lines of the idea for our game coming from a unique twist on an established and well known game, Bloons Tower Defense, which is apparent from our game title intentially being an inverse of it. We definitely did have many unique elements to our game like the format not being a tower defense game at all since you are playing as the Bloon now it is akin to a Bullet Hell style game or even a Dungeon Crawler to an extent, and we also implemented some of our own unique powerups like the Beast Bloon and Black-Hole Bloon, so there was definitely independent thinking put into the game while using BTD as a baseline.
+- We looked at the Godot documentation for guidance in how to implement our vision for the game in code and consulted online forums like Reddit, Stack Exchange, and the Godot Forums for debugging difficult errors that arose (usually through Google searching the error message).
 
-If you used tutorials or other intellectual guidance to create aspects of your project, include reference to that information as well.
-
-- The intellectual guidance we used was more along the lines of the idea for our game coming from a unique twist on an established and well known game, Bloons Tower Defense, which is apparent from our game title intentially being an inverse of it. We definitely did have many unique elements to our game like the format not being a tower defense game at all since you are playing as the Bloon now it is akin to a Bullet Hell style game or even a Dungeon Crawler to an extent, and we also implemented some of our own unique powerups like the Beast Bloon and Black-Hole Bloon, so there was definitely independent thinking put into the game while using BTD as a baseline. 
 
 
 # Main Roles #
@@ -92,9 +93,11 @@ My role was to lay the groundwork and code the foundational behaviors and organi
 
 **Add an entry for each platform or input style your project supports.**
 
+
 ## Movement/Physics
 
 **Describe the basics of movement and physics in your game. Is it the standard physics model? What did you change or modify? Did you make your movement scripts that do not use the physics system?**
+
 
 ## Animation and Visuals
 
@@ -105,11 +108,16 @@ Assets Used:
 
 **Describe how your work intersects with game feel, graphic design, and world-building. Include your visual style guide if one exists.**
 
+
 ## Game Logic
 
 **Document the game states and game data you managed and the design patterns you used to complete your task.**
 
+
+
+
 # Sub-Roles
+
 
 ## Audio -- Ryan Ffrench
 
@@ -156,11 +164,10 @@ Getting stuck: Some locations, such as parts of the far right side of map1, had 
 Hitbox size: Initially, the player's hitbox and collision hull were both scaled exactly to the size of the balloon sprite. However, in practice, this led to the feedback of being unfairly hit by certain projectiles. As a result, there was work in scaling down these boxes in order to improved the perceived fairness of hitreg.
 
 
-**Summarize the key findings from your gameplay tests.**
-
 ## Narrative Design
 
 **Document how the narrative is present in the game via assets, gameplay systems, and gameplay.** 
+
 
 ## Press Kit and Trailer -- Ryan Ffrench
 
@@ -168,6 +175,8 @@ Hitbox size: Initially, the player's hitbox and collision hull were both scaled 
 
 **Describe how you showcased your work. How did you choose what to show in the trailer? Why did you choose your screenshots?**
 For the screenshots and the trailer, I chose the parts of the game that are the coolest. Specifically, I made sure to show off the Bomb Monkey and Ice Monkey. I tried to go for an over the top funny editing style, because it fits with our game well.
+
+
 
 ## Game Feel and Polish
 
