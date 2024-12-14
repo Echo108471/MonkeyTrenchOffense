@@ -4,6 +4,8 @@ extends Area2D
 
 var player: Player
 
+signal level_two_start
+
 func _ready() -> void:
 	player = %Player
 
@@ -13,4 +15,5 @@ func _on_body_entered(_body:Node2D) -> void:
 	if _body == player:
 		player.position = player_location.position
 		# Remove this trigger node.
+		emit_signal("level_two_start")
 		queue_free()

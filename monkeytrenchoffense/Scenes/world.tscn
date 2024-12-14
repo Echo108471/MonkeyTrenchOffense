@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://bc51wm18jfnhw"]
+[gd_scene load_steps=35 format=4 uid="uid://bc51wm18jfnhw"]
 
 [ext_resource type="PackedScene" uid="uid://bufty5f1wpw7x" path="res://Scenes/player/player.tscn" id="1_kuixu"]
 [ext_resource type="PackedScene" uid="uid://bo8dwygo4att7" path="res://Scenes/maps/map1.tscn" id="1_memt1"]
@@ -23,7 +23,9 @@
 [ext_resource type="Shader" path="res://Scenes/blur_shader.gdshader" id="21_g15t4"]
 [ext_resource type="Script" path="res://Scripts/gui_container.gd" id="21_o88vq"]
 [ext_resource type="Script" path="res://Scripts/current_layers.gd" id="22_dwkdj"]
+[ext_resource type="Script" path="res://Scripts/level_1_label.gd" id="23_woyt1"]
 [ext_resource type="Script" path="res://Scripts/game_won_trigger.gd" id="24_202jv"]
+[ext_resource type="Script" path="res://Scripts/level_2_label.gd" id="24_btah6"]
 [ext_resource type="Texture2D" uid="uid://dyi61fp6lsurw" path="res://Scenes/maps/finish_line_final.png" id="25_ytccu"]
 [ext_resource type="Texture2D" uid="uid://byobgth0lqk6r" path="res://Assets/Keys/keys.png" id="26_prnle"]
 
@@ -670,6 +672,45 @@ layout_mode = 2
 text = "Current Layers Left: 1"
 script = ExtResource("22_dwkdj")
 
+[node name="Level1Label" type="Label" parent="GUILayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -359.5
+offset_top = -34.5
+offset_right = 359.5
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_outline_color = Color(0.0827415, 0.0827414, 0.0827414, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+text = "LEVEL 1: Reach the Finish Line"
+script = ExtResource("23_woyt1")
+
+[node name="Level2Label" type="Label" parent="GUILayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -452.0
+offset_top = -34.5
+offset_right = 452.0
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0.843137, 0, 1)
+theme_override_colors/font_outline_color = Color(0.0827415, 0.0827414, 0.0827414, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 50
+text = "LEVEL 2: Reach the Golden Finish Line"
+script = ExtResource("24_btah6")
+
 [node name="GameWonTrigger" type="Area2D" parent="."]
 position = Vector2(26664, 4123)
 script = ExtResource("24_202jv")
@@ -723,7 +764,9 @@ text = "(Cheats Only)
 Cycle power"
 
 [connection signal="body_entered" from="teleporterArea" to="teleporterArea" method="_on_body_entered"]
+[connection signal="level_two_start" from="teleporterArea" to="GUILayer/Level2Label" method="_on_teleporter_area_level_two_start"]
 [connection signal="body_entered" from="teleporterArea2" to="teleporterArea2" method="_on_body_entered"]
+[connection signal="level_two_start" from="teleporterArea2" to="GUILayer/Level2Label" method="_on_teleporter_area_2_level_two_start"]
 [connection signal="pressed" from="GUILayer/PausePanel/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="GUILayer" method="_on_resume_button_pressed"]
 [connection signal="pressed" from="GUILayer/PausePanel/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/MenuButton" to="GUILayer" method="_on_menu_button_pressed"]
 [connection signal="pressed" from="GUILayer/PausePanel/CenterContainer/PanelContainer/MarginContainer/VBoxContainer/QuitButtonGame" to="GUILayer" method="_on_quit_button_game_pressed"]
