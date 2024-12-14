@@ -99,14 +99,55 @@ My role was to lay the groundwork and code the foundational behaviors and organi
 **Describe the basics of movement and physics in your game. Is it the standard physics model? What did you change or modify? Did you make your movement scripts that do not use the physics system?**
 
 
-## Animation and Visuals
+## Animation and Visuals -- Minji Yun
 
-**List your assets, including their sources and licenses.**
 Assets Used:
 - Map Tiles, small animations, decorations: [Tiny Swords](https://pixelfrog-assets.itch.io/tiny-swords) - Creative Commons Zero License
 *Inspiration Taken From BTD Games
 
-**Describe how your work intersects with game feel, graphic design, and world-building. Include your visual style guide if one exists.**
+- Created character visuals and sprite sheets. Animated them using animation tree and animation player.
+- Visual components:
+  - All visuals were created using Procreate
+  - Player - Balloon (6 variations)
+  - Towers - Monkeys (3 variations)
+  - Projectiles - Darts (2 variations)
+  - Start menu background, defeat/win screen
+  - Nail trap (ended up not using)
+- Character animation descriptions:
+  - Balloons:
+    - Idle: All balloons have a simple floating animation that bobs up and down.
+    - Beast Balloon: It has a shiny particle appearing and disappearing effect to give it a reflective metalice feel
+    - Lead Balloon: It has metal spikes shooting out and disappearing after reaching certain distance
+    - Black hole Balloon: Its core is in the middle and there’s a purple aura swirling around
+    - Each balloons have at least 5 frames
+    - Popping effect on death: 15 frames, only shows red balloon since that is the last balloon state after downgrading from taking damage
+  - Monkeys:
+    - Idle: They are not moving when the player is not inside the detection radius. They only activate once the player steps in
+    - Active: They move their right hands up and down, giving it a throwing motion
+  - Projectile:
+    - They have no animation, only static visual since it’s already flying straight out
+    - Regular dart and icicle
+- All visuals are original, no licenses. I painted them one by one, frame by frame.
+- Balloons:
+![redBalloon1](https://github.com/user-attachments/assets/68f6acab-627d-484e-8f53-fb8edc43aff2)
+![2](https://github.com/user-attachments/assets/5df0fb5e-9ada-4d23-a385-1873ee4c6dc9)
+![1](https://github.com/user-attachments/assets/ce9011f2-6c40-470c-b5c0-722d64558afd)
+![2](https://github.com/user-attachments/assets/25295d28-8bca-4c8f-93d9-aec2bac8dbbd)
+![4](https://github.com/user-attachments/assets/f6596da5-c28b-452e-b14a-24cbd0e556af)
+![1](https://github.com/user-attachments/assets/2651e92a-63ee-42ce-83ba-dc48e34cb0e9)
+- Monkeys:
+![33](https://github.com/user-attachments/assets/aeaf08cc-cf15-4a8c-a18e-37b85e4a14fc)
+![image](https://github.com/user-attachments/assets/6ca76794-a0be-4327-a253-c88997d686f4)
+![image](https://github.com/user-attachments/assets/58335372-3cfb-4187-b01c-0650605651b2)
+- Projectiles:
+![Untitled_Artwork](https://github.com/user-attachments/assets/4430b2b8-5b67-4a16-8321-3491d9696699)
+![image](https://github.com/user-attachments/assets/b1ef6a80-263d-4f8d-aeae-2fe70a9b6179)
+
+- Start/Win/Lose Screen
+![image](https://github.com/user-attachments/assets/640cce05-e8d7-4689-b6dc-b1e9bf7f18d0)
+![image](https://github.com/user-attachments/assets/f0aa0089-d739-44dd-a492-b3b7df8b40f5)
+![image](https://github.com/user-attachments/assets/8b1c6b1f-2455-4ab0-8831-0f6bd6fdadc4)
+
 
 
 ## Game Logic
@@ -164,9 +205,23 @@ Getting stuck: Some locations, such as parts of the far right side of map1, had 
 Hitbox size: Initially, the player's hitbox and collision hull were both scaled exactly to the size of the balloon sprite. However, in practice, this led to the feedback of being unfairly hit by certain projectiles. As a result, there was work in scaling down these boxes in order to improved the perceived fairness of hitreg.
 
 
-## Narrative Design
+## Narrative Design -- Minji Yun
+- After thorough discussion with the team members, we decided to take the classic Bloons TD and put a spin on it. Now the player is the balloon and the towers are monkeys. We also decided to go with non-pixelated, smooth visuals, as Bloons TD does the same.
+- Characters:
+  - Balloons: Red, Blue, Green, Beast, Lead, Black Hole
+  - Monkeys: Normal, Ice, TNT
+- Each monkey type has different tails. Normal monkey has an initial M in its tail, Ice monkey has an initial I in its tail, TNT monkey has TNT in its tail.
+  - TNT monkey is holding a TNT on its left hand to give it a more unique look.
+  - Normal monkey has the default monkey color, Ice monkey is blue, TNT monkey is red.
+- Base storyline/Ideas behind the game:
+  - The original Bloons TD is described from the monkeys' point of view, and sees the balloons as mere poppable objects. We wanted to deliver how scary that game situation is in balloons’ point of view. 
+  - The monkeys are mad at the balloon, and the balloon has to escape with some help from upgrade items and extra layers given for itself.
+  - The start menu screen suggests that there is an active war, while also portraying how perplexed the balloon feels about the situation. The tension is strong.
+  - Win screen: The balloon is happy that it escaped successfully.
+  - Defeat screen: The dart popped the balloon and it deflated due to that. There is a  monkey grim reaper standing near, waiting to take the balloon’s soul with them.
+- Message behind the game:
+  - Don’t mess with the monkeys!
 
-**Document how the narrative is present in the game via assets, gameplay systems, and gameplay.** 
 
 
 ## Press Kit and Trailer -- Ryan Ffrench
