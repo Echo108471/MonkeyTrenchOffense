@@ -1,9 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://bc51wm18jfnhw"]
+[gd_scene load_steps=23 format=3 uid="uid://bc51wm18jfnhw"]
 
 [ext_resource type="PackedScene" uid="uid://bufty5f1wpw7x" path="res://Scenes/player/player.tscn" id="1_kuixu"]
 [ext_resource type="PackedScene" uid="uid://bo8dwygo4att7" path="res://Scenes/maps/map1.tscn" id="1_memt1"]
-[ext_resource type="Texture2D" uid="uid://c08ieo1nh44dc" path="res://Assets/maps/map2.png" id="2_5njqe"]
-[ext_resource type="Script" path="res://Scenes/camera.gd" id="3_gmu6m"]
+[ext_resource type="Script" path="res://Scripts/camera.gd" id="3_gmu6m"]
 [ext_resource type="PackedScene" uid="uid://edmi5jtva5y2" path="res://Scenes/turrets/projectileTurret/projectileTurret.tscn" id="4_bho38"]
 [ext_resource type="PackedScene" uid="uid://msd06w8xlkxt" path="res://Scenes/projectiles/tnt.tscn" id="5_jwuhp"]
 [ext_resource type="PackedScene" uid="uid://cgh7ibrmxxwho" path="res://Scenes/projectiles/slow_area.tscn" id="6_4oscd"]
@@ -12,12 +11,12 @@
 [ext_resource type="PackedScene" uid="uid://dy576ss87vjl" path="res://Scenes/turrets/bombTurret/bombTurret.tscn" id="13_wtiq1"]
 [ext_resource type="Texture2D" uid="uid://cbpv8y8yk575a" path="res://Scenes/maps/finish_line.png" id="14_d7c2n"]
 [ext_resource type="Script" path="res://Scenes/turrets/bombTurret/bombTurret.gd" id="14_fx4dj"]
-[ext_resource type="Script" path="res://Scenes/second_level_trigger.gd" id="19_3y6gl"]
+[ext_resource type="Script" path="res://Scripts/second_level_trigger.gd" id="19_3y6gl"]
 [ext_resource type="AudioStream" uid="uid://c43k2nbm8ywwb" path="res://Assets/sfx/GameMusic.mp3" id="19_b5klc"]
 [ext_resource type="PackedScene" uid="uid://ck28f8t6kcm4h" path="res://Scenes/maps/map2.tscn" id="19_m5to5"]
 [ext_resource type="Shader" path="res://Scenes/blur_shader.gdshader" id="21_g15t4"]
 [ext_resource type="Script" path="res://Scripts/gui_container.gd" id="21_o88vq"]
-[ext_resource type="Script" path="res://Scenes/game_won_trigger.gd" id="24_202jv"]
+[ext_resource type="Script" path="res://Scripts/game_won_trigger.gd" id="24_202jv"]
 [ext_resource type="Texture2D" uid="uid://dyi61fp6lsurw" path="res://Scenes/maps/finish_line_final.png" id="25_ytccu"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5exwf"]
@@ -40,10 +39,6 @@ position = Vector2(-629, -865)
 
 [node name="map2" parent="." instance=ExtResource("19_m5to5")]
 position = Vector2(21412, -2655)
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-texture = ExtResource("2_5njqe")
 
 [node name="Player" parent="." instance=ExtResource("1_kuixu")]
 unique_name_in_owner = true
@@ -104,6 +99,7 @@ position = Vector2(1151, 0)
 
 [node name="power_up_coin" parent="." instance=ExtResource("7_csl7t")]
 position = Vector2(-652, -266)
+scale = Vector2(2, 2)
 
 [node name="DartMonkey2" parent="." instance=ExtResource("4_bho38")]
 position = Vector2(2728, -392)
@@ -125,7 +121,7 @@ player_location = NodePath("../PlayerLvl2Loc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="teleporterArea"]
 position = Vector2(285.822, -146)
-scale = Vector2(0.63044, 0.76)
+scale = Vector2(0.63044, 0.88)
 shape = SubResource("RectangleShape2D_rcth0")
 
 [node name="Sprite2D" type="Sprite2D" parent="teleporterArea"]
@@ -140,7 +136,7 @@ player_location = NodePath("../PlayerLvl2Loc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="teleporterArea2"]
 position = Vector2(263, -172)
-scale = Vector2(0.402337, 0.759998)
+scale = Vector2(0.402337, 0.879998)
 shape = SubResource("RectangleShape2D_rcth0")
 
 [node name="Sprite2D" type="Sprite2D" parent="teleporterArea2"]
@@ -232,7 +228,7 @@ position = Vector2(26664, 4123)
 script = ExtResource("24_202jv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameWonTrigger"]
-position = Vector2(2, -1.5)
+position = Vector2(1, -8)
 scale = Vector2(1.15188, 1)
 shape = SubResource("RectangleShape2D_4spnr")
 
