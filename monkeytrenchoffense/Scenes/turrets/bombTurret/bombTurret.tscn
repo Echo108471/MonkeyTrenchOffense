@@ -63,7 +63,7 @@ swivel = 3.0
 z_index = 2
 texture_filter = 1
 rotation = 1.5708
-scale = Vector2(0.088, 0.088)
+scale = Vector2(0.078, 0.078)
 texture = ExtResource("2_38mk4")
 vframes = 5
 

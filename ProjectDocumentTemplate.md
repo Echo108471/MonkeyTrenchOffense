@@ -94,11 +94,19 @@ My role was to lay the groundwork and code the foundational behaviors and organi
 **Add an entry for each platform or input style your project supports.**
 
 
-## Movement/Physics
+## Movement/Physics -- Ben Young
 
-**Describe the basics of movement and physics in your game. Is it the standard physics model? What did you change or modify? Did you make your movement scripts that do not use the physics system?**
+While I was designing the movement system, I tried to balance control versus fluidity. In a bullethell-esque game, controlling your character to avoid projectiles is really important. In some games, your character moves exactly with your inputs and carries no momentum. In other games, unwieldy movement mechanics **are** the challenge, like ice levels in platformers or games like QWOP where the player is a floppy mess. For this game, I wanted the movement 
 
-The main idea behind our movement system is floatyness and   
+The main idea behind our movement system is _"floaty"_-ness to mimic the feeling of a balloon. To implement this idea I created a 2nd order movement system: Player inputs create an acceleration, which increments velocity, which finally increments the player's position using Godot's built-in **move_and_slide** function. When there are no inputs, there is a _drag_ acceleration which slowly brings the player to stop.
+
+Using the built-in **move_and_slide** saved a ton of headache implementing collision checks and handling, as this function simply adds the objects velocity to its position, checks for collisions several times along the way, and does a simple collision handling which redirects the players velocity along the collision point. One drawback of using this function is that the player can actually move faster by pressing diagonally against the wall, as the orthagonal component of their velocity is added to the parallel component. Ideally, the player would not be encouraged to press as hard against every wall as they can, although it adds an interesting wrinkle to the map design.
+
+Because our game's player has no attack, movement is the only option to deal with enemy fire. To help the player avoid enemy attacks, they have access to a dash using the space key. This dash gives a burst of speed, and can help accelerate the player to full speed faster, but comes with a cost. After the dash, the player is slowed for a small amount of time while they recover. The risk/reward aspect of this mechanic makes engaging with turrets fun.  
+
+The base movement mechanics are further supplemented through the game's powerups, which modify attributes of the player. For example, the _beast_ powerup greatly increases the players movement speed and dash duration, and decreases the dash recovery period. These attributes are designed to be easily modifiable, and are relative to each other. The dash speed is set as a multiplier of the maximum movement speed, so that you don't accidentally end up with a dash slower than the movement speed if you forget to increase the dash multiplier.
+
+The enemy's can affect the player's movement speed as well. The ice turrets add a negative multiplier to the player's speed, which is factored in after the players intrinsic movement multipliers so that they always stack correctly.    
 
 ## Animation and Visuals -- Minji Yun
 

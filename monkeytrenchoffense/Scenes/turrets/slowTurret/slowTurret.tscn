@@ -62,7 +62,7 @@ attack_range = 400.0
 z_index = 2
 texture_filter = 1
 rotation = 1.5708
-scale = Vector2(0.088, 0.088)
+scale = Vector2(0.098, 0.098)
 texture = ExtResource("2_txw7q")
 vframes = 5
 
