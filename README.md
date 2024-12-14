@@ -6,7 +6,7 @@ In our game you play as a balloon trying to escape evil monkeys that have trappe
 
 ## Project Resources
 
-[Web-playable version of your game.](https://itch.io/)  
+[Itch IO]([https://itch.io/](https://benyoung32.itch.io/monkey-trench-offense))  
 [Trailer](https://youtu.be/i8l6JdhSNFc?si=5tn6Pdlufj88c8pC)  
 [Press Kit](https://ryanffrench.github.io/MonkeyTrenchOffense-PressKit/)  
 [Proposal](https://docs.google.com/document/d/1XfRfDoN-Fm2vW_cJ7vQpI7-b4w9EeZ0zoOBdrwvnYzk/edit?tab=t.0#heading=h.i3tv2mxf7h7z)  
@@ -68,17 +68,6 @@ Richard Shi - Main Role: Entity/Tower Programming, Subrole: Gameplay Testing
 
 # Main Roles #
 
-Your goal is to relate the work of your role and sub-role in terms of the content of the course. Please look at the role sections below for specific instructions for each role.
-
-Below is a template for you to highlight items of your work. These provide the evidence needed for your work to be evaluated. Try to have at least four such descriptions. They will be assessed on the quality of the underlying system and how they are linked to course content. 
-
-*Short Description* - Long description of your work item that includes how it is relevant to topics discussed in class. [link to evidence in your repository](https://github.com/dr-jam/ECS189L/edit/project-description/ProjectDocumentTemplate.md)
-
-Here is an example:  
-*Procedural Terrain* - The game's background consists of procedurally generated terrain produced with Perlin noise. The game can modify this terrain at run-time via a call to its script methods. The intent is to allow the player to modify the terrain. This system is based on the component design pattern and the procedural content generation portions of the course. [The PCG terrain generation script](https://github.com/dr-jam/CameraControlExercise/blob/513b927e87fc686fe627bf7d4ff6ff841cf34e9f/Obscura/Assets/Scripts/TerrainGenerator.cs#L6).
-
-You should replay any **bold text** with your relevant information. Liberally use the template when necessary and appropriate.
-
 ## Producer - Ryan Ffrench
 
 My group was amazing which made my role as a producer go smoothly. We came up with an idea that is simple to understand which allowed us to easily come to a consensus on what our game should look and feel like. One of the judges at the game jam even said that it was smart we made a game that was a spin on a preexisting game because so many design decisions had already been made. We were behind going into the first progress report, but this was due to it being Thanksgiving. Understandably people did not get as much work done as expected. We quickly got back on track and have been working very well together. I ensured everyone was on track by constently checking in with the group asking for brief progress updates. Communication was great. When people had bugs or other issues the entire group did their best to help. The biggest issue we faced as a group was issues with Godot's (nonexistent) Git integration specifically with merge conflicts. We minimized this by using pull requests/different branches initially, and later by pushing only when a significant amount of work had been done and with warning to the rest of the team. I specifically commited my changes late at night with hours of advanced notice. Another notable thing I did was formulate our approach to the Final Festival. We felt that we had the bones of a great game, but that getting the judges to see that was going to be a challenge. I prepared a elevator pitch that enthusiastically and quickly got the idea of our game across, and guided players through the best parts of our game. Overall, because our team worked so well together, this role was easier than anticipated which is why I ended up taking two sub-roles (see below).
@@ -92,14 +81,6 @@ My role was to lay the groundwork and code the foundational behaviors and organi
 *Towers:* I created a [base tower class](https://github.com/Echo108471/MonkeyTrenchOffense/blob/9d3d79b015ef8b90aad342d511616c91e4f7395c/monkeytrenchoffense/Scenes/turrets/turretBase/turret_base.gd#L1) and scene from which the others are derived. The three types of towers ([projectile](https://github.com/Echo108471/MonkeyTrenchOffense/blob/9d3d79b015ef8b90aad342d511616c91e4f7395c/monkeytrenchoffense/Scenes/turrets/projectileTurret/projectileTurret.gd#L1), [slow](https://github.com/Echo108471/MonkeyTrenchOffense/blob/9d3d79b015ef8b90aad342d511616c91e4f7395c/monkeytrenchoffense/Scenes/turrets/slowTurret/slowTurret.gd#L1), and [bomb](https://github.com/Echo108471/MonkeyTrenchOffense/blob/9d3d79b015ef8b90aad342d511616c91e4f7395c/monkeytrenchoffense/Scenes/turrets/bombTurret/bombTurret.gd#L1)) all inherit the core properties of a tower from this parent class (most represented by a list of member variables that can be customized as needed by other game systems such as tower upgrades). This part of my role had relatively notable overlap with other team members given that other systems would need to use/alter behavior of the towers through member variables. Additional note: the vector math for making the projectile turret's customizable spreadshot was particularly challenging when I began to consider making it as robust a solution as possible.
 
 *Projectiles:* I first created a [basic bullet](https://github.com/Echo108471/MonkeyTrenchOffense/blob/9d3d79b015ef8b90aad342d511616c91e4f7395c/monkeytrenchoffense/Scenes/projectiles/bulletBase.gd#L1) to serve as reference. It has the basic functionality of aiming, flying, seeking, damaging, etc. and other such basic behaviors for a projectile. The [bomb bullet](https://github.com/Echo108471/MonkeyTrenchOffense/blob/9d3d79b015ef8b90aad342d511616c91e4f7395c/monkeytrenchoffense/Scenes/projectiles/bulletBomb.gd#L1) inherits from it, though adding/altering timers, signals, the hitbox, and fuse/explosion animations in order to make it blow up in addition to just flying forward like a normal projectile. Also, another team member later helped create a separate icicle bullet using the basic bullet as a template, although in hindsight a more elegant implementation would have been to simply initialize and configure it with a different sprite instead of making a whole new class. This part of my role had relatively little overlap with other team members given that most information would be passed through the turret when calling the configure function.
-
-
-## User Interface and Input
-
-**Describe your user interface and how it relates to gameplay. This can be done via the template.**
-**Describe the default input configuration.**
-
-**Add an entry for each platform or input style your project supports.**
 
 
 ## Movement/Physics -- Ben Young
@@ -327,7 +308,6 @@ Creating the press kit and trailer was straightforward but time-consuming. For t
 
 ## Game Feel and Polish
 
-**Document what you added to and how you tweaked your game to improve its game feel.**
 ### Ben Young
 
 *Bomb Tower "launching"* - Using a bezier curve (found in [GDscript documentation](https://docs.godotengine.org/en/stable/tutorials/math/beziers_and_curves.html)), I was able to simulate a parabolic trajectory for the bomb projectile, [adjusting the scale](https://github.com/Echo108471/MonkeyTrenchOffense/blob/ab6c1c7dbcd23f790b4e8def95486a48109ecc82/monkeytrenchoffense/Scenes/projectiles/bulletBomb.gd#L21) of the sprite to simulate depth in our otherwise 2D game. I also adjusted the movement of the projectile so that it targets the player's position, rather than flying in the direction of the player for a set amount of time, which often resulted in the bomb missing the player completely. This change differentiated the bomb tower and made it more threatening to the player.
