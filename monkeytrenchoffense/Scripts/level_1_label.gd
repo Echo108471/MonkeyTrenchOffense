@@ -1,6 +1,7 @@
 extends Label
 
 const DURATION = 1.0
+const DURATION_FADE = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,5 +12,5 @@ func _ready() -> void:
 	timer.start()
 	await timer.timeout
 	var tween = create_tween()
-	await tween.tween_property(self, "modulate:a", 0, 1).finished
+	await tween.tween_property(self, "modulate:a", 0, DURATION_FADE).finished
 	

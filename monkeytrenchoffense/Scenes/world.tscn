@@ -214,7 +214,7 @@ disabled = true
 
 [node name="DartMonkey" parent="." instance=ExtResource("4_bho38")]
 position = Vector2(1625, -450)
-bulletSize = 10.0
+bulletSize = 3.0
 bulletSeeking = true
 
 [node name="SlowMonkey" parent="." instance=ExtResource("10_1hybe")]
@@ -403,6 +403,7 @@ text = "Current Layers Left: 1"
 script = ExtResource("22_dwkdj")
 
 [node name="Level1Label" type="Label" parent="GUILayer"]
+process_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -422,6 +423,7 @@ text = "LEVEL 1: Reach the Finish Line"
 script = ExtResource("23_woyt1")
 
 [node name="Level2Label" type="Label" parent="GUILayer"]
+process_mode = 3
 visible = false
 anchors_preset = 8
 anchor_left = 0.5
@@ -442,7 +444,7 @@ text = "LEVEL 2: Reach the Golden Finish Line"
 script = ExtResource("24_btah6")
 
 [node name="GameWonTrigger" type="Area2D" parent="."]
-position = Vector2(26664, 4123)
+position = Vector2(14753, 4949)
 script = ExtResource("24_202jv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameWonTrigger"]
@@ -469,7 +471,7 @@ tile_map_data = PackedByteArray("AAD4/xIAAAAGAAUAAAD4/xMAAAAIAAQAAAD5/xMAAAAHAAI
 tile_set = SubResource("TileSet_ccm2y")
 
 [node name="Label" type="Label" parent="HelpText"]
-z_index = 8
+z_index = 1
 offset_left = -134.0
 offset_top = 589.0
 offset_right = -34.0
@@ -477,7 +479,7 @@ offset_bottom = 646.0
 text = "Dash"
 
 [node name="Label2" type="Label" parent="HelpText"]
-z_index = 8
+z_index = 1
 offset_left = -85.5
 offset_top = 683.0
 offset_right = 76.5
@@ -485,7 +487,7 @@ offset_bottom = 740.0
 text = "Use Blackhole Power"
 
 [node name="Label3" type="Label" parent="HelpText"]
-z_index = 8
+z_index = 1
 offset_left = -58.5
 offset_top = 556.5
 offset_right = 44.5

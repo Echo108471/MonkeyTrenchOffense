@@ -30,7 +30,7 @@ texture = ExtResource("1_ncm3b")
 
 [node name="ColorRect" type="ColorRect" parent="TextureRect"]
 material = SubResource("ShaderMaterial_22ax5")
-custom_minimum_size = Vector2(1000, 400)
+custom_minimum_size = Vector2(1200, 550)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -88,6 +88,17 @@ theme_override_colors/icon_hover_color = Color(0.180392, 0.180392, 0.180392, 1)
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/font_size = 35
 text = "Quit"
+
+[node name="CheckButton" type="CheckButton" parent="TextureRect/ColorRect/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.975736, 0.975736, 0.975736, 1)
+theme_override_colors/font_outline_color = Color(0.0453124, 0.0453124, 0.0453124, 1)
+theme_override_constants/outline_size = 10
+theme_override_constants/align_to_largest_stylebox = 50
+theme_override_font_sizes/font_size = 25
+text = "Cheat Mode"
+expand_icon = true
 
 [node name="HSeparator" type="HSeparator" parent="TextureRect/ColorRect/VBoxContainer"]
 layout_mode = 2

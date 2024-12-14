@@ -1,6 +1,7 @@
 extends Label
 
 const DURATION = 1.0
+const DURATION_FADE = 1.0
 
 @onready var trigger1:Area2D = $"../../teleporterArea"
 @onready var trigger2:Area2D = $"../../teleporterArea2"
@@ -16,7 +17,7 @@ func _on_teleporter_area_2_level_two_start() -> void:
 	timer.start()
 	await timer.timeout
 	var tween = create_tween()
-	await tween.tween_property(self, "modulate:a", 0, 1).finished
+	await tween.tween_property(self, "modulate:a", 0, DURATION_FADE).finished
 	visible = false
 
 
