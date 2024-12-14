@@ -315,7 +315,7 @@ For the screenshots and the trailer, I chose the parts of the game that are the 
 
 *Tutorial Text* - I added a simple tutorial text using a [keyboard tilemap](https://gerald-burke.itch.io/geralds-keys) to show the player the controls without a popup interrupting the game. I felt this simple approach was good enough since the controls for our game are mostly straightforward
 
-![In-game Tutorial](https://github.com/user-attachments/assets/68f6acab-627d-484e-8f53-fb8edc43aff2)
+![In-game Tutorial](https://github.com/Echo108471/MonkeyTrenchOffense/blob/main/example_images/tutorial.png)
 
 *Code improvements* - I tweaked many features in the code of our game to make it more extensible and easier to integrate with new features. For the turrets and projectiles, I adjusted the OOP framework setup by Richard to give more power to the base class, and reduce the amount of repeated code in the subclasses (used above for the launching animation for example). This helped during development a lot as there was often changes which should apply to all subclasses. I also set up the scene defaults to make use of [Godot's export tag](https://github.com/Echo108471/MonkeyTrenchOffense/blob/ab6c1c7dbcd23f790b4e8def95486a48109ecc82/monkeytrenchoffense/Scenes/turrets/turretBase/turret_base.gd#L6), which exposes scene properties inside the editor. This was important for our game since we have many copies of each tower which we may want to adjust individually, rather than applying the same properties to all instances of that scene.
 
