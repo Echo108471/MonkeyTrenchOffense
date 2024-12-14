@@ -2,7 +2,7 @@
 
 ## Summary ##
 
-In our game you play as a balloon trying to escape evil monkeys that have trapped you and your fellow balloons. You must dodge the projectile attacks from numerous monkeys like bomb monkeys that throws massive amounts of TNT at you, dart monkeys that throw needle sharp arrows, and ice mokeys that hurl freezing icicles. With no ability to fight back, your only options are to run, dash, and outmaneuver the relentless attacks. The further you progress, the more challenging the enemies and obstacles become as you strive for freedom.
+In our game you play as a balloon trying to escape evil monkeys that have trapped you and your fellow balloons. You must dodge the projectile attacks from numerous monkeys like bomb monkeys that throw TNT with huge explosions at you, dart monkeys that throw multiple needle sharp darts, and ice monkeys that hurl freezing icicles. With no ability to fight back, your only options are to run, dash, and outmaneuver the relentless attacks. The further you progress, the more challenging the enemies and obstacles become as you strive for freedom. There are special abilities you must use to overcome the oppression of the monkeys.
 
 ## Project Resources
 
@@ -22,7 +22,8 @@ Your goal is to dodge projectiles and obstacles as you navigate through the leve
   - **Left / A**: Move Left
   - **Right / D**: Move Right
 - **Spacebar**: Use the spacebar to dash quickly in the direction you're moving. This will help you evade incoming attacks, but use it wisely, as the dash has a cooldown period.
-- **E**: Cycle Through Upgrades (test input)
+- **P**: Use to Activate Black-Hole Bloon's Absorption Ability 
+- **E**: Cycle Through Upgrades (Only Available When Cheat Mode is On, Toggleable In Main Menu)
   
 ## Gameplay Strategy:
 1. **Dodge and Dash**: Your main defense is your ability to move and dash. Keep an eye on the approaching enemies and their projectiles. Time your dash carefully to avoid explosions, arrows, and icicles.
@@ -30,16 +31,32 @@ Your goal is to dodge projectiles and obstacles as you navigate through the leve
 3. **Positioning**: Always keep an eye on the terrain and use it to your advantage. Some areas may provide more room to maneuver, while others might be more dangerous due to tight spaces and numerous enemies.
 4. **Use the Dash Sparingly**: The dash is a powerful tool, but it has a cooldown period. Use it when you absolutely need to escape or quickly change direction. Overusing it may leave you vulnerable.
 5. **Level Progression**: Each level gets progressively more difficult with additional enemies and faster projectiles. Stay alert and adapt your strategy as the challenges increase.
-
+6. **Collect Special Powerups**: There are powerup coins in each level that grant you the choice between 3 unique powerups: Beast Bloon, Lead Bloon, and Black-Hole Bloon. The Beast Bloon boasts an unbeatable movement speed and no dash cooldown, so you can rush past any towers but it is easily popped by any projectile. The Lead Bloon's thick meal exterior can tank many hits from sharp projectiles so as long as there is no bomb nearby you'll be just fine, but beware that this bloon is weighed down and thus slower. The Black-Hole Bloon grants you a unique absorption ability that will absorb any projectile for 5 seconds and regenerates your lost health for each projectile absorbed up to max health, but it will go on cooldown for 10 seconds after and force you to stop as the bloon 'digests' the projectiles for 3 seconds after the ability is finished. You will need specific abilities to overcome certain level sections, so choose wisely!
+   
 Good luck, and may you escape the monkeys’ clutches!
 
+
+
+
+
 **Add it here if you did work that should be factored into your grade but does not fit easily into the prescribed roles! Please include links to resources and descriptions of game-related material that does not fit into roles here.**
+- Our main roles and subroles that we ended up working on throughout the project development differ somewhat from what this template lays out since we felt for our game there was a different way to split the work fairly with the highest efficiency and structure. 
+Our Main roles and Subroles were as follows:
+Eugene Cho - Main Role: Map Design/Level Design, Subrole: Level Feel
+Ben Young - Main Role: Movement/Physics, Subrole: Gameplay Feel
+Minji Yun - Main Role: Animation/Visuals, Subrole: Narrative Design
+Ryan Ffrench - Main Role: Producer, Subrole: Audio/SFX & Presskit/Trailer (Chose two subroles since the main role was a little lighter)
+Nathan Kotni - Main Role: Tower/Bloon Upgrades Planning & Powerups Coding, Subrole: Menu/GUI
+Richard Shi - Main Role: Entity/Tower Programming, Subrole: Gameplay Testing
+*NOTE: Obviously, it would be a little ridiculous to say that each person only contributed to their own role and subrole, there was a lot of collaboration and overlap between roles but it is roughly true that each person contributed more to their listed role than any others. 
+
 
 # External Code, Ideas, and Structure #
 
-If your project contains code that: 1) your team did not write, and 2) does not fit cleanly into a role, please document it in this section. Please include the author of the code, where to find the code, and note which scripts, folders, or other files that comprise the external contribution. Additionally, include the license for the external code that permits you to use it. You do not need to include the license for code provided by the instruction team.
+- The intellectual guidance we used was more along the lines of the idea for our game coming from a unique twist on an established and well known game, Bloons Tower Defense, which is apparent from our game title intentially being an inverse of it. We definitely did have many unique elements to our game like the format not being a tower defense game at all since you are playing as the Bloon now it is akin to a Bullet Hell style game or even a Dungeon Crawler to an extent, and we also implemented some of our own unique powerups like the Beast Bloon and Black-Hole Bloon, so there was definitely independent thinking put into the game while using BTD as a baseline.
+- We looked at the Godot documentation for guidance in how to implement our vision for the game in code and consulted online forums like Reddit, Stack Exchange, and the Godot Forums for debugging difficult errors that arose (usually through Google searching the error message).
 
-If you used tutorials or other intellectual guidance to create aspects of your project, include reference to that information as well.
+
 
 # Main Roles #
 
@@ -58,6 +75,17 @@ You should replay any **bold text** with your relevant information. Liberally us
 
 My group was amazing which made my role as a producer go smoothly. We came up with an idea that is simple to understand, and allowed us to easily come to a consensus on what our game should look and feel like. One of the judges at the game jam even said that it was smart we made a game that was a spin on a preexisting game because so many design decisions had already been made. We were behind going into the first progress report, but this was due to it being Thanksgiving. Understandably people did not get as much work done over this time period as expected. I ensured everyone was on track by checking in with the group in a team group chat. Communication was great. When people had bugs or other issues the entire group did their best to help. The biggest issue we faced as a group was issues with Godot's (nonexistent) Git integration specifically with merge conflicts. We minimized this by using pull requests/different branches initially, and later by pushing only when a significant amount of work had been done and with warning to the rest of the team. I specifically commited my changes late at night with hours of advanced notice. Another notable thing I did was formulate a good quick pitch for our project and come up with a way to present our game in an engaing way that showed off its strengths during the Final Festival. 
 
+
+## Entity Programming - Richard Shi
+My role was to lay the groundwork and code the foundational behaviors and organizational hierarchy of the three main types of entities in our game: player, towers, and projectiles. Parts of these were later expanded upon by other team members working on specific systems that rely on first having basic functional entities (eg. upgrades, movement physics, sound, etc.). See commit history of richardBranch and main for details.
+
+*Player:* The first thing I coded was a [player entity](https://github.com/Echo108471/MonkeyTrenchOffense/blob/9d3d79b015ef8b90aad342d511616c91e4f7395c/monkeytrenchoffense/Scenes/player/player.gd#L1) that had all the basic properties of a collision hull, hitbox (or is called a hurtbox???), sprite, basic movement physics (later overwritten and improved by team), health, etc. I implemented a framework for communicating damage and status effects to the player and implemented a basic slowdown effect from the slow tower. Regrettably, given the scope of the game and available time, this was not used to its fullest extent. This part of my role had the most significant overlap with other team members' work since the game is so heavily centered around the player entity and so many later additions, such as sound or game feel or ui, directly built on it.
+
+*Towers:* I created a [base tower class](https://github.com/Echo108471/MonkeyTrenchOffense/blob/9d3d79b015ef8b90aad342d511616c91e4f7395c/monkeytrenchoffense/Scenes/turrets/turretBase/turret_base.gd#L1) and scene from which the others are derived. The three types of towers ([projectile](https://github.com/Echo108471/MonkeyTrenchOffense/blob/9d3d79b015ef8b90aad342d511616c91e4f7395c/monkeytrenchoffense/Scenes/turrets/projectileTurret/projectileTurret.gd#L1), [slow](https://github.com/Echo108471/MonkeyTrenchOffense/blob/9d3d79b015ef8b90aad342d511616c91e4f7395c/monkeytrenchoffense/Scenes/turrets/slowTurret/slowTurret.gd#L1), and [bomb](https://github.com/Echo108471/MonkeyTrenchOffense/blob/9d3d79b015ef8b90aad342d511616c91e4f7395c/monkeytrenchoffense/Scenes/turrets/bombTurret/bombTurret.gd#L1)) all inherit the core properties of a tower from this parent class (most represented by a list of member variables that can be customized as needed by other game systems such as tower upgrades). This part of my role had relatively notable overlap with other team members given that other systems would need to use/alter behavior of the towers through member variables. Additional note: the vector math for making the projectile turret's customizable spreadshot was particularly challenging when I began to consider making it as robust a solution as possible.
+
+*Projectiles:* I first created a [basic bullet](https://github.com/Echo108471/MonkeyTrenchOffense/blob/9d3d79b015ef8b90aad342d511616c91e4f7395c/monkeytrenchoffense/Scenes/projectiles/bulletBase.gd#L1) to serve as reference. It has the basic functionality of aiming, flying, seeking, damaging, etc. and other such basic behaviors for a projectile. The [bomb bullet](https://github.com/Echo108471/MonkeyTrenchOffense/blob/9d3d79b015ef8b90aad342d511616c91e4f7395c/monkeytrenchoffense/Scenes/projectiles/bulletBomb.gd#L1) inherits from it, though adding/altering timers, signals, the hitbox, and fuse/explosion animations in order to make it blow up in addition to just flying forward like a normal projectile. Also, another team member later helped create a separate icicle bullet using the basic bullet as a template, although in hindsight a more elegant implementation would have been to simply initialize and configure it with a different sprite instead of making a whole new class. This part of my role had relatively little overlap with other team members given that most information would be passed through the turret when calling the configure function.
+
+
 ## User Interface and Input
 
 **Describe your user interface and how it relates to gameplay. This can be done via the template.**
@@ -65,21 +93,31 @@ My group was amazing which made my role as a producer go smoothly. We came up wi
 
 **Add an entry for each platform or input style your project supports.**
 
+
 ## Movement/Physics
 
 **Describe the basics of movement and physics in your game. Is it the standard physics model? What did you change or modify? Did you make your movement scripts that do not use the physics system?**
 
+
 ## Animation and Visuals
 
 **List your assets, including their sources and licenses.**
+Assets Used:
+- Map Tiles, small animations, decorations: [Tiny Swords](https://pixelfrog-assets.itch.io/tiny-swords) - Creative Commons Zero License
+*Inspiration Taken From BTD Games
 
 **Describe how your work intersects with game feel, graphic design, and world-building. Include your visual style guide if one exists.**
+
 
 ## Game Logic
 
 **Document the game states and game data you managed and the design patterns you used to complete your task.**
 
+
+
+
 # Sub-Roles
+
 
 ## Audio -- Ryan Ffrench
 
@@ -105,15 +143,31 @@ Implementing the audio system for the game was harder and more time consuming th
 Sound effects are important to our gameplay. If a player cannot hear the projectiles being thrown at them it is much harder to avoid them. With this in mind I designed the sound effects to be distinct from each other so that each tower had its own sound profile. I also picked background music that is more ambient and mellow, so the sound effects are not drowned out. For the soundfont I was inspired by an indie game I like called Golf Story. It has mostly chiptune music, but regular SFX which helps the SFX have contrast with the music.
 
 
-## Gameplay Testing
+## Gameplay Testing - Richard shi
 
-**Add a link to the full results of your gameplay tests.**
+Due to the tight schedule, our game was not in a state to gather meaningful feedback during the GDAC event. Consequently, I collected feedback from a number of friends, classmates, and roommates during the development process, which contributed to many changes that made their way into the game.
 
-**Summarize the key findings from your gameplay tests.**
+Listed below are some of the most prominent feedback with visible effects on the final product:
+
+Janky movement: Early feedback commented on the "janky" feeling of player movement, mostly while using my initial unrefined movement physics and early iterations of the current system. Consequently, much attention went into the acceleration/decceleration of the player, dash speed and cooldowns, etc. in order to create a player entity that felt like an extension of the player. The presence of a team member dedicated primarily to handling the movement behaviors of the player proved highly valuable.
+
+Screen size: One problem we had was towers shooting from far off-screen, which eventually led to a full readjustment of entity scales across the board once the maps were largely finished and proper testing around the levels could begin. Initial settings were too zoomed in and various entities (namely some towers compared to the player) were disproportionate in size, which has since been adjusted significantly. Things look mostly proportional now.
+
+Tower range visibility: An early complaint that went hand in hand with the screen size issue was the uncertainty of tower range. Once visible debug collision shapes were turned off, there was no clear indicator of being within range of a tower other than it swivelling to face the player, or simply being shot by the tower. As a result, I added a visible dark gray circle around towers, scaled to the size of their range, as an indicator. Further feedback prompted me to make the range indicators only appear once the player entered the range of a tower so as to remove clutter from the screen and not give away off-screen towers too much.
+
+Lack of UI: An early complaint was that the game lacked any kind of UI or end screen (since the game simply quit on death during early development). This has since been alleviated by the introduction of UI and an end screen and no longer quitting on death.
+
+Bomb telegraphing: The bomb tower is particularly devastating due to its unique AOE attack, which led to feedback requesting clearer telegraphing. The initial bomb projectile had poor indication of its explosion behavior. This has since been fixed by two measures. First, I refined the timing of the hitboxes for the explosion to more closely match the visible animation. Second, I added an animated pointlight2d to the bomb which burns down the length of the fuse prior to detonation. This latter effect is subtle but was received positively by those who broached the feedback. Together these two changes made the bomb tower much easier to read for players.
+
+Getting stuck: Some locations, such as parts of the far right side of map1, had certain gaps that made it possible to get stuck. Small map adjustments and later placements of finishing points and towers made these issue significantly less pressing.
+
+Hitbox size: Initially, the player's hitbox and collision hull were both scaled exactly to the size of the balloon sprite. However, in practice, this led to the feedback of being unfairly hit by certain projectiles. As a result, there was work in scaling down these boxes in order to improved the perceived fairness of hitreg.
+
 
 ## Narrative Design
 
 **Document how the narrative is present in the game via assets, gameplay systems, and gameplay.** 
+
 
 ## Press Kit and Trailer -- Ryan Ffrench
 
@@ -121,6 +175,8 @@ Sound effects are important to our gameplay. If a player cannot hear the project
 
 **Describe how you showcased your work. How did you choose what to show in the trailer? Why did you choose your screenshots?**
 For the screenshots and the trailer, I chose the parts of the game that are the coolest. Specifically, I made sure to show off the Bomb Monkey and Ice Monkey. I tried to go for an over the top funny editing style, because it fits with our game well.
+
+
 
 ## Game Feel and Polish
 
