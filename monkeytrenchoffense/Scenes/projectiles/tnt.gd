@@ -32,6 +32,6 @@ func explode():
 	var distance = tnt_position.distance_to(player_position)
 	
 	if distance <= explosion_radius:
-		player.apply_damage(1)
+		player.apply_damage(1, player.DamageType.EXPLOSIVE)
 	
 	queue_free()

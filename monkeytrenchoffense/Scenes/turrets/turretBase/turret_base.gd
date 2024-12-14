@@ -51,10 +51,10 @@ func _on_attack_range_area_entered_proj(area: Area2D) -> void:
 	queue_redraw()
 
 
-func _on_attack_range_area_exited_proj(area: Area2D) -> void:
-	if area.get_parent() == %Player:
-		target = null
-		$AttackCooldown.paused = true
+func _on_attack_range_area_exited_proj(_area: Area2D) -> void:
+	
+	target = null
+	$AttackCooldown.paused = true
 	
 	queue_redraw()
 

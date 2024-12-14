@@ -18,7 +18,7 @@ func configure(s:float = 400.0, sz:float = 1.0, d:int = 1, p:int = 1, t:float = 
 	$DisappearTimer.wait_time = 1
 
 
-func _process(delta):
+func _process(_delta):
 	# quad bezier curve to simulate travelling up and down in the z axis
 	var t = $TravelTimer.time_left / $TravelTimer.wait_time
 	var intermediate_0 = (starting_scale).lerp(scale, t)
@@ -26,16 +26,16 @@ func _process(delta):
 	scale = intermediate_0.lerp(intermediate_1, t)
 	
 
-func launch_to(pos: Vector2, time: float) -> void:
+func launch_to(pos: Vector2, time_param: float) -> void:
 	if pos_tween:
 		pos_tween.kill()
 	pos_tween = create_tween()
-	pos_tween.tween_property(self, "position", pos, time * 0.5)
+	pos_tween.tween_property(self, "position", pos, time_param * 0.5)
 	
 func _on_area_2d_area_entered(area):
 	pierce -= 1
 	var obj = area.get_parent()
-	obj.apply_damage(damage)
+	obj.apply_damage(damage, obj.DamageType.EXPLOSIVE)
 	obj.set_effects(slow, slow_duration)
 	if pierce <= 0:
 		damage = 0

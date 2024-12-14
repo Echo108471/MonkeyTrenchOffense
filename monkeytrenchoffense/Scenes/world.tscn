@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bc51wm18jfnhw"]
+[gd_scene load_steps=30 format=3 uid="uid://bc51wm18jfnhw"]
 
 [ext_resource type="PackedScene" uid="uid://bufty5f1wpw7x" path="res://Scenes/player/player.tscn" id="1_kuixu"]
 [ext_resource type="PackedScene" uid="uid://bo8dwygo4att7" path="res://Scenes/maps/map1.tscn" id="1_memt1"]
@@ -11,11 +11,18 @@
 [ext_resource type="PackedScene" uid="uid://dy576ss87vjl" path="res://Scenes/turrets/bombTurret/bombTurret.tscn" id="13_wtiq1"]
 [ext_resource type="Texture2D" uid="uid://cbpv8y8yk575a" path="res://Scenes/maps/finish_line.png" id="14_d7c2n"]
 [ext_resource type="Script" path="res://Scenes/turrets/bombTurret/bomb_turret.gd" id="14_fx4dj"]
+[ext_resource type="Texture2D" uid="uid://b060658gs6enq" path="res://Assets/gui/underHealthBar.png" id="16_xa5jr"]
+[ext_resource type="Texture2D" uid="uid://dndhh0y55y00e" path="res://Assets/gui/progressHealthBar.png" id="17_bij5w"]
+[ext_resource type="Script" path="res://Scripts/health_bar.gd" id="18_6rcug"]
+[ext_resource type="Texture2D" uid="uid://st3knq6254e5" path="res://Assets/gui/underDashBar.png" id="18_xo55y"]
 [ext_resource type="Script" path="res://Scenes/second_level_trigger.gd" id="19_3y6gl"]
 [ext_resource type="AudioStream" uid="uid://c43k2nbm8ywwb" path="res://Assets/sfx/GameMusic.mp3" id="19_b5klc"]
+[ext_resource type="Texture2D" uid="uid://d3lccnksyim5o" path="res://Assets/gui/progressDashBar.png" id="19_k4ilc"]
 [ext_resource type="PackedScene" uid="uid://ck28f8t6kcm4h" path="res://Scenes/maps/map2.tscn" id="19_m5to5"]
+[ext_resource type="Script" path="res://Scripts/dash_bar.gd" id="21_624p5"]
 [ext_resource type="Shader" path="res://Scenes/blur_shader.gdshader" id="21_g15t4"]
 [ext_resource type="Script" path="res://Scripts/gui_container.gd" id="21_o88vq"]
+[ext_resource type="Script" path="res://Scripts/current_layers.gd" id="22_dwkdj"]
 [ext_resource type="Script" path="res://Scripts/game_won_trigger.gd" id="24_202jv"]
 [ext_resource type="Texture2D" uid="uid://dyi61fp6lsurw" path="res://Scenes/maps/finish_line_final.png" id="25_ytccu"]
 
@@ -238,6 +245,57 @@ theme_override_constants/margin_right = 10
 layout_mode = 2
 theme_override_font_sizes/font_size = 25
 text = "Pause"
+
+[node name="MarginContainer" type="MarginContainer" parent="GUILayer"]
+offset_right = 225.0
+offset_bottom = 44.0
+scale = Vector2(1.16, 1)
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 20
+
+[node name="HealthBar" type="TextureProgressBar" parent="GUILayer/MarginContainer"]
+layout_mode = 2
+value = 100.0
+texture_under = ExtResource("16_xa5jr")
+texture_progress = ExtResource("17_bij5w")
+script = ExtResource("18_6rcug")
+
+[node name="MarginContainer2" type="MarginContainer" parent="GUILayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1, 0.84)
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 35
+
+[node name="DashBar" type="TextureProgressBar" parent="GUILayer/MarginContainer2"]
+layout_mode = 2
+value = 100.0
+fill_mode = 3
+texture_under = ExtResource("18_xo55y")
+texture_progress = ExtResource("19_k4ilc")
+script = ExtResource("21_624p5")
+
+[node name="Label" type="Label" parent="GUILayer/MarginContainer2"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0.0475577, 0.0475576, 0.0475576, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 11
+text = " DASH
+"
+
+[node name="MarginContainer3" type="MarginContainer" parent="GUILayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.961076, 1)
+theme_override_constants/margin_left = 85
+theme_override_constants/margin_top = 60
+
+[node name="CurrentLayers" type="Label" parent="GUILayer/MarginContainer3"]
+layout_mode = 2
+text = "Current Layers Left: 1"
+script = ExtResource("22_dwkdj")
 
 [node name="GameWonTrigger" type="Area2D" parent="."]
 position = Vector2(26664, 4123)

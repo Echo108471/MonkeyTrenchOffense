@@ -1,9 +1,15 @@
 class_name Player
 extends CharacterBody2D
 
+signal healthChanged
+signal layersChanged
+signal dashChanged
+
 @onready var animation = $AnimationPlayer
 @export var movement_speed:float = 400
 @export var hitpoints:int = 1
+@export var max_hitpoints_curr_layer:int = 1
+@export var curr_layers = 1
 @export var drag_factor:float = 4 # how much velocity decreases without input
 # (seconds) how long it takes to recover from a dash
 @export var dash_duration:float = 0.3
@@ -81,10 +87,8 @@ func _physics_process(delta: float) -> void:
 func apply_damage(damage:int, damage_type:DamageType = DamageType.SHARP) -> void:
 	
 	hitpoints -= damage
-	if current_power == Power.LEAD:
-		$LeadBalloonSound.play()
-	elif hitpoints >= 0 and current_power != Power.RED:
-		$BalloonHitSound.play()
+	if hitpoints >= 0 and current_power != Power.RED and current_power != Power.LEAD:
+			$BalloonHitSound.play()
 		
 	if damage_type == DamageType.EXPLOSIVE and current_power == Power.LEAD:
 		hitpoints = 0
@@ -93,24 +97,26 @@ func apply_damage(damage:int, damage_type:DamageType = DamageType.SHARP) -> void
 			$AnimationPlayer.play("lead_hit")
 			$LeadBalloonSound.play()
 			lead_hit_duration = 0.001
+			
+	healthChanged.emit()
 		
 	if hitpoints <= 0 and death_flag == false:
 		apply_power_up(sub_power)
-		death_flag = true
 		
 		
 
 func game_over() -> void:
-	#put game over behavior here
-	$AnimationPlayer.play("death")
-	$BalloonPoppedSound.play()
-	var timer = Timer.new()
-	add_child(timer)
-	timer.wait_time = death_anim_duration
-	timer.one_shot = true
-	timer.start()
-	await timer.timeout
-	get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
+	if death_flag == false:
+		death_flag = true
+		$AnimationPlayer.play("death")
+		$BalloonPoppedSound.play()
+		var timer = Timer.new()
+		add_child(timer)
+		timer.wait_time = death_anim_duration
+		timer.one_shot = true
+		timer.start()
+		await timer.timeout
+		get_tree().change_scene_to_file("res://Scenes/game_over.tscn")
 
 
 
@@ -126,6 +132,8 @@ func _handle_movement_inputs(delta:float) -> void:
 	if Input.is_action_just_pressed("dash") and \
 			time_since_dash > (dash_recovery + dash_duration):
 		time_since_dash = 0
+		
+	dashChanged.emit()
 	
 	if time_since_dash < dash_duration:
 		#var cur_dash_speed = velocity.length() + movement_speed * dash_multi * (time_since_dash / (dash_duration))
@@ -170,6 +178,8 @@ func apply_power_up(power:Power) -> void:
 	# restore basic properties
 	# some will be overwritten in match below
 	hitpoints = 1
+	max_hitpoints_curr_layer = 1
+	curr_layers = 1
 	drag_factor = 4 
 	dash_duration = 0.25
 	dash_recovery = 1.0 
@@ -187,20 +197,26 @@ func apply_power_up(power:Power) -> void:
 			game_over()
 		
 		Power.BLUE:
-			hitpoints = 1
+			hitpoints = 2
+			max_hitpoints_curr_layer = 2
+			curr_layers = 2
 			movement_speed *= 1.1
 			sub_power = Power.RED
-			$Sprite2Dplayer.texture = preload("res://Assets/balloon/green.png")
+			$Sprite2Dplayer.texture = preload("res://Assets/balloon/blue.png")
 		
 		Power.GREEN:
-			hitpoints = 1
+			hitpoints = 3
+			max_hitpoints_curr_layer = 3
+			curr_layers = 3
 			movement_speed *= 1.2
 			sub_power = Power.BLUE
-			$Sprite2Dplayer.texture = preload("res://Assets/balloon/blue.png")
+			$Sprite2Dplayer.texture = preload("res://Assets/balloon/green.png")
 
 		
 		Power.LEAD:
-			hitpoints = 10
+			hitpoints = 20
+			max_hitpoints_curr_layer = 20
+			curr_layers = 4
 			sub_power = Power.GREEN
 			movement_speed *= 0.75
 			dash_multi = 1.5
@@ -208,7 +224,9 @@ func apply_power_up(power:Power) -> void:
 			$Sprite2Dplayer.texture = preload("res://Assets/balloon/lead.png")
 		
 		Power.BEAST:
-			hitpoints = 3
+			hitpoints = 5
+			max_hitpoints_curr_layer = 5
+			curr_layers = 4
 			sub_power = Power.GREEN
 			movement_speed *= 1.4
 			dash_recovery = 0.05
@@ -216,8 +234,12 @@ func apply_power_up(power:Power) -> void:
 			$AnimationPlayer.play("beast_idle")
 			
 		Power.BLACK_HOLE:
-			hitpoints = 3
+			hitpoints = 5
+			max_hitpoints_curr_layer = 5
+			curr_layers = 4
 			sub_power = Power.GREEN
 			$AnimationPlayer.play("black_hole_idle")
 			
 	acceleration_speed = movement_speed * 6
+	healthChanged.emit()
+	layersChanged.emit()
