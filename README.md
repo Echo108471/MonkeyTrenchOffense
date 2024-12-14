@@ -22,7 +22,7 @@ Your goal is to dodge projectiles and obstacles as you navigate through the leve
   - **Left / A**: Move Left
   - **Right / D**: Move Right
 - **Spacebar**: Use the spacebar to dash quickly in the direction you're moving. This will help you evade incoming attacks, but use it wisely, as the dash has a cooldown period.
-- **P**: Use to Activate Black-Hole Bloon's Absorption Ability 
+- **P**: Use to Activate Black-Hole Balloon's Absorption Ability 
 - **E**: Cycle Through Upgrades (Only Available When Cheat Mode is On, Toggleable In Main Menu)
   
 ## Gameplay Strategy:
@@ -31,7 +31,7 @@ Your goal is to dodge projectiles and obstacles as you navigate through the leve
 3. **Positioning**: Always keep an eye on the terrain and use it to your advantage. Some areas may provide more room to maneuver, while others might be more dangerous due to tight spaces and numerous enemies.
 4. **Use the Dash Sparingly**: The dash is a powerful tool, but it has a cooldown period. Use it when you absolutely need to escape or quickly change direction. Overusing it may leave you vulnerable.
 5. **Level Progression**: Each level gets progressively more difficult with additional enemies and faster projectiles. Stay alert and adapt your strategy as the challenges increase.
-6. **Collect Special Powerups**: There are powerup coins in each level that grant you the choice between 3 unique powerups: Beast Bloon, Lead Bloon, and Black-Hole Bloon. The Beast Bloon boasts an unbeatable movement speed and no dash cooldown, so you can rush past any towers but it is easily popped by any projectile. The Lead Bloon's thick meal exterior can tank many hits from sharp projectiles so as long as there is no bomb nearby you'll be just fine, but beware that this bloon is weighed down and thus slower. The Black-Hole Bloon grants you a unique absorption ability that will absorb any projectile for 5 seconds and regenerates your lost health for each projectile absorbed up to max health, but it will go on cooldown for 10 seconds after and force you to stop as the bloon 'digests' the projectiles for 3 seconds after the ability is finished. You will need specific abilities to overcome certain level sections, so choose wisely!
+6. **Collect Special Powerups**: There are powerup coins in each level that grant you the choice between 3 unique powerups: Beast Balloon, Lead Balloon, and Black-Hole Balloon. The Beast Balloon boasts an unbeatable movement speed and no dash cooldown, so you can rush past any towers but it is easily popped by any projectile. The Lead Balloon's thick meal exterior can tank many hits from sharp projectiles so as long as there is no bomb nearby you'll be just fine, but beware that this balloon is weighed down and thus slower. The Black-Hole Balloon grants you a unique absorption ability that will absorb any projectile for 5 seconds and regenerates your lost health for each projectile absorbed up to max health, but it will go on cooldown for 10 seconds after and force you to stop as the balloon 'digests' the projectiles for 3 seconds after the ability is finished. You will need specific abilities to overcome certain level sections, so choose wisely!
    
 Good luck, and may you escape the monkeys’ clutches!
 
@@ -51,7 +51,7 @@ Minji Yun - Main Role: Animation/Visuals, Subrole: Narrative Design
 
 Ryan Ffrench - Main Role: Producer, Subrole: Audio/SFX & Presskit/Trailer (Chose two subroles since the main role was a little lighter)
 
-Nathan Kotni - Main Role: Tower/Bloon Upgrades Planning & Powerups Coding, Subrole: Menu/GUI
+Nathan Kotni - Main Role: Tower/Balloon Upgrades Planning & Powerups Coding, Subrole: Menu/GUI
 
 Richard Shi - Main Role: Entity/Tower Programming, Subrole: Gameplay Testing
 
