@@ -144,9 +144,9 @@ Assets Used:
 ![image](https://github.com/user-attachments/assets/b1ef6a80-263d-4f8d-aeae-2fe70a9b6179)
 
 - Start/Win/Lose Screen
-![image](https://github.com/user-attachments/assets/640cce05-e8d7-4689-b6dc-b1e9bf7f18d0)
 ![image](https://github.com/user-attachments/assets/f0aa0089-d739-44dd-a492-b3b7df8b40f5)
 ![image](https://github.com/user-attachments/assets/8b1c6b1f-2455-4ab0-8831-0f6bd6fdadc4)
+![image](https://github.com/user-attachments/assets/248f06a0-f7dc-4600-b7fc-46f0d1ca1aae)
 
 
 
