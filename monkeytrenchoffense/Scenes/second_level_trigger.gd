@@ -4,9 +4,9 @@ extends Area2D
 
 var player: Player
 
-
 func _ready() -> void:
 	player = %Player
+
 
 func _on_body_entered(_body:Node2D) -> void:
 	# Position the player for the second level

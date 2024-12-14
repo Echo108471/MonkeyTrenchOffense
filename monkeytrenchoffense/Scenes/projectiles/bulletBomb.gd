@@ -15,7 +15,7 @@ func configure(s:float = 400.0, sz:float = 1.0, d:int = 1, p:int = 1, t:float = 
 	super(s, sz, d, p, t, sk, sl, sld)
 	scale = Vector2(sz, sz)
 	starting_scale = scale
-	$DisappearTimer.wait_time = 1
+	$DisappearTimer.wait_time = 1 # this timer is used to wait for explosion to finish
 
 
 func _process(_delta):
@@ -24,9 +24,10 @@ func _process(_delta):
 	var intermediate_0 = (starting_scale).lerp(scale, t)
 	var intermediate_1 = (starting_scale * 2).lerp(starting_scale, t)
 	scale = intermediate_0.lerp(intermediate_1, t)
-	
+
 
 func launch_to(pos: Vector2, time_param: float) -> void:
+	# use tween to smoothly move projectile towards the target position
 	if pos_tween:
 		pos_tween.kill()
 	pos_tween = create_tween()
@@ -40,16 +41,21 @@ func _on_area_2d_area_entered(area):
 	if pierce <= 0:
 		damage = 0
 
+
 func _on_travel_timer_timeout() -> void:
+	# once the projectile lands
 	travelling = false
 	$FuseTimer.start()
 	$AnimationPlayer.play("fuse")
 
+
 func _on_fuse_timer_timeout() -> void:
+	# boom!
 	$explosion.visible = true
 	$bombBody.visible = false
 	$AnimationPlayer.play("explode")
 	$DisappearTimer.start()
 
 func _on_disappear_timer_timeout():
+	# explosion animation finished
 	queue_free()

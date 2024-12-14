@@ -1,10 +1,11 @@
 class_name Turret
 extends Node2D
 
-var target:Player = null #probably lock to the player?
+var target:Player = null # turret will face/fire towards this target
 
 @export var bulletCount : int = 1
 
+# projectiles are created using these parameters
 @export var bulletSpeed : float = 400.0
 @export var bulletSize : float = 1.0
 @export var bulletDamage : int = 0
@@ -15,17 +16,16 @@ var target:Player = null #probably lock to the player?
 @export var bulletSlowDuration : float = 0.0
 @export var max_cone_angle : float = 90
 
-@export var attack_speed := 1.0
+@export var attack_speed := 1.0 # how many times per second does turret fire
 @export var attack_range := 300.0
 @export var damage := 1.0
+
+# how quickly the turret rotates
 @export var swivel : float = 5
 
-var sound:AudioStreamPlayer2D
-var projectile_template:PackedScene
+var sound:AudioStreamPlayer2D # sound that will be played when firing
+var projectile_template:PackedScene # projectile scene that will be created when firing
 var _shoot_direction:Vector2
-
- #the agility with which the turret rotates
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -88,3 +88,9 @@ func _fire_projectile() -> void:
 	
 		get_tree().current_scene.add_child(projectile)
 		sound.play()
+
+
+func _draw() -> void:
+	#if a target is within range, display that range
+	if target != null:
+		draw_circle(Vector2.ZERO, attack_range, Color.DIM_GRAY, false, 2.0)
