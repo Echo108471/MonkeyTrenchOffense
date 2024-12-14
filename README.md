@@ -7,6 +7,7 @@ In our game you play as a balloon trying to escape evil monkeys that have trappe
 ## Project Resources
 
 [Itch IO](https://benyoung32.itch.io/monkey-trench-offense) 
+
 [Trailer](https://youtu.be/i8l6JdhSNFc?si=5tn6Pdlufj88c8pC)  
 [Press Kit](https://ryanffrench.github.io/MonkeyTrenchOffense-PressKit/)  
 [Proposal](https://docs.google.com/document/d/1XfRfDoN-Fm2vW_cJ7vQpI7-b4w9EeZ0zoOBdrwvnYzk/edit?tab=t.0#heading=h.i3tv2mxf7h7z)  
@@ -31,7 +32,7 @@ Your goal is to dodge projectiles and obstacles as you navigate through the leve
 3. **Positioning**: Always keep an eye on the terrain and use it to your advantage. Some areas may provide more room to maneuver, while others might be more dangerous due to tight spaces and numerous enemies.
 4. **Use the Dash Sparingly**: The dash is a powerful tool, but it has a cooldown period. Use it when you absolutely need to escape or quickly change direction. Overusing it may leave you vulnerable.
 5. **Level Progression**: Each level gets progressively more difficult with additional enemies and faster projectiles. Stay alert and adapt your strategy as the challenges increase.
-6. **Collect Special Powerups**: There are powerup coins in each level that grant you the choice between 3 unique powerups: Beast Bloon, Lead Bloon, and Black-Hole Bloon. The Beast Bloon boasts an unbeatable movement speed and no dash cooldown, so you can rush past any towers but it is easily popped by any projectile. The Lead Bloon's thick meal exterior can tank many hits from sharp projectiles so as long as there is no bomb nearby you'll be just fine, but beware that this bloon is weighed down and thus slower. The Black-Hole Bloon grants you a unique absorption ability that will absorb any projectile for 5 seconds and regenerates your lost health for each projectile absorbed up to max health, but it will go on cooldown for 10 seconds after and force you to stop as the bloon 'digests' the projectiles for 3 seconds after the ability is finished. You will need specific abilities to overcome certain level sections, so choose wisely!
+6. **Collect Special Powerups**: There are powerup coins in each level that grant you the choice between 3 unique powerups: Beast Bloon, Lead Bloon, and Black-Hole Bloon. The Beast Bloon boasts an unbeatable movement speed and no dash cooldown, so you can rush past any towers but it is easily popped by any projectile. The Lead Bloon's thick meal exterior can tank many hits from sharp projectiles so as long as there is no bomb nearby you'll be just fine, but beware that this bloon is weighed down and thus slower. The Black-Hole Bloon grants you a unique absorption ability that will absorb any projectile for 5 seconds and regenerates your lost health for each projectile absorbed up to max health, but it will go on cooldown for 10 seconds after and force you to stop as the bloon 'digests' the projectiles for 3 seconds after the ability is finished. While absorbing your movement speed is also reduced to 50%. You will need specific abilities to overcome certain level sections, so choose wisely!
    
 Good luck, and may you escape the monkeys’ clutches!
 
@@ -51,7 +52,7 @@ Minji Yun - Main Role: Animation/Visuals, Subrole: Narrative Design
 
 Ryan Ffrench - Main Role: Producer, Subrole: Audio/SFX & Presskit/Trailer (Chose two subroles since the main role was a little lighter)
 
-Nathan Kotni - Main Role: Tower/Bloon Upgrades Planning & Powerups Coding, Subrole: Menu/GUI
+Nathan Kotni - Main Role: Tower/Bloon Upgrades Planning & Powerups Coding, Subrole: User Interface
 
 Richard Shi - Main Role: Entity/Tower Programming, Subrole: Gameplay Testing
 
@@ -150,6 +151,27 @@ Assets Used:
 ![image](https://github.com/user-attachments/assets/248f06a0-f7dc-4600-b7fc-46f0d1ca1aae)
 
 
+## Tower/Bloon Upgrades Planning & Powerups Coding -- Nathan Kotni
+
+### Initial Designs & Brainstorming
+My first task for my role was to decide on unique and fun Bloon upgrades and for our game to be exciting for players to explore, and so my idea for that was to maintain the look and feel of the original Bloons Tower Defense games but invent new powerups for the Bloon that the player is playing as. Through this thought process, I came up with a Bloon upgrade system that was doable to create within the timeframe available to us for project development while still being nuanced. The result of this is the following upgrade chart: 
+![](https://github.com/Echo108471/MonkeyTrenchOffense/blob/030b4f9a9d286b7b1559015365539e40f27c467d/example_images/bloonUpgradesChart.png). 
+I designed all of the special upgrades sprites myself (using Minji's Red Bloon design as a base for the Lead Bloon and Black Hole Bloon) and I did this using Piskel, a free online pixel sprite editor. In the above chart you can see that I pulled inspiration from BTD but made unique powerups for the Beast Bloon and Black Hole bloon that adds a new twist to the classic upgrades that the Bloons recieve while keeping some of the iconic powerups from the similar like the Lead Bloon. There was also the basic upgrades for the Bloon which precedes the special upgrades, so Red for the base bloon with Blue and Green after it. 
+
+For the Towers, I thought it would be fun to implement some of the most popular towers from BTD as villains in this game since most players would have an association with them as heroes, so this would highlight the narrative gimmick of our game that the Monkey Towers were actually the villains all along. Here is the tower chart that I made for our game including the changes we made during development: 
+![](https://github.com/Echo108471/MonkeyTrenchOffense/blob/030b4f9a9d286b7b1559015365539e40f27c467d/example_images/towerUpgradesChart.png).
+
+## Code Implementation
+After these Bloon upgrades and towers were decided on, I gave direction to team members that were tasked with implementing the towers or player movement. For example, I would give specific details about the vision I had for the tower attacks to Richard, who was in charge of entity progamming, which the towers fall under. Then came the task of implementing the powerup structure for the player within the code, which Ben began as he expanded upon the movement code within [player.gd](https://github.com/Echo108471/MonkeyTrenchOffense/blob/4f90c21c5a030a34739715adad88d2b8609dcc19/monkeytrenchoffense/Scenes/player/player.gd) and I completed the code and changed to the appropriate animations that Minji for made when each powerup was equipped.
+
+The specific code implementation for the powerups involved a Power enum that includes constants for every powerup possible along with a constant for DEAD. The way this system functions is that there is a variable of type Power that represents the current powerup that it equipped on the Bloon and another variable of type Power to represent the next state in the line after the current powerup. So when the Bloon takes a hit and the current hitpoints fall equal to or below 0, it changes the current powerup stored in the variable to the next-in-line powerup, and a new next-in-line powerup is assigned based on the new current power up. This allows for a Bloon to be able to have multiple layers until it finally dies at the red bloon because the next-in-line powerup assigned to red is DEAD, and when DEAD becomes the current powerup by way of the previous layer (RED) popping, the popping animation is triggered and after a timer to allow the popping animation to play fully, the game over code is triggered. Then, when the powerup is switched either by gaining it through collecting a powerup coin, or by popping the previous layer, the relevant attributes are set to unlock the Bloon's abilities, like extreme tankiness for the Lead Bloon, fast movement speed and no dash recharge for the Beast Bloon, or enabling the input for the Black Hole Bloon's ability to aborb incoming projectiles, as well as setting slightly different stats for each of the colored Bloon layers. 
+
+I also created code for the Black Hole Bloon's ability by only handling user input for the 'P' key only when the current powerup is BLACK_HOLE, and the ability would have a duration and cooldown period much like the dash ability that Ben created but while it is active it does not allow the Bloon to be injured by enemy projectiles, and instead handles their collisions by increasing it's own health by their damage amounts up to the max hitpoints for the Black Hole Bloon of 5 hitpoints. This ability lasts for 5 seconds with movement slowed to 50% for all that time and goes on cooldown for 10 seconds after with the first 3 seconds of cooldown still having slowed movement.
+
+I also created the sprite and nodes for the Bloon Powerup Coin which when the player collects it by their collision boxes intersecting, grants the user either an extra layer of basic Bloons (color change) or once the color is at Green, allows the user to choose between any of the 3 special powerups. This choice essentially pauses the game and uses Godot containers like CanvasLayer to display it as a popup on the screen.
+
+
+
 ## Map and Level Design (Eugene Cho)
 
 ### Initial Design
@@ -218,6 +240,34 @@ To transition between levels, we used an area trigger to teleport the player to 
 
 
 # Sub-Roles
+
+
+## User Interface -- Nathan Kotni
+
+**Describe your user interface and how it relates to gameplay. This can be done via the template.**
+The main user interface consists of the main menu, gameplay using WASD or arrow keys, HUD while playing the gamne including a pause button, game over menu, and game won screen. I implemented the code for all of these elements, which frankly took as much if not more time than my main role took. Note: I didn't mention it but I customized most labels and buttons in the following UI designs I will talk about in order for them to have outlines, shadows, and/or unique colors so they pop more and look more polished.
+
+Boot Splash - I made a simple Boot Splash image that replaces the normal Godot loading screen as the project loads up when you run it. I also made the game load into a fullscreen window by default upon running. Here is an image of the Boot Splash.
+![](https://github.com/Echo108471/MonkeyTrenchOffense/blob/0ce5e284ad22ef14171ae7adcc24a8d17ee0766c/example_images/boot_splash.png)
+
+Main Menu - This was the first UI element that I created and figuring our how to do it took some time because it involved having many nested container nodes in order to get all of the design specifications I wanted like a blurred but transparent menu panel with an image in the background and vertically ordered items with the whole panel centered on the screen. That involved using a CenterContainer, TextureRect, ColorRect, and VBoxContainer as nested Godot nodes containing the buttons and labels inside. The background image displayed was drawn by Minji, who is in charge of visuals. To have this Main Menu be the first thing that shows up when the project is loaded up, I set this Main Menu scene as the root scene and made it a completely separate scene from the World scene which the main game is contained in. The buttons on the main menu allow the user to 'Start Game' by switching the scene to the wWrld scene or 'Quit' by quitting from the scene tree and toggle cheat mode, which allows the user to change their powerup by pressing the 'E' key. Here is an image of the completed main menu: 
+![](https://github.com/Echo108471/MonkeyTrenchOffense/blob/9a0d1d1c02f230ed4d1fc5dfca3f54617bcf2bcb/example_images/mainMenu.png)
+
+HUD - The HUD for the gameplay was another feature that I added which included a Pause button on the upper right part of the screen that pauses everything in the game and opens a Pause Menu. This Pause Menu is structured similarly to the Main Menu in terms of nodes but it uses a CanvasLayer to always stayed centered on the screen even when the player moves, and these nodes live in the World scene for gameplay. The pause menu includes a 'Resume' button that resumes the game, there is also a 'Menu' button that takes you back to the Main Menu, and a 'Quit' button that quits from the game. I also made a red horizontal textured progress bar on the upper left side of the screen that indicates the current health of the current Bloon layer, a label that displays how many layers of the Bloon remain, and a blue vertical textured progress bar that indicates the dash energy of the player currently as it gets used up and refills. I created the textures for the health and dash bars myself, pizel-by-pixel using Piskel, a free online pixel art editor. Here are images of the HUD as it appears during gameplay and the Pause Menu: 
+![](https://github.com/Echo108471/MonkeyTrenchOffense/blob/d3492b2621ee954224fcc2129d852cfbb1c48465/example_images/HUDExample.png)
+![](https://github.com/Echo108471/MonkeyTrenchOffense/blob/d3492b2621ee954224fcc2129d852cfbb1c48465/example_images/pauseMenu.png)
+
+Level Titles - Another UI implementation I made was creating gold-colored titles when each level begins that show at the center of the screen and linger for a second before fading over the course of a second after that. Figuring out how to do this using a Timer and then using a tween object to transition the opacity of the title from fully opaque to transparent was difficult the first time and for the first level it could be accomplished just by doing so in _ready() but for level two we needed to send a signal from the level two trigger area nodes to the scripts for the level two title label. This is how the labels look when displaying for Level 1 and Level 2: 
+![](https://github.com/Echo108471/MonkeyTrenchOffense/blob/d3492b2621ee954224fcc2129d852cfbb1c48465/example_images/levelOne.png)
+![](https://github.com/Echo108471/MonkeyTrenchOffense/blob/d3492b2621ee954224fcc2129d852cfbb1c48465/example_images/levelTwo.png)
+
+Game Over/Game Won Screens - The final major UI components I made were the Game Over Screen and Game Won Screen. The Game Over Screen was like a simplified version of the Main Menu since we just needed to add some buttons to the center and display them over a background image, which was once again drawn by Minji, and so we didn't need to worry about having a blurred panel this time, so we could cut out the ColorRect node from the structure used in the Main Menu. The buttons on the Game Over Screen include 'Main Menu', 'Restart', and 'Quit'. The Game Won Screen was even simpler as it used just an image in the background drawn by Minji and then a label for 'GAME WON' at the bottom. These were also kept as scenes separate from the World scene used for gameplay, and the player dying triggers the scene switching to the Game Over scene while the player reaching the golden finish line at the end of level 2 triggers the scene switching to the Game Won scene. I also made the images for the finish lines of level 1 and level 2 by connecting different colored squares together to form a black/white and gold/white checkered patterns. Here are images for the Game Over Screen, Game Won Screen, and golden finish line:
+![](https://github.com/Echo108471/MonkeyTrenchOffense/blob/d3492b2621ee954224fcc2129d852cfbb1c48465/example_images/gameOverScreen.png)
+![](https://github.com/Echo108471/MonkeyTrenchOffense/blob/0ce5e284ad22ef14171ae7adcc24a8d17ee0766c/example_images/gameWon.png)
+![](https://github.com/Echo108471/MonkeyTrenchOffense/blob/0ce5e284ad22ef14171ae7adcc24a8d17ee0766c/example_images/finish_line_final.png)
+
+**Describe the default input configuration.**
+**Add an entry for each platform or input style your project supports.**
 
 
 ## Audio -- Ryan Ffrench
