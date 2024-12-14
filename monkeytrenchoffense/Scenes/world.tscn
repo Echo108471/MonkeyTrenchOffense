@@ -712,7 +712,7 @@ text = "LEVEL 2: Reach the Golden Finish Line"
 script = ExtResource("24_btah6")
 
 [node name="GameWonTrigger" type="Area2D" parent="."]
-position = Vector2(26664, 4123)
+position = Vector2(14751, 4942)
 script = ExtResource("24_202jv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameWonTrigger"]
