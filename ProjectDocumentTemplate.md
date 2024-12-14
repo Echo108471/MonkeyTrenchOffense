@@ -165,7 +165,7 @@ Some of my first map designs looked like this:
 ![](./example_images/map1_1.png)
 ![](./example_images/map1_2.png)
 
-While these were interesting initial designs, the team felt they diverged too far from the original idea of a trench escape game and leaned too much towards a dungeon-crawler-like design. So, including one design that a teammate came up with, I created two levels: one as a simple introductory level to guide the player through the mechanics of the game, and another more complex map intended for players to explore on consecutive attempts.
+While these were interesting initial designs, the team felt they diverged too far from the original idea of a trench escape game and leaned too much towards a dungeon-crawler-like design. So, including one design that a teammate came up with, I created two levels: one as a simple introductory level to guide the player through the mechanics of the game, and another more complex, mazelike map intended for players to explore on consecutive attempts.
 
 Initial Designs:
 ![](./example_images/initial_design_map2_1.png)
@@ -176,15 +176,16 @@ Final Maps:
 ![](./example_images/main_map2.png)
 ![](./example_images/main_map2_physics.png)
 
-**Map 1:** The first map was intended to be a beginner level one, with only two split paths, with varying difficulty for each path. The goal is to make a simple, easy to understand goal for the player: get from the start to the end without dying. The entire map is made with a single asset package, called tiny swords, which should be linked somewhat on this page. Additionally, I intended the towns to act as a checkpoint for the player, allowing them to heal or buy upgrades to act as a progression system for the player. Decoration wise, I organized the map into a forested area near the top as a form of decoration and scenery. Initially, the intention was to create another path at the top of the map as well, but the layout just wasn't working out enough, so I decided to go simpler with the layout. Decoration wise, I additionally added two signs into each of the paths to indicate the player in the correct direction, as well as a X sign if the player decides to start going the opposite direction. While these are small details that are likely to go unnoticed, I did still believe they tie into guiding the player in the correct direction.
+**Map 1:** The first map was intended to be a beginner level one, with only two split paths, with varying difficulty for each path. The goal is to make a simple, easy to understand goal for the player: get from the start to the end without dying. The entire map is made with a single asset package, called "tiny swords" which is linked in the asset sections of this page. Additionally, I intended the towns to act as a checkpoint for the player, allowing them to heal or buy upgrades to act as a progression system for the player. Decoration wise, I organized the map into a forested area near the top as a form of decoration and scenery. Initially, the intention was to create another path at the top of the map as well, but the layout wasn't working out, so I decided to go with simplicity. Decoration wise, I additionally added two signs into each of the paths to indicate the player in the correct direction, as well as a X sign near the end of the map if the player decides to start going the opposite direction. While these are small details that are likely to go unnoticed, I believe that they tie into guiding the player in the correct direction.
 
-**Map 2:** The second map is much larger and more complex. With more experience after designing the first map, I was able to organize the layout and save time. The design emphasizes a maze-like structure, offering players multiple paths with varying difficulty. I also aimed to create the impression of different biomes on the map. Whether I succeeded or not is debatable. The biomes include:
+**Map 2:** The second map is much larger and more complex. With more experience after designing the first map, I was able to organize the layout and save time. The design emphasizes a maze-like structure, offering players multiple paths with varying difficulty. I also aimed to create the impression of different biomes on the map. The biomes include:
 - **Desert biome:** The starting area, with sparse plants and a barren plain.
 - **Cliff biome:** A region representing cliffs by the ocean.
 - **Mountain biome:** A higher elevation area meant to serve as a high mountaintop
 - **Valley biome:** The bottom of the map, reflecting a valley featuring lakes, wildlife, and a town at the very end.
 
 Additionally, on this map I created a dedicated physics layer to draw out the bounds of the entire tilemap. In my previous map, I achieved it by automatically marking outer tiles as physics layers, but I found that having a dedicated tilemaplayer for physics was nice and made it much easier to debug. There is not as much intention behind the decorations, but I did choose certain decorations to be more memorable for the player to remember. Instead of making a bunch of trees scattered around for example, I created a mushroom patch near the bottom right of the map to serve aesthetic and almost as a mental checkpoint.
+
 ---
 
 ### Technical Components
