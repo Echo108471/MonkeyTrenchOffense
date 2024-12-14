@@ -7,6 +7,7 @@ In our game you play as a balloon trying to escape evil monkeys that have trappe
 ## Project Resources
 
 [Itch IO](https://benyoung32.itch.io/monkey-trench-offense) 
+
 [Trailer](https://youtu.be/i8l6JdhSNFc?si=5tn6Pdlufj88c8pC)  
 [Press Kit](https://ryanffrench.github.io/MonkeyTrenchOffense-PressKit/)  
 [Proposal](https://docs.google.com/document/d/1XfRfDoN-Fm2vW_cJ7vQpI7-b4w9EeZ0zoOBdrwvnYzk/edit?tab=t.0#heading=h.i3tv2mxf7h7z)  
@@ -212,9 +213,9 @@ Finally, for my physics layer, I implemented it by creating a new independent `T
 
 ## Game Logic
 
-**Document the game states and game data you managed and the design patterns you used to complete your task.**
+Because our game is a simple 2D top-down adventurish game, we didn't need much overhead management for the game state. Each entity keeps track of their own state and actions, and has their own sound players as well. Interaction between the player and enemy projectiles is handled completely collision area signals. 
 
-
+To transition between levels, we used an area trigger to teleport the player to the next area. A trigger is placed at the end of game to trigger the victory screen. 
 
 
 # Sub-Roles
