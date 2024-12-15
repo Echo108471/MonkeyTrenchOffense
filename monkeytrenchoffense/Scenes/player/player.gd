@@ -206,7 +206,7 @@ func apply_power_up_from_signal(powerup_type:String):
 	elif powerup_type == "beast":
 		apply_power_up(Power.BEAST)
 	elif powerup_type == "black_hole":
-		apply_power_up(Power.BEAST)
+		apply_power_up(Power.BLACK_HOLE)
 
 func apply_power_up(power:Power) -> void:
 	current_power = power
